@@ -1,0 +1,1 @@
+class_name Ghost extends CharacterBody2D

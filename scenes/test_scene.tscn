@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://sof2csjjqbsa"]
+
+[ext_resource type="PackedScene" uid="uid://c7lhvewysmr4j" path="res://scenes/player.tscn" id="1_g7g4h"]
+[ext_resource type="Texture2D" uid="uid://cqsdxuiajvdvp" path="res://assets/Dungeon_Tileset_at.png" id="2_j8ivh"]
+[ext_resource type="PackedScene" uid="uid://bcbaphl6idug8" path="res://scenes/ghost.tscn" id="2_nd71p"]
+
+[sub_resource type="Environment" id="Environment_nd71p"]
+background_mode = 3
+
+[node name="TestScene" type="Node2D" unique_id=1983229126]
+
+[node name="DungeonTilesetAt" type="Sprite2D" parent="." unique_id=158482221]
+position = Vector2(5, -27)
+texture = ExtResource("2_j8ivh")
+
+[node name="Ghost" parent="." unique_id=1899897562 instance=ExtResource("2_nd71p")]
+position = Vector2(124, -135)
+
+[node name="Player" parent="." unique_id=1413311515 instance=ExtResource("1_g7g4h")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1181145079]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=425394715]
+environment = SubResource("Environment_nd71p")

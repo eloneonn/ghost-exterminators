@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c7lhvewysmr4j"]
+
+[ext_resource type="Texture2D" uid="uid://eqyh2dosrvof" path="res://assets/priest1_v1_1.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dr82ni3xmqlqe" path="res://scripts/player.gd" id="1_g2els"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
+size = Vector2(11, 13)
+
+[sub_resource type="Gradient" id="Gradient_g2els"]
+offsets = PackedFloat32Array(0, 0.6686747)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
+gradient = SubResource("Gradient_g2els")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_qhqgy"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dqkch"]
+gradient = SubResource("Gradient_qhqgy")
+width = 256
+height = 10
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[node name="Player" type="CharacterBody2D" unique_id=1413311515]
+script = ExtResource("1_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504978614]
+texture_filter = 1
+texture = ExtResource("1_3vyb7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=356306731]
+sprite_frames = SubResource("SpriteFrames_g2els")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1400867156]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_3vyb7")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=183468709]
+texture = SubResource("GradientTexture2D_qhqgy")
+
+[node name="Flashlight" type="Node2D" parent="." unique_id=1091737022]
+unique_name_in_owner = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="Flashlight" unique_id=576742718]
+position = Vector2(128, 0)
+texture = SubResource("GradientTexture2D_dqkch")
