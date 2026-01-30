@@ -15,13 +15,13 @@ run/main_scene="uid://1h6wsw5qpb3f"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[global_group]
-
-player=""
-
 [autoload]
 
 GameManager="*uid://40qxq3xpge7v"
+
+[global_group]
+
+player=""
 
 [input]
 
