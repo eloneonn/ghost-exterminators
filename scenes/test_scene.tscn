@@ -138,6 +138,7 @@ sources/1 = SubResource("TileSetAtlasSource_u0xbq")
 [node name="TestScene" type="Node2D" unique_id=1983229126]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=983275979]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="PointLight2D3" type="PointLight2D" parent="." unique_id=384090692]
@@ -170,12 +171,12 @@ position = Vector2(5, -27)
 texture = ExtResource("2_j8ivh")
 
 [node name="Ghost" parent="." unique_id=1899897562 instance=ExtResource("2_nd71p")]
-position = Vector2(124, -135)
+position = Vector2(270, 142)
 
 [node name="Player" parent="." unique_id=1413311515 instance=ExtResource("1_g7g4h")]
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1181145079]
-zoom = Vector2(8, 8)
+zoom = Vector2(6, 6)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
