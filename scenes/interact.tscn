@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b7dtp5o2krjce"]
+
+[ext_resource type="Script" uid="uid://e33on3txehg1" path="res://scripts/interact.gd" id="1_hpvv5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hpvv5"]
+radius = 16.4
+
+[node name="Door" type="Node2D" unique_id=887784566]
+script = ExtResource("1_hpvv5")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=2020713222]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1032549972]
+position = Vector2(14, 13)
+shape = SubResource("CircleShape2D_hpvv5")
+debug_color = Color(0.6120216, 0.5378068, 1.92523e-07, 0.41960785)
+
+[node name="Prompt" type="Label" parent="." unique_id=1002910040]
+visible = false
+offset_left = -47.0
+offset_top = -25.0
+offset_right = 93.0
+offset_bottom = -2.0
+text = "Press E to interact"
