@@ -15,13 +15,22 @@ run/main_scene="uid://1h6wsw5qpb3f"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[global_group]
-
-player=""
-
 [autoload]
 
 GameManager="*uid://40qxq3xpge7v"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+
+[global_group]
+
+player=""
 
 [input]
 
@@ -61,6 +70,7 @@ interact={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
