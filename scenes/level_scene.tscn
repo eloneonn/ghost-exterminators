@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://cyj4tnb0v88og"]
 
-[ext_resource type="Script" uid="uid://bil67hutl0o27" path="res://scenes/level_scene.gd" id="1_2m3ut"]
-[ext_resource type="TileSet" uid="uid://cd2ovvtiokkfe" path="res://assets/debug_tile_set.tres" id="1_fkwfp"]
+[ext_resource type="Script" uid="uid://bil67hutl0o27" path="res://scripts/level_scene.gd" id="1_2m3ut"]
+[ext_resource type="TileSet" uid="uid://dook4q5vajmtk" path="res://assets/debug_tile_set.tres" id="1_fkwfp"]
 [ext_resource type="Texture2D" uid="uid://c41kbwe5jtay0" path="res://assets/Dungeon_Tileset.png" id="2_eohcs"]
 [ext_resource type="Texture2D" uid="uid://cqsdxuiajvdvp" path="res://assets/Dungeon_Tileset_at.png" id="3_2m3ut"]
-[ext_resource type="PackedScene" uid="uid://b7dtp5o2krjce" path="res://scenes/door.tscn" id="4_1lj4f"]
+[ext_resource type="PackedScene" uid="uid://b7dtp5o2krjce" path="res://scenes/interact.tscn" id="4_1lj4f"]
 [ext_resource type="PackedScene" uid="uid://bcbaphl6idug8" path="res://scenes/ghost.tscn" id="4_ojpky"]
 [ext_resource type="PackedScene" uid="uid://c7lhvewysmr4j" path="res://scenes/player.tscn" id="5_1lj4f"]
 

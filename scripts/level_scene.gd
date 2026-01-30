@@ -3,9 +3,8 @@ extends Node2D
 @onready var door: Node = %Door
 
 func _ready() -> void:
-	print("Level Scene ready.")
-	# Connect Door's signal to this function
-	door.door_triggered.connect(_on_door_triggered)
+	door.set_prompt("Enter the Safehouse Scene (Press E)")
+	door.interacted.connect(_on_door_triggered)
 
 func _on_door_triggered() -> void:
 	print("Transitioning to safehouse scene.")
