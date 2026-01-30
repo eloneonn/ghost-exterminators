@@ -27,3 +27,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start test scene"
+
+[node name="StartGameBtn" type="Button" parent="VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1400086465]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start game"
