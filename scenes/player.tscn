@@ -75,17 +75,16 @@ texture = SubResource("GradientTexture2D_qhqgy")
 [node name="Flashlight" type="Node2D" parent="." unique_id=1091737022]
 unique_name_in_owner = true
 
-[node name="PointLight2D2" type="PointLight2D" parent="Flashlight" unique_id=576742718]
+[node name="AdditiveLight" type="PointLight2D" parent="Flashlight" unique_id=576742718]
 light_mask = 0
 visibility_layer = 0
+energy = 2.0
 shadow_enabled = true
-shadow_filter = 2
 texture = SubResource("GradientTexture2D_dqkch")
 
-[node name="PointLight2D4" type="PointLight2D" parent="Flashlight" unique_id=316401614]
+[node name="SubtractiveLight" type="PointLight2D" parent="Flashlight" unique_id=316401614]
 light_mask = 0
 visibility_layer = 0
-energy = 4.0
 blend_mode = 1
 range_item_cull_mask = 2
 shadow_enabled = true
