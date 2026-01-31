@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://bwmyob1bbrhd4" path="res://scripts/gun.gd" id="1_og67c"]
 [ext_resource type="Texture2D" uid="uid://ihvp00r2ye5a" path="res://assets/beam_1.png" id="2_gp1hk"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_qd4js"]
-b = Vector2(0, 5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_og67c"]
+radius = 20.0
+height = 80.0
 
 [node name="Gun" type="Node2D" unique_id=1379834991]
 script = ExtResource("1_og67c")
@@ -12,12 +13,17 @@ cool_color = Color(0.12217867, 0.6207746, 0.44198692, 1)
 
 [node name="HitArea" type="Area2D" parent="." unique_id=893302884]
 unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1361076814]
-shape = SubResource("SegmentShape2D_qd4js")
-debug_color = Color(0.91515374, 8.2977414e-05, 0.71558213, 0.41960785)
+position = Vector2(40, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_og67c")
+debug_color = Color(0.9137255, 0, 0.7137255, 0.5254902)
 
 [node name="BeamSprite" type="Sprite2D" parent="." unique_id=773847952]
 unique_name_in_owner = true
+visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_gp1hk")
