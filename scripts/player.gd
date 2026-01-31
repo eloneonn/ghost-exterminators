@@ -19,6 +19,7 @@ extends CharacterBody2D
 @onready var light_area_collision: CollisionPolygon2D = %LightArea/CollisionPolygon2D
 @onready var footstep_player: AudioStreamPlayer2D = $FootstepPlayer
 @onready var flashlight_player: AudioStreamPlayer2D = $FlashlightPlayer
+@onready var battery_player: AudioStreamPlayer2D = $BatteryPlayer
 
 var _footstep_timer: float = 0.0
 
@@ -44,6 +45,10 @@ func _ready() -> void:
 	if flashlight_stream:
 		flashlight_player.stream = flashlight_stream
 		flashlight_player.bus = "Sfx"
+	var battery_stream: AudioStream = load("res://sfx/battery.wav") as AudioStream
+	if battery_stream:
+		battery_player.stream = battery_stream
+		battery_player.bus = "Sfx"
 	_cache_base_stats()
 	_apply_upgrades()
 	# if ghost_ray is GhostRay:
@@ -130,6 +135,8 @@ func _update_battery(delta: float) -> void:
 		if GameManager.has_item(Enums.Item.BATTERY):
 			GameManager.remove_item(Enums.Item.BATTERY)
 			battery_charge = battery_max_charge
+			if is_instance_valid(battery_player) and battery_player.stream != null:
+				battery_player.play()
 			if !GameManager.has_item(Enums.Item.BATTERY):
 				show_thought("There goes my last battery! Gotta be quick!", 0.0)
 		else:

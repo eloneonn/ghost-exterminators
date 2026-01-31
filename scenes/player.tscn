@@ -199,3 +199,5 @@ libraries/ = SubResource("AnimationLibrary_fjrip")
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [node name="FlashlightPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="BatteryPlayer" type="AudioStreamPlayer2D" parent="."]
