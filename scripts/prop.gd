@@ -1,16 +1,23 @@
 class_name Prop extends CharacterBody2D
 
 @export var activation_radius: float = 80.0
+@export var jumpscare_radius: float = 20.0
 @export var speed: float = 10.0
 @export var stupidFleeSpeed = 40.0
 @export var health: int = 100;
 @export var ghost: bool = false;
+@export var sanity_damage: int = 25;
+@export var jumpscare_delay: float = 3;
 
 @onready var sensor_center: Area2D = $Sensor_Center;
 @onready var sensor_top: Area2D = $Sensor_Top;
 @onready var sensor_bottom: Area2D = $Sensor_Bottom;
 @onready var sensor_left: Area2D = $Sensor_Left;
 @onready var sensor_right: Area2D = $Sensor_Right;
+@onready var animation_player: AnimationPlayer = $AnimationPlayer;
+@onready var shake_anim_player: AnimationPlayer = %ShakeAnimation;
+
+var jumpscaring: bool = false
 
 #Types of ghost behaviour
 enum GhostBehaviour {
@@ -115,6 +122,23 @@ func _on_exit_area_right_sensor(_area: Area2D):
 	right_lit = false;
 	update_light_ratio();
 
+func jumpscare() -> void:
+	if jumpscaring:
+		return
+
+	jumpscaring = true
+	print("Jumpscaring")
+	var camera: Camera = get_tree().get_first_node_in_group("camera");
+
+	animation_player.play("jumpscare")
+
+	camera.shake(1.0, 10.0, 10.0)
+	
+	player.take_sanity_damage(sanity_damage)
+	player.show_thought("Aaaaaah!", 0.0)
+
+	await get_tree().create_timer(jumpscare_delay).timeout
+	jumpscaring = false
 
 func _physics_process(_delta):
 	if player == null:
@@ -125,6 +149,12 @@ func _physics_process(_delta):
 	var distance = global_position.distance_to(player.global_position)
 
 	if ghost:
+		print(distance)
+		
+		if distance <= jumpscare_radius:
+			jumpscare()
+			return
+
 		match ghost_behaviour:
 			GhostBehaviour.ATTACK:
 				if sensors_lit < 2 and distance <= activation_radius:
@@ -246,15 +276,23 @@ func follow_player() -> void:
 	move_and_slide()
 
 func take_damage(damage: int) -> void:
+	var shake_anims := ["Shake", "Shake 2", "Shake 3"]
+	shake_anim_player.play(shake_anims[randi() % shake_anims.size()])
+
 	print("Prop took damage: ", damage)
 	health -= damage
 	if health <= 0:
 		die()
 
 func die() -> void:
+	sprite.visible = false
+
 	if ghost:
 		GameManager.capture_ghost(self.value)
 	else:
 		GameManager.destroy_prop(self.value)
+
+	animation_player.play("die")
+	await animation_player.animation_finished
 
 	queue_free()

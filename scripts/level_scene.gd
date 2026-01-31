@@ -15,7 +15,7 @@ func _ready() -> void:
 		player.show_thought("I should use my GhostRay (left click) to catch them", 20.0)
 		player.show_thought("Hmm, I swear that thing moved...", 35.0)
 
-	_assign_random_ghosts()
+	# _assign_random_ghosts()
 
 func _on_door_triggered() -> void:
 	print("Transitioning to safehouse scene.")
