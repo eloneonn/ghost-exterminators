@@ -13,6 +13,8 @@ func _ready() -> void:
 	add_money_button.pressed.connect(_on_add_money_button_pressed)
 
 func _on_door_triggered() -> void:
+	GameManager.next_level()
+	print("Starting level" + str(GameManager.level))
 	get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
 
 func _on_add_money_button_pressed() -> void:
