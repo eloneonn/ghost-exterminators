@@ -48,5 +48,11 @@ func has_item(item: Enums.Item) -> bool:
 func get_item_count(item: Enums.Item) -> int:
     return inventory.count(item)
 
+func capture_ghost() -> void:
+    ghosts_captured += 1
+
+func destroy_prop() -> void:
+    props_destroyed += 1
+
 func end_game() -> void:
     get_tree().change_scene_to_file("res://scenes/end_game_scene.tscn")
