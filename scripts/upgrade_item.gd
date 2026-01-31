@@ -21,6 +21,7 @@ func _on_buy_button_pressed() -> void:
 			buy_button.text = "Purchased"
 
 func _ready() -> void:
+	buy_button.pressed.connect(_on_buy_button_pressed)	
 	item_name.text = Constants.ITEM_NAMES.get(item, Enums.Item.keys()[item])
 	cost_label.text = str(cost)
 	description_label.text = description
