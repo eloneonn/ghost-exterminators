@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bcbaphl6idug8"]
 
-[ext_resource type="Script" uid="uid://cige5ygn4hycb" path="res://scripts/ghost.gd" id="1_l5lq6"]
+[ext_resource type="Script" uid="uid://cige5ygn4hycb" path="res://scripts/prop.gd" id="1_l5lq6"]
 [ext_resource type="Texture2D" uid="uid://i1sqge14t63t" path="res://assets/coin_1.png" id="1_t76o2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5lq6"]
 
-[node name="Ghost" type="CharacterBody2D" unique_id=1899897562]
+[node name="Prop" type="CharacterBody2D" unique_id=1899897562]
+collision_layer = 4
+collision_mask = 15
 script = ExtResource("1_l5lq6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1888285308]

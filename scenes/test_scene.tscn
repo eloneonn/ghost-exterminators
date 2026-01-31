@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c7lhvewysmr4j" path="res://scenes/player.tscn" id="1_g7g4h"]
 [ext_resource type="TileSet" uid="uid://dook4q5vajmtk" path="res://assets/debug_tile_set.tres" id="1_qjeyg"]
-[ext_resource type="PackedScene" uid="uid://bcbaphl6idug8" path="res://scenes/ghost.tscn" id="2_nd71p"]
+[ext_resource type="PackedScene" uid="uid://bcbaphl6idug8" path="res://scenes/prop.tscn" id="2_nd71p"]
 [ext_resource type="Texture2D" uid="uid://bof6jqll1yw28" path="res://assets/Dungeon_Tileset_Dark.png" id="2_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://7uu600b20wq2" path="res://scenes/ui/hud.tscn" id="5_qjeyg"]
 
@@ -227,3 +227,7 @@ position_smoothing_speed = 10.0
 [node name="HUD" parent="Player" unique_id=1983524308 instance=ExtResource("5_qjeyg")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=425394715]
+
+[node name="Prop" parent="." unique_id=803565089 instance=ExtResource("2_nd71p")]
+position = Vector2(64, 114)
+ghost = true
