@@ -151,7 +151,7 @@ func _physics_process(_delta):
 	var distance = global_position.distance_to(player.global_position)
 
 	if ghost:
-		print(distance)
+		# print(distance)
 		
 		if distance <= jumpscare_radius:
 			jumpscare()

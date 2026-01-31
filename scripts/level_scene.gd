@@ -2,10 +2,11 @@ extends Node2D
 
 @onready var door: Node = %Door
 
-@export var ghost_count: int = GameManager.quota_this_level * 2        # how many props become ghosts
+@export var ghost_count: int = GameManager.quota_this_level * randi_range(1, 3)       # how many props become ghosts
 @export var randomize_behaviour: bool = true
 
 func _ready() -> void:
+	print(ghost_count, " ghosts will be assigned in this level.")
 	door.set_prompt("Enter the Safehouse Scene (Press E)")
 	door.interacted.connect(_on_door_triggered)
 
@@ -15,7 +16,7 @@ func _ready() -> void:
 		player.show_thought("I should use my GhostRay (left click) to catch them", 20.0)
 		player.show_thought("Hmm, I swear that thing moved...", 35.0)
 
-	# _assign_random_ghosts()
+	_assign_random_ghosts()
 
 func _on_door_triggered() -> void:
 	print("Transitioning to safehouse scene.")

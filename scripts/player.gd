@@ -27,8 +27,8 @@ func _ready() -> void:
 	light_area.body_exited.connect(_on_light_area_body_exited)
 	_cache_base_stats()
 	_apply_upgrades()
-	if ghost_ray is GhostRay:
-		ghost_ray._apply_upgrades()
+	# if ghost_ray is GhostRay:
+	# 	ghost_ray._apply_upgrades()
 
 func _on_light_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Prop:
