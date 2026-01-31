@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://eqyh2dosrvof" path="res://assets/priest1_v1_1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dr82ni3xmqlqe" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://ihvp00r2ye5a" path="res://assets/beam_1.png" id="3_qhqgy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhqgy"]
+light_mode = 1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
@@ -13,29 +17,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(11, 13)
-
-[sub_resource type="Gradient" id="Gradient_qhqgy"]
-offsets = PackedFloat32Array(0, 0.001, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-metadata/_snap_count = 2
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dqkch"]
-gradient = SubResource("Gradient_qhqgy")
-width = 300
-height = 60
-fill_from = Vector2(0.5, 0)
-
-[sub_resource type="Gradient" id="Gradient_tuyoq"]
-offsets = PackedFloat32Array(0, 0.009036124, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-metadata/_snap_count = 2
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fjrip"]
-gradient = SubResource("Gradient_tuyoq")
-width = 300
-height = 60
-fill_from = Vector2(0.5, 0)
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
 offsets = PackedFloat32Array(0, 0.71516395)
@@ -56,6 +37,7 @@ script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504978614]
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_qhqgy")
 texture = ExtResource("1_3vyb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=356306731]
@@ -72,9 +54,10 @@ unique_name_in_owner = true
 [node name="AdditiveLight" type="PointLight2D" parent="Flashlight" unique_id=576742718]
 light_mask = 0
 visibility_layer = 0
-energy = 3.0
 shadow_enabled = true
-texture = SubResource("GradientTexture2D_dqkch")
+shadow_filter_smooth = 1.0
+texture = ExtResource("3_qhqgy")
+texture_scale = 0.1
 
 [node name="SubtractiveLight" type="PointLight2D" parent="Flashlight" unique_id=316401614]
 light_mask = 0
@@ -83,8 +66,10 @@ energy = 3.0
 blend_mode = 1
 range_item_cull_mask = 2
 shadow_enabled = true
+shadow_filter_smooth = 2.0
 shadow_item_cull_mask = 2
-texture = SubResource("GradientTexture2D_fjrip")
+texture = ExtResource("3_qhqgy")
+texture_scale = 0.1
 
 [node name="PointLight" type="Node2D" parent="." unique_id=338882737]
 unique_name_in_owner = true
