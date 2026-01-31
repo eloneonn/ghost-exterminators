@@ -32,6 +32,9 @@ height = 52
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qlg0r"]
+light_mode = 1
+
 [sub_resource type="Animation" id="Animation_tuyoq"]
 resource_name = "thought"
 length = 7.0
@@ -143,6 +146,7 @@ position = Vector2(0, 1)
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 z_index = 10
+material = SubResource("CanvasItemMaterial_qlg0r")
 offset_left = -149.0
 offset_top = 11.0
 offset_right = 158.0
