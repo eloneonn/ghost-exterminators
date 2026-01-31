@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://c6uifyeggxhiv"]
 
 [ext_resource type="Script" uid="uid://bwmyob1bbrhd4" path="res://scripts/gun.gd" id="1_og67c"]
-[ext_resource type="Texture2D" uid="uid://ihvp00r2ye5a" path="res://assets/beam_1.png" id="2_gp1hk"]
+[ext_resource type="Texture2D" uid="uid://boqdrkrciy8c0" path="res://assets/gun.png" id="2_og67c"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_og67c"]
-radius = 20.0
-height = 80.0
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_og67c"]
+light_mode = 1
 
 [node name="Gun" type="Node2D" unique_id=1379834991]
 script = ExtResource("1_og67c")
@@ -16,14 +15,13 @@ unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1361076814]
-position = Vector2(40, 0)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_og67c")
-debug_color = Color(0.9137255, 0, 0.7137255, 0.5254902)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitArea" unique_id=616456713]
+position = Vector2(11, -1)
+polygon = PackedVector2Array(0, 0, 58, -30, 58, 30)
 
 [node name="BeamSprite" type="Sprite2D" parent="." unique_id=773847952]
 unique_name_in_owner = true
-visible = false
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_gp1hk")
+material = SubResource("CanvasItemMaterial_og67c")
+position = Vector2(6, 0)
+texture = ExtResource("2_og67c")
+flip_h = true

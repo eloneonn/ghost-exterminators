@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://cpkvagn5d1x67" path="res://assets/dark_tile_set.tres" id="3_cu2va"]
 [ext_resource type="PackedScene" uid="uid://b7dtp5o2krjce" path="res://scenes/interact.tscn" id="4_1lj4f"]
 [ext_resource type="PackedScene" uid="uid://c7lhvewysmr4j" path="res://scenes/player.tscn" id="5_1lj4f"]
+[ext_resource type="Script" uid="uid://roj22rip7sr0" path="res://scripts/camera.gd" id="5_cu2va"]
 [ext_resource type="PackedScene" uid="uid://7uu600b20wq2" path="res://scenes/ui/hud.tscn" id="6_eohcs"]
 [ext_resource type="PackedScene" uid="uid://bcbaphl6idug8" path="res://scenes/prop.tscn" id="7_1lj4f"]
 [ext_resource type="Script" uid="uid://b7jqjcgqhbtvr" path="res://scripts/intro.gd" id="7_2m3ut"]
@@ -220,9 +221,11 @@ tile_set = ExtResource("3_cu2va")
 [node name="Player" parent="." unique_id=1413311515 instance=ExtResource("5_1lj4f")]
 position = Vector2(15, 16)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=538311456]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=408036016 groups=["camera"]]
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+script = ExtResource("5_cu2va")
+metadata/_custom_type_script = "uid://roj22rip7sr0"
 
 [node name="Door" parent="." unique_id=887784566 instance=ExtResource("4_1lj4f")]
 unique_name_in_owner = true
@@ -450,6 +453,7 @@ texture = SubResource("AtlasTexture_cupps")
 
 [node name="Prop2" parent="." unique_id=2037967270 instance=ExtResource("7_1lj4f")]
 position = Vector2(0, -55)
+ghost = true
 texture = SubResource("AtlasTexture_cu2va")
 
 [node name="IntroView" type="CanvasLayer" parent="." unique_id=1796729029]

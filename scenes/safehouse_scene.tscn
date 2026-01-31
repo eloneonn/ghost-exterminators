@@ -135,6 +135,42 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="UpgradeItem" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems" unique_id=1603925993 instance=ExtResource("7_0fead")]
-layout_mode = 2
 cost = 50
 description = "Battery for flashlight"
+
+[node name="UpgradeItems2" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=1643862517]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeItemGunDamage" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems2" unique_id=1932635 instance=ExtResource("7_0fead")]
+item = 2
+cost = 250
+description = "Increase GhostRay damage."
+
+[node name="UpgradeItems3" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=1746887725]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeItemGunRange" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems3" unique_id=1606005816 instance=ExtResource("7_0fead")]
+item = 3
+cost = 200
+description = "Longer and narrower beam."
+
+[node name="UpgradeItems4" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=1228919084]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeItemPlayerSpeed" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems4" unique_id=200449691 instance=ExtResource("7_0fead")]
+item = 5
+cost = 180
+description = "Move faster."
+
+[node name="UpgradeItems5" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=117795991]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="UpgradeItemPlayerBattery" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems5" unique_id=499020685 instance=ExtResource("7_0fead")]
+item = 6
+cost = 150
+description = "Hold more battery charge."

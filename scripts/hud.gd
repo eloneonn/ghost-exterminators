@@ -9,7 +9,7 @@ func _process(_delta: float) -> void:
 	if player != null:
 		battery_label.text = "Battery: %d/%d (%d spare)" % [
 			player.battery_charge,
-			Constants.BATTERY_MAX_CHARGE,
+			player.battery_max_charge,
 			GameManager.get_item_count(Enums.Item.BATTERY) if GameManager else 0
 		]
 		sanity_label.text = "Sanity: %d" % player.sanity
