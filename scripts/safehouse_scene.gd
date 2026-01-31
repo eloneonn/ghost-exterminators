@@ -9,13 +9,27 @@ extends Node2D
 @onready var items_list: Label = %ItemsList
 @onready var upgrade_items_container: VBoxContainer = %UpgradeItems
 
+@onready var tutorial_text: RichTextLabel = %TutorialText
+@onready var tutorial_door: RichTextLabel = %TutorialDoor
+@onready var stats_text: RichTextLabel = %StatsText
+
 func _ready() -> void:
-	door.set_prompt("Enter the Level Scene (Press E)")
+	door.set_prompt("Press E")
 	door.interacted.connect(_on_door_triggered)
-	upgrade_desk.set_prompt("Upgrade your gear (Press E)")
+	upgrade_desk.set_prompt("Press E")
 	upgrade_desk.interacted.connect(_on_upgrade_desk_interacted)
 	#add_money_button.pressed.connect(_on_add_money_button_pressed)
 	_connect_upgrade_items()
+	
+	if GameManager.level == 0:
+		tutorial_text.visible = true;
+		tutorial_door.visible = true;
+		stats_text.visible = false;
+	else:
+		stats_text.text = "Night " + str(GameManager.level) + " stats:\n\nGhosts captured: " + str(GameManager.ghosts_captured_this_level) + "\n\nMoney earned: " + str(GameManager.money_earned_this_level) + "\n\nTotal money: " + str(GameManager.get_money());
+		tutorial_text.visible = false;
+		tutorial_door.visible = false;
+		stats_text.visible = true;
 
 	var player: Player = get_tree().get_first_node_in_group("player")
 	if (GameManager.level == 0):

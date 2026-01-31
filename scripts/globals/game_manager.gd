@@ -18,6 +18,8 @@ var total_expenses: int = 0;
 
 var quota_this_level: int = Constants.STARTING_QUOTA;
 var ghosts_captured_this_level: int = 0;
+var money_earned_this_level: int = 0;
+
 
 func _ready() -> void:
     money = Constants.STARTING_MONEY;
@@ -28,6 +30,7 @@ func next_level() -> void:
     level += 1
     quota_this_level = Constants.STARTING_QUOTA + level;
     ghosts_captured_this_level = 0;
+    money_earned_this_level = 0;
 
 func get_items_string() -> String:
     return "\n".join(inventory.map(func(item: Enums.Item) -> String:
@@ -37,10 +40,12 @@ func get_items_string() -> String:
 func add_money(amount: int) -> void:
     total_earnings += amount;
     money += amount
+    money_earned_this_level += amount
 
 func remove_money(amount: int) -> void:
     total_expenses += amount;
     money -= amount
+    money_earned_this_level -= amount
 
 func get_money() -> int:
     return money

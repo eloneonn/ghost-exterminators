@@ -38,7 +38,8 @@ tile_map_data = PackedByteArray("AAAFAP7/AAACAAIAAAAEAAEAAAABAAQAAAAEAAIAAAAIAAc
 tile_set = ExtResource("2_xkx2a")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=211299421]
-position = Vector2(-40, -59)
+position = Vector2(-37, -15)
+zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -49,17 +50,19 @@ flashlight_enabled = false
 
 [node name="Door" parent="." unique_id=887784566 instance=ExtResource("3_ebyui")]
 unique_name_in_owner = true
-position = Vector2(57, -61)
+position = Vector2(56, -29)
 
 [node name="UpgradeDesk" parent="." unique_id=1026013013 instance=ExtResource("3_ebyui")]
 unique_name_in_owner = true
-position = Vector2(-27, -17)
+position = Vector2(-15, -5)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=535605259]
-offset_left = -178.99998
-offset_top = -106.0
-offset_right = -34.195847
-offset_bottom = 63.0
+[node name="TutorialText" type="RichTextLabel" parent="." unique_id=535605259]
+unique_name_in_owner = true
+visible = false
+offset_left = -205.99998
+offset_top = -107.0
+offset_right = -61.195847
+offset_bottom = 62.0
 scale = Vector2(0.99444675, 1)
 theme = ExtResource("6_xkx2a")
 theme_override_font_sizes/normal_font_size = 10
@@ -67,10 +70,21 @@ text = "Catch ghosts to fill your quota and get your salary. Don't break stuff o
 
 Use salary to buy upgrades at the desk here."
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=104807803]
-offset_left = -13.999998
+[node name="StatsText" type="RichTextLabel" parent="." unique_id=979793562]
+unique_name_in_owner = true
+offset_left = -205.99998
+offset_top = -107.0
+offset_right = -61.195847
+offset_bottom = 62.0
+scale = Vector2(0.99444675, 1)
+theme = ExtResource("6_xkx2a")
+theme_override_font_sizes/normal_font_size = 10
+
+[node name="TutorialDoor" type="RichTextLabel" parent="." unique_id=104807803]
+unique_name_in_owner = true
+offset_left = 23.0
 offset_top = -83.0
-offset_right = 60.41324
+offset_right = 97.41324
 offset_bottom = -16.0
 scale = Vector2(0.99444675, 1)
 theme = ExtResource("6_xkx2a")
@@ -78,14 +92,14 @@ theme_override_font_sizes/normal_font_size = 6
 text = "When you're ready, enter through the door."
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=585631723]
-offset_left = -181.99998
-offset_top = 18.0
-offset_right = 116.65852
-offset_bottom = 85.0
+offset_left = -199.0
+offset_top = 66.0
+offset_right = 206.25043
+offset_bottom = 133.0
 scale = Vector2(0.99444675, 1)
 theme = ExtResource("6_xkx2a")
 theme_override_font_sizes/normal_font_size = 7
-text = "Move: WASD   Interact: E   Aim: Mouse   Shoot: Left mouse button   Flashlight: F"
+text = "Move: WASD   Interact: E   Aim: Mouse   Shoot: Left mouse button   Flashlight: F   Pause: Esc"
 
 [node name="UpgradeUI" type="CanvasLayer" parent="." unique_id=1486600481]
 unique_name_in_owner = true
