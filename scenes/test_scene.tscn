@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://7uu600b20wq2" path="res://scenes/ui/hud.tscn" id="5_qjeyg"]
 [ext_resource type="Texture2D" uid="uid://begyqtihjdqy6" path="res://assets/propmap.png" id="6_rnaij"]
 [ext_resource type="Texture2D" uid="uid://eqyh2dosrvof" path="res://assets/priest1_v1_1.png" id="6_wtsjf"]
+[ext_resource type="Texture2D" uid="uid://i1sqge14t63t" path="res://assets/coin_1.png" id="7_rnaij"]
+[ext_resource type="PackedScene" uid="uid://if3trh31wcxc" path="res://scenes/SafeZone.tscn" id="7_wtsjf"]
 
 [sub_resource type="Gradient" id="Gradient_7ddre"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -223,7 +225,10 @@ offset_bottom = 161.0
 text = "Atrium"
 
 [node name="Ghost" parent="." unique_id=1899897562 instance=ExtResource("2_nd71p")]
-position = Vector2(270, 142)
+position = Vector2(-88, 173)
+ghost = true
+ghost_behaviour = 2
+texture = ExtResource("7_rnaij")
 
 [node name="Player" parent="." unique_id=1413311515 instance=ExtResource("1_g7g4h")]
 
@@ -236,7 +241,7 @@ position_smoothing_speed = 10.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=425394715]
 
 [node name="Prop" parent="." unique_id=803565089 instance=ExtResource("2_nd71p")]
-position = Vector2(64, 114)
+position = Vector2(125, 214)
 ghost = true
 texture = SubResource("AtlasTexture_h3xc6")
 
@@ -245,3 +250,12 @@ position = Vector2(-129, 247)
 ghost = true
 ghost_behaviour = 1
 texture = ExtResource("6_wtsjf")
+
+[node name="SafeZone2" parent="." unique_id=1849728649 instance=ExtResource("7_wtsjf")]
+position = Vector2(20, 225)
+
+[node name="SafeZone3" parent="." unique_id=294503588 instance=ExtResource("7_wtsjf")]
+position = Vector2(155, -25)
+
+[node name="SafeZone4" parent="." unique_id=318153629 instance=ExtResource("7_wtsjf")]
+position = Vector2(-217, 103)
