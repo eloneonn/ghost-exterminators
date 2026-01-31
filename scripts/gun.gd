@@ -28,11 +28,20 @@ var is_overheated: bool = false
 var is_firing: bool = false
 var damage_timer: float = 0.0
 
+var _base_damage_per_second: float
+var _base_length: float
+var _base_width: float
+var _base_max_heat: float
+var _base_heat_per_second: float
+var _base_cool_per_second: float
+
 @onready var beam_sprite: Sprite2D = $BeamSprite
 @onready var hit_area: Area2D = $HitArea
 @onready var hit_shape: CollisionShape2D = $HitArea/CollisionShape2D
 
 func _ready() -> void:
+	_cache_base_stats()
+	_apply_upgrades()
 	_set_active(false)
 	_apply_beam_geometry()
 
@@ -137,3 +146,39 @@ func _update_beam_color(_delta: float) -> void:
 		else:
 			var t := (heat_ratio - 0.5) / 0.5
 			beam_sprite.modulate = warm_color.lerp(hot_color, t)
+
+func _cache_base_stats() -> void:
+	_base_damage_per_second = damage_per_second
+	_base_length = base_length
+	_base_width = base_width
+	_base_max_heat = max_heat
+	_base_heat_per_second = heat_per_second
+	_base_cool_per_second = cool_per_second
+
+func _apply_upgrades() -> void:
+	print("Applying GhostRay upgrades...")
+	if GameManager == null:
+		return
+
+	damage_per_second = _base_damage_per_second
+	base_length = _base_length
+	base_width = _base_width
+	max_heat = _base_max_heat
+	heat_per_second = _base_heat_per_second
+	cool_per_second = _base_cool_per_second
+	print(GameManager.has_item(Enums.Item.GUN_DAMAGE), " he has it bruf")
+	if GameManager.has_item(Enums.Item.GUN_DAMAGE):
+		print("Applying damage upgrade")
+		damage_per_second += Constants.UPGRADE_GUN_DAMAGE_BONUS
+	if GameManager.has_item(Enums.Item.GUN_RANGE):
+		print("Applying range upgrade")
+		base_length += Constants.UPGRADE_GUN_RANGE_BONUS
+		base_width += Constants.UPGRADE_GUN_WIDTH_BONUS
+
+	base_width = max(1.0, base_width)
+	_apply_beam_geometry()
+
+	if GameManager.has_item(Enums.Item.GUN_COOLING):
+		max_heat += Constants.UPGRADE_GUN_MAX_HEAT_BONUS
+		cool_per_second += Constants.UPGRADE_GUN_COOL_RATE_BONUS
+		heat_per_second = max(1.0, heat_per_second - Constants.UPGRADE_GUN_HEAT_RATE_REDUCTION)

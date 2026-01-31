@@ -15,14 +15,20 @@ extends CharacterBody2D
 @onready var thought_label: Label = %ThoughtLabel
 
 var sanity: int = 100;
+var battery_max_charge: int = Constants.BATTERY_MAX_CHARGE
 var battery_charge: int = Constants.BATTERY_MAX_CHARGE;
 var _battery_drain_accumulator: float = 0.0;
+var _base_speed: float
 
 func _ready() -> void:
 	GameManager.quota_reached.connect(_on_quota_reached)
 	debug_light_sprite.visible = false;
 	light_area.body_entered.connect(_on_light_area_body_entered)
 	light_area.body_exited.connect(_on_light_area_body_exited)
+	_cache_base_stats()
+	_apply_upgrades()
+	if ghost_ray is GhostRay:
+		ghost_ray._apply_upgrades()
 
 func _on_light_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Prop:
@@ -72,7 +78,7 @@ func _update_battery(delta: float) -> void:
 		_battery_drain_accumulator = 0.0
 		if GameManager.has_item(Enums.Item.BATTERY):
 			GameManager.remove_item(Enums.Item.BATTERY)
-			battery_charge = Constants.BATTERY_MAX_CHARGE
+			battery_charge = battery_max_charge
 		else:
 			flashlight_enabled = false
 
@@ -110,3 +116,21 @@ func show_thought(thought: String, delay: float) -> void:
 
 	thought_label.text = thought
 	animation_player.play("thought")
+
+func _cache_base_stats() -> void:
+	_base_speed = speed
+
+func _apply_upgrades() -> void:
+	if GameManager == null:
+		return
+
+	speed = _base_speed
+	battery_max_charge = Constants.BATTERY_MAX_CHARGE
+
+	if GameManager.has_item(Enums.Item.PLAYER_SPEED):
+		speed += Constants.UPGRADE_PLAYER_SPEED_BONUS
+
+	if GameManager.has_item(Enums.Item.PLAYER_BATTERY):
+		battery_max_charge += Constants.UPGRADE_PLAYER_BATTERY_BONUS
+
+	battery_charge = battery_max_charge
