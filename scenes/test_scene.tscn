@@ -234,8 +234,9 @@ position_smoothing_speed = 10.0
 [node name="Prop" parent="." unique_id=803565089 instance=ExtResource("2_nd71p")]
 position = Vector2(64, 114)
 ghost = true
-texture = ExtResource("6_wtsjf")
 
-[node name="Prop2" parent="." unique_id=1302890983 instance=ExtResource("2_nd71p")]
-position = Vector2(135, 49)
-texture = ExtResource("7_rnaij")
+[node name="Prop2" parent="." unique_id=2073308996 instance=ExtResource("2_nd71p")]
+position = Vector2(-129, 247)
+ghost = true
+ghost_behaviour = 1
+texture = ExtResource("6_wtsjf")
