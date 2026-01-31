@@ -15,7 +15,7 @@ shader_parameter/enable = false
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -27,7 +27,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -172,14 +172,14 @@ _data = {
 _data = [Vector2(0.58563536, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.4555707, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_teqo1"]
+[sub_resource type="CurveTexture" id="CurveTexture_rudd1"]
 curve = SubResource("Curve_58ikj")
 
 [sub_resource type="Curve" id="Curve_v155h"]
 _data = [Vector2(0, 0), 0.0, 3.5323353, 0, 0, Vector2(0.980663, 1), 0.042139646, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_58ikj"]
+[sub_resource type="CurveTexture" id="CurveTexture_hem6y"]
 curve = SubResource("Curve_v155h")
 
 [sub_resource type="Curve" id="Curve_teqo1"]
@@ -187,7 +187,7 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, -6.0576453, 0, 0, Vector2(1, -1), 0.07408595, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_olpxr"]
+[sub_resource type="CurveTexture" id="CurveTexture_tmkry"]
 curve = SubResource("Curve_teqo1")
 
 [sub_resource type="Curve" id="Curve_k4ytn"]
@@ -195,28 +195,28 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7651934, -1), -8.138601, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_441bl"]
+[sub_resource type="CurveTexture" id="CurveTexture_fj73f"]
 curve = SubResource("Curve_k4ytn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_etnbm"]
 particle_flag_disable_z = true
 angle_min = 1.0728835e-05
 angle_max = 180.00002
-angle_curve = SubResource("CurveTexture_58ikj")
+angle_curve = SubResource("CurveTexture_hem6y")
 spread = 180.0
 flatness = 1.0
 initial_velocity_min = 15.0
 initial_velocity_max = 150.0
 angular_velocity_min = -180.00002
 angular_velocity_max = -1.6093254e-05
-angular_velocity_curve = SubResource("CurveTexture_olpxr")
+angular_velocity_curve = SubResource("CurveTexture_tmkry")
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -2.2351742e-06
 linear_accel_max = 99.99999
-linear_accel_curve = SubResource("CurveTexture_441bl")
+linear_accel_curve = SubResource("CurveTexture_fj73f")
 scale_min = 0.39999998
 scale_max = 0.79999995
-alpha_curve = SubResource("CurveTexture_teqo1")
+alpha_curve = SubResource("CurveTexture_rudd1")
 
 [sub_resource type="Gradient" id="Gradient_rudd1"]
 offsets = PackedFloat32Array(0.45692885, 0.58426964)

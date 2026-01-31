@@ -15,6 +15,7 @@ func _ready() -> void:
 	upgrade_desk.set_prompt("Upgrade your gear (Press E)")
 	upgrade_desk.interacted.connect(_on_upgrade_desk_interacted)
 	#add_money_button.pressed.connect(_on_add_money_button_pressed)
+	_connect_upgrade_items()
 	
 func _process(_delta: float) -> void:
 	items_list.text = GameManager.get_items_string()
@@ -35,3 +36,31 @@ func _on_upgrade_desk_interacted() -> void:
 	else:
 		upgrade_ui.visible = true
 	print("Upgrade Desk interacted with.")
+
+func _connect_upgrade_items() -> void:
+	var upgrade_items := upgrade_ui.find_children("*", "UpgradeItem", true, false)
+	for child in upgrade_items:
+		if child is UpgradeItem:
+			_ensure_upgrade_item_id(child)
+			if not child.purchased.is_connected(_on_upgrade_purchased):
+				child.purchased.connect(_on_upgrade_purchased)
+
+func _ensure_upgrade_item_id(item_node: UpgradeItem) -> void:
+	var name_to_item := {
+		"UpgradeItemGunDamage": Enums.Item.GUN_DAMAGE,
+		"UpgradeItemGunRange": Enums.Item.GUN_RANGE,
+		"UpgradeItemGunCooling": Enums.Item.GUN_COOLING,
+		"UpgradeItemPlayerSpeed": Enums.Item.PLAYER_SPEED,
+		"UpgradeItemPlayerBattery": Enums.Item.PLAYER_BATTERY,
+	}
+
+	if name_to_item.has(item_node.name):
+		item_node.item = name_to_item[item_node.name]
+
+func _on_upgrade_purchased(_item: Enums.Item) -> void:
+	var player := get_tree().get_first_node_in_group("player") as Player
+	if player != null:
+		player._apply_upgrades()
+		# var ray := player.ghost_ray
+		# if ray is GhostRay:
+		# 	ray._apply_upgrades()

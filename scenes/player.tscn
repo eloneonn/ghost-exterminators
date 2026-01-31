@@ -2,12 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dr82ni3xmqlqe" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://da1dkfcv602m8" path="res://assets/player.png" id="2_dqkch"]
+[ext_resource type="Shader" uid="uid://bvs7tkmbqhwop" path="res://assets/FXs/HitFlash.gdshader" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://ihvp00r2ye5a" path="res://assets/beam_1.png" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://c6uifyeggxhiv" path="res://scenes/gun.tscn" id="4_dqkch"]
 [ext_resource type="Theme" uid="uid://chhvtf2qcxb8j" path="res://theme.tres" id="5_qlg0r"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhqgy"]
-light_mode = 1
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjrip"]
+shader = ExtResource("2_tuyoq")
+shader_parameter/flashColor = Color(1, 1, 1, 1)
+shader_parameter/enable = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
@@ -34,6 +37,37 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qlg0r"]
 light_mode = 1
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0062663346, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_tuyoq"]
 resource_name = "thought"
@@ -65,17 +99,19 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fjrip"]
 _data = {
+&"RESET": SubResource("Animation_fjrip"),
+&"hurt": SubResource("Animation_qlg0r"),
 &"thought": SubResource("Animation_tuyoq")
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=1413311515 groups=["player"]]
 light_mask = 0
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504978614]
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_qhqgy")
+material = SubResource("ShaderMaterial_fjrip")
 texture = ExtResource("2_dqkch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=356306731]
@@ -85,42 +121,6 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1400867156]
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_3vyb7")
-
-[node name="Flashlight" type="Node2D" parent="." unique_id=1091737022]
-unique_name_in_owner = true
-
-[node name="AdditiveLight" type="PointLight2D" parent="Flashlight" unique_id=576742718]
-light_mask = 0
-visibility_layer = 0
-shadow_enabled = true
-shadow_filter_smooth = 1.0
-texture = ExtResource("3_qhqgy")
-texture_scale = 0.1
-
-[node name="SubtractiveLight" type="PointLight2D" parent="Flashlight" unique_id=316401614]
-light_mask = 0
-visibility_layer = 0
-energy = 3.0
-blend_mode = 1
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_filter_smooth = 2.0
-shadow_item_cull_mask = 2
-texture = ExtResource("3_qhqgy")
-texture_scale = 0.1
-
-[node name="DebugLightSprite" type="Sprite2D" parent="Flashlight" unique_id=1897615350]
-unique_name_in_owner = true
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_qhqgy")
-
-[node name="LightArea" type="Area2D" parent="Flashlight" unique_id=296855073]
-unique_name_in_owner = true
-collision_layer = 8
-collision_mask = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight/LightArea" unique_id=1939522007]
-polygon = PackedVector2Array(104, -48, 104, 48, 0, 0)
 
 [node name="PointLight" type="Node2D" parent="." unique_id=338882737]
 unique_name_in_owner = true
@@ -140,7 +140,43 @@ texture = SubResource("GradientTexture2D_qhqgy")
 
 [node name="GhostRay" parent="." unique_id=1379834991 instance=ExtResource("4_dqkch")]
 unique_name_in_owner = true
-position = Vector2(0, 1)
+
+[node name="Flashlight" type="Node2D" parent="GhostRay" unique_id=1091737022]
+unique_name_in_owner = true
+position = Vector2(4, -1)
+
+[node name="AdditiveLight" type="PointLight2D" parent="GhostRay/Flashlight" unique_id=576742718]
+light_mask = 0
+visibility_layer = 0
+shadow_enabled = true
+shadow_filter_smooth = 1.0
+texture = ExtResource("3_qhqgy")
+texture_scale = 0.1
+
+[node name="SubtractiveLight" type="PointLight2D" parent="GhostRay/Flashlight" unique_id=316401614]
+light_mask = 0
+visibility_layer = 0
+energy = 3.0
+blend_mode = 1
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_filter_smooth = 2.0
+shadow_item_cull_mask = 2
+texture = ExtResource("3_qhqgy")
+texture_scale = 0.1
+
+[node name="DebugLightSprite" type="Sprite2D" parent="GhostRay/Flashlight" unique_id=1897615350]
+unique_name_in_owner = true
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_qhqgy")
+
+[node name="LightArea" type="Area2D" parent="GhostRay/Flashlight" unique_id=296855073]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GhostRay/Flashlight/LightArea" unique_id=1939522007]
+polygon = PackedVector2Array(104, -48, 104, 48, 0, 0)
 
 [node name="ThoughtLabel" type="Label" parent="." unique_id=439457103]
 unique_name_in_owner = true
