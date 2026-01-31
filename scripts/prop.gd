@@ -15,7 +15,8 @@ class_name Prop extends CharacterBody2D
 #Types of ghost behaviour
 enum GhostBehaviour {
 	ATTACK,
-	STUPID_FLEE
+	STUPID_FLEE,
+	SMART_FLEE
 }
 
 @export var ghost_behaviour: GhostBehaviour = GhostBehaviour.ATTACK
@@ -29,6 +30,16 @@ var center_lit: bool = false
 
 var sensors_lit: int = 0
 var total_points: int = 5
+
+#For smart fleeing
+@export var smart_flee_speed: float = 60.0
+@export var ray_length: float = 24.0
+@export var ray_count: int = 9
+@export var max_steer_angle: float = 0.4 # radians (~22.5°)
+var wall_following := false
+var wall_normal := Vector2.ZERO
+var slide_velocity: Vector2 = Vector2.ZERO
+var target_safe_zone: Vector2 = Vector2.ZERO
 
 #For stupid fleeing
 @export var flee_distance: float = 180.0
@@ -112,14 +123,17 @@ func _physics_process(_delta):
 
 	var distance = global_position.distance_to(player.global_position)
 
-	if ghost and distance <= activation_radius:
+	if ghost:
 		match ghost_behaviour:
 			GhostBehaviour.ATTACK:
-				if sensors_lit < 2:
+				if sensors_lit < 2 and distance <= activation_radius:
 					follow_player()
 			GhostBehaviour.STUPID_FLEE:
 				if has_been_lit and sensors_lit <= 2:
 					stupid_flee()
+			GhostBehaviour.SMART_FLEE:
+				if has_been_lit and sensors_lit == 0:
+					smart_flee(_delta)
 	else:
 		velocity = Vector2.ZERO
 		flee_direction = Vector2.ZERO
@@ -133,36 +147,32 @@ func stupid_flee() -> void:
 		flee_direction = Vector2.ZERO
 		return
 
-	# Pick direction once (slightly dumb)
+	# Pick a direction once
 	if flee_direction == Vector2.ZERO:
-		flee_direction = (global_position - player.global_position).normalized()
-		flee_direction = flee_direction.rotated(randf_range(-0.4, 0.4))
+		flee_direction = pick_not_toward_player()
 
 	velocity = flee_direction * stupidFleeSpeed
 	move_and_slide()
 
-	# Handle dumb bounce
+	# If we collide, just pick a new dumb direction
 	if get_slide_collision_count() > 0:
-		var collision = get_slide_collision(0)
-		var normal = collision.get_normal()
+		flee_direction = pick_not_toward_player()
 
-		# Wall tangent
-		var tangent = Vector2(-normal.y, normal.x)
-		if tangent.dot(flee_direction) < 0:
-			tangent = -tangent
+func pick_not_toward_player() -> Vector2:
+	var to_player = (player.global_position - global_position).normalized()
+	var dir := Vector2.ZERO
 
-		var reflected = flee_direction.bounce(normal)
+	for i in range(8): # try a few times
+		dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 
-		# Strong wall hug
-		flee_direction = (tangent * 0.9 + reflected * 0.1).normalized()
+		# Reject directions vaguely toward the player
+		# dot > 0.3 = somewhat facing player
+		if dir.dot(to_player) < 0.6:
+			return dir
 
-		# Never move toward player
-		var to_player = (player.global_position - global_position).normalized()
-		if flee_direction.dot(to_player) > 0:
-			flee_direction = -tangent
+	# Fallback: directly away (should almost never happen)
+	return -to_player
 
-		# Very small chaos
-		flee_direction = flee_direction.rotated(randf_range(-bounce_strength * 0.2, bounce_strength * 0.2))
 
 func update_light_ratio():
 	var lit_count = 0
@@ -178,7 +188,55 @@ func update_light_ratio():
 		lit_count += 1
 
 	sensors_lit = lit_count;
-	print("Sensors lit:", sensors_lit, " / ", total_points)
+	
+func smart_flee(_delta: float) -> void:
+	if target_safe_zone == Vector2.ZERO:
+		choose_safe_zone()
+		if target_safe_zone == Vector2.ZERO:
+			return
+
+	var desired_dir = (target_safe_zone - global_position).normalized()
+
+	# Only change direction if we are not colliding
+	if get_slide_collision_count() == 0:
+		velocity = desired_dir * smart_flee_speed
+
+	move_and_slide()
+
+	# Reached safe zone
+	if global_position.distance_to(target_safe_zone) < 8:
+		target_safe_zone = Vector2.ZERO
+		velocity = Vector2.ZERO
+		choose_safe_zone()
+
+func is_path_blocked(dir: Vector2) -> bool:
+	var ray = PhysicsRayQueryParameters2D.new()
+	ray.from = global_position
+	ray.to = global_position + dir * 24
+	ray.exclude = [self]
+
+	return get_world_2d().direct_space_state.intersect_ray(ray) != {}
+
+func choose_safe_zone():
+	var zones = get_tree().get_nodes_in_group("safeZones")
+	if zones.size() == 0:
+		return
+
+	var closest_dist = INF
+	var closest_zone: Node = null
+	for zone in zones:
+		# Skip the current target_safe_zone if the ghost is already there
+		if target_safe_zone != Vector2.ZERO and global_position.distance_to(target_safe_zone) < 16:
+			continue
+
+		var dist = global_position.distance_to(zone.global_position)
+		if dist < closest_dist:
+			closest_dist = dist
+			closest_zone = zone
+
+	if closest_zone:
+		target_safe_zone = closest_zone.global_position
+
 
 func follow_player() -> void:
 	var direction = (player.global_position - global_position).normalized()
