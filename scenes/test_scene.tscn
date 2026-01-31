@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bcbaphl6idug8" path="res://scenes/prop.tscn" id="2_nd71p"]
 [ext_resource type="Texture2D" uid="uid://bof6jqll1yw28" path="res://assets/Dungeon_Tileset_Dark.png" id="2_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://7uu600b20wq2" path="res://scenes/ui/hud.tscn" id="5_qjeyg"]
+[ext_resource type="Texture2D" uid="uid://begyqtihjdqy6" path="res://assets/propmap.png" id="6_rnaij"]
 [ext_resource type="Texture2D" uid="uid://eqyh2dosrvof" path="res://assets/priest1_v1_1.png" id="6_wtsjf"]
-[ext_resource type="Texture2D" uid="uid://i1sqge14t63t" path="res://assets/coin_1.png" id="7_rnaij"]
 
 [sub_resource type="Gradient" id="Gradient_7ddre"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -179,6 +179,10 @@ sources/0 = SubResource("TileSetAtlasSource_rnaij")
 blend_mode = 1
 light_mode = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3xc6"]
+atlas = ExtResource("6_rnaij")
+region = Rect2(128, 80, 32, 16)
+
 [node name="TestScene" type="Node2D" unique_id=1983229126]
 
 [node name="DarknessSource" type="CanvasModulate" parent="." unique_id=983275979]
@@ -234,7 +238,7 @@ position_smoothing_speed = 10.0
 [node name="Prop" parent="." unique_id=803565089 instance=ExtResource("2_nd71p")]
 position = Vector2(64, 114)
 ghost = true
-texture = ExtResource("7_rnaij")
+texture = SubResource("AtlasTexture_h3xc6")
 
 [node name="Prop2" parent="." unique_id=2073308996 instance=ExtResource("2_nd71p")]
 position = Vector2(-129, 247)
