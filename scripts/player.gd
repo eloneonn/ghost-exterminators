@@ -10,7 +10,8 @@ class_name Player extends CharacterBody2D
 
 func _on_light_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Prop:
-		body.frozen = true;
+		#body.frozen = true;
+		body.has_been_lit = true;
 
 func _on_light_area_body_exited(body: CharacterBody2D) -> void:
 	if body is Prop:

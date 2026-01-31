@@ -5,6 +5,21 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5lq6"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m6nas"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0f5n"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8n5x"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jj3bp"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_61kf7"]
+radius = 1.0
+
 [node name="Prop" type="CharacterBody2D" unique_id=1899897562]
 collision_layer = 4
 collision_mask = 15
@@ -16,3 +31,47 @@ texture = ExtResource("1_t76o2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1347407220]
 shape = SubResource("CircleShape2D_l5lq6")
+
+[node name="Sensor_Center" type="Area2D" parent="." unique_id=486410856]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Center" unique_id=622523603]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_m6nas")
+
+[node name="Sensor_Right" type="Area2D" parent="." unique_id=619401638]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Right" unique_id=818092148]
+position = Vector2(4, 0)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_p0f5n")
+
+[node name="Sensor_Left" type="Area2D" parent="." unique_id=1047856571]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Left" unique_id=1991663070]
+position = Vector2(-4, 0)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_m8n5x")
+
+[node name="Sensor_Top" type="Area2D" parent="." unique_id=1335879700]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Top" unique_id=667120023]
+position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_jj3bp")
+
+[node name="Sensor_Bottom" type="Area2D" parent="." unique_id=1089714421]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Bottom" unique_id=1018847519]
+position = Vector2(0, 4)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_61kf7")
