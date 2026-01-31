@@ -15,6 +15,7 @@ class_name Prop extends CharacterBody2D
 @onready var sensor_left: Area2D = $Sensor_Left;
 @onready var sensor_right: Area2D = $Sensor_Right;
 @onready var animation_player: AnimationPlayer = $AnimationPlayer;
+@onready var shake_anim_player: AnimationPlayer = %ShakeAnimation;
 
 var jumpscaring: bool = false
 
@@ -275,15 +276,23 @@ func follow_player() -> void:
 	move_and_slide()
 
 func take_damage(damage: int) -> void:
+	var shake_anims := ["Shake", "Shake 2", "Shake 3"]
+	shake_anim_player.play(shake_anims[randi() % shake_anims.size()])
+
 	print("Prop took damage: ", damage)
 	health -= damage
 	if health <= 0:
 		die()
 
 func die() -> void:
+	sprite.visible = false
+
 	if ghost:
 		GameManager.capture_ghost(self.value)
 	else:
 		GameManager.destroy_prop(self.value)
+
+	animation_player.play("die")
+	await animation_player.animation_finished
 
 	queue_free()
