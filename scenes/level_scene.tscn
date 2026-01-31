@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bcbaphl6idug8" path="res://scenes/prop.tscn" id="7_1lj4f"]
 [ext_resource type="Script" uid="uid://b7jqjcgqhbtvr" path="res://scripts/intro.gd" id="7_2m3ut"]
 [ext_resource type="Texture2D" uid="uid://begyqtihjdqy6" path="res://assets/propmap.png" id="8_0jxn2"]
+[ext_resource type="Theme" uid="uid://chhvtf2qcxb8j" path="res://theme.tres" id="10_0jxn2"]
 
 [sub_resource type="Gradient" id="Gradient_7ddre"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -559,6 +560,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("10_0jxn2")
 
 [node name="CenterContainer" type="CenterContainer" parent="IntroView/MarginContainer" unique_id=1711160053]
 layout_mode = 2
