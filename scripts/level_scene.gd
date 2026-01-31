@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var door: Node = %Door
+@onready var pause_menu: CanvasLayer = %PauseMenu
 
 @export var ghost_count: int = GameManager.quota_this_level * randi_range(1, 3)       # how many props become ghosts
 @export var randomize_behaviour: bool = true
@@ -17,6 +18,11 @@ func _ready() -> void:
 		player.show_thought("Hmm, I swear that thing moved...", 35.0)
 
 	_assign_random_ghosts()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		Engine.time_scale = 0.0 if Engine.time_scale == 1.0 else 1.0
+		pause_menu.visible = !pause_menu.visible
 
 func _on_door_triggered() -> void:
 	if (GameManager.ghosts_captured_this_level < GameManager.quota_this_level):

@@ -1275,3 +1275,29 @@ offset_right = -220.0
 offset_bottom = -616.0
 text = "Ornament
     Room"
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=846098806]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=1227910607]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.44313726)
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu" unique_id=1615335797]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu/CenterContainer" unique_id=1796918039]
+layout_mode = 2
+theme = ExtResource("10_0jxn2")
+text = "Game paused,
+press esc to continue"
+horizontal_alignment = 1
