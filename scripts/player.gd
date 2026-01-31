@@ -39,7 +39,18 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
+
 func _update_aim() -> void:
+	var mouse_position := get_global_mouse_position()
+	var direction := (mouse_position - global_position).normalized()
+	var angle := direction.angle()
+
+	flashlight.rotation = angle
+	ghost_ray.rotation = angle
+
+	# Optional: position the gun slightly in front of the player
+	ghost_ray.position = direction * 10.0
+	
 func _unhandled_input(event: InputEvent) -> void:	
 	if event.is_action_pressed("flashlight"):
 		flashlight_enabled = !flashlight_enabled;
