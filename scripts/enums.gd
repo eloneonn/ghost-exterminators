@@ -8,6 +8,7 @@ enum Item {
     GUN_COOLING,
     PLAYER_SPEED,
     PLAYER_BATTERY,
+    BETTER_FLASHLIGHT,
 }
 
 enum GameEnding {

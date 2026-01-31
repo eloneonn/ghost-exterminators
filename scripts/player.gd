@@ -14,6 +14,10 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var thought_label: Label = %ThoughtLabel
 
+@onready var additivelight: PointLight2D = %Flashlight/AdditiveLight
+@onready var subtractivelight: PointLight2D = %Flashlight/SubtractiveLight
+@onready var light_area_collision: CollisionPolygon2D = %LightArea/CollisionPolygon2D
+
 var sanity: int = 100;
 var battery_max_charge: int = Constants.BATTERY_MAX_CHARGE
 var battery_charge: int = Constants.BATTERY_MAX_CHARGE;
@@ -29,6 +33,20 @@ func _ready() -> void:
 	_apply_upgrades()
 	if ghost_ray is GhostRay:
 		ghost_ray._apply_upgrades()
+
+func _process(_delta: float) -> void:
+	if (GameManager.has_item(Enums.Item.BETTER_FLASHLIGHT)):
+		additivelight.texture = preload("res://assets/beam_3.png")
+		subtractivelight.texture = preload("res://assets/beam_3.png")
+		additivelight.texture_scale = 0.15
+		subtractivelight.texture_scale = 0.15
+		light_area_collision.scale = Vector2(1.5, 1.5)
+	else:
+		additivelight.texture = preload("res://assets/beam_1.png")
+		subtractivelight.texture = preload("res://assets/beam_1.png")
+		additivelight.texture_scale = 0.1
+		subtractivelight.texture_scale = 0.1
+		light_area_collision.scale = Vector2(1.0, 1.0)
 
 func _on_light_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Prop:
