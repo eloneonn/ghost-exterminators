@@ -101,7 +101,7 @@ func _update_battery(delta: float) -> void:
 		if GameManager.has_item(Enums.Item.BATTERY):
 			GameManager.remove_item(Enums.Item.BATTERY)
 			battery_charge = battery_max_charge
-			if !GameManager.has_item(Enums.Item.BETTER_FLASHLIGHT):
+			if !GameManager.has_item(Enums.Item.BATTERY):
 				show_thought("There goes my last battery! Gotta be quick!", 0.0)
 		else:
 			flashlight_enabled = false
