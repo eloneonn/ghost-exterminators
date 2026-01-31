@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var door: Node = %Door
 
-@export var ghost_count: int = 3           # how many props become ghosts
+@export var ghost_count: int = GameManager.quota_this_level * 2        # how many props become ghosts
 @export var randomize_behaviour: bool = true
 
 func _ready() -> void:
