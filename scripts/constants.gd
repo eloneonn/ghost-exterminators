@@ -43,7 +43,7 @@ static var ITEM_NAMES: Dictionary = {
 };
 
 ## Max battery charge before needing a new battery
-const BATTERY_MAX_CHARGE: int = 110;
+const BATTERY_MAX_CHARGE: int = 60;
 
 ## Upgrade bonuses
 const UPGRADE_GUN_DAMAGE_BONUS: float = 110.0
@@ -55,3 +55,6 @@ const UPGRADE_GUN_HEAT_RATE_REDUCTION: float = 6.0
 
 const UPGRADE_PLAYER_SPEED_BONUS: float = 50.0
 const UPGRADE_PLAYER_BATTERY_BONUS: int = 40
+
+## Sanity lost per second when flashlight is out (no charge and no spare batteries)
+const SANITY_BLEED_NO_FLASHLIGHT: int = 3

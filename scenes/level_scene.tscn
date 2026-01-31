@@ -462,6 +462,7 @@ visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="LightSource" type="PointLight2D" parent="." unique_id=2075313648]
+visible = false
 light_mask = 0
 visibility_layer = 0
 color = Color(1, 1, 1, 0)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b7dtp5o2krjce"]
 
 [ext_resource type="Script" uid="uid://e33on3txehg1" path="res://scripts/interact.gd" id="1_hpvv5"]
+[ext_resource type="Theme" uid="uid://chhvtf2qcxb8j" path="res://theme.tres" id="2_b1101"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpvv5"]
 radius = 16.4
@@ -21,4 +22,5 @@ offset_left = -47.0
 offset_top = -25.0
 offset_right = 93.0
 offset_bottom = -2.0
+theme = ExtResource("2_b1101")
 text = "Press E to interact"
