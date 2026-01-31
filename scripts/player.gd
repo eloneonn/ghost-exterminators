@@ -18,6 +18,7 @@ extends CharacterBody2D
 @onready var subtractivelight: PointLight2D = %Flashlight/SubtractiveLight
 @onready var light_area_collision: CollisionPolygon2D = %LightArea/CollisionPolygon2D
 @onready var footstep_player: AudioStreamPlayer2D = $FootstepPlayer
+@onready var flashlight_player: AudioStreamPlayer2D = $FlashlightPlayer
 
 var _footstep_timer: float = 0.0
 
@@ -39,6 +40,10 @@ func _ready() -> void:
 		footstep_player.pitch_scale = randf_range(0.8, 1.2)
 		footstep_player.volume_db = randf_range(-6.0, -2.0)
 		footstep_player.bus = "Sfx"
+	var flashlight_stream: AudioStream = load("res://sfx/flashlight.wav") as AudioStream
+	if flashlight_stream:
+		flashlight_player.stream = flashlight_stream
+		flashlight_player.bus = "Sfx"
 	_cache_base_stats()
 	_apply_upgrades()
 	# if ghost_ray is GhostRay:
@@ -161,7 +166,9 @@ func _update_aim() -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:	
 	if event.is_action_pressed("flashlight"):
-		flashlight_enabled = !flashlight_enabled;
+		flashlight_enabled = !flashlight_enabled
+		if is_instance_valid(flashlight_player) and flashlight_player.stream != null:
+			flashlight_player.play()
 
 func show_thought(thought: String, delay: float) -> void:
 	await get_tree().create_timer(delay).timeout

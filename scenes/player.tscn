@@ -197,3 +197,5 @@ vertical_alignment = 1
 libraries/ = SubResource("AnimationLibrary_fjrip")
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="FlashlightPlayer" type="AudioStreamPlayer2D" parent="."]
