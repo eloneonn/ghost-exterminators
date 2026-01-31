@@ -1001,23 +1001,23 @@ position = Vector2(-282, -98)
 texture = SubResource("AtlasTexture_sfh6w")
 
 [node name="Prop7" parent="Wing_l" unique_id=1789752277 instance=ExtResource("7_1lj4f")]
-position = Vector2(-327, -399)
+position = Vector2(-328, -392)
 texture = SubResource("AtlasTexture_y1724")
 
 [node name="Prop8" parent="Wing_l" unique_id=745176298 instance=ExtResource("7_1lj4f")]
-position = Vector2(-326, -374)
+position = Vector2(-328, -368)
 texture = SubResource("AtlasTexture_2l5mi")
 
 [node name="Prop9" parent="Wing_l" unique_id=1417341565 instance=ExtResource("7_1lj4f")]
-position = Vector2(-326, -349)
+position = Vector2(-328, -344)
 texture = SubResource("AtlasTexture_c8was")
 
 [node name="Prop10" parent="Wing_l" unique_id=958999685 instance=ExtResource("7_1lj4f")]
-position = Vector2(-326, -324)
+position = Vector2(-328, -320)
 texture = SubResource("AtlasTexture_d4307")
 
 [node name="Prop11" parent="Wing_l" unique_id=2091564587 instance=ExtResource("7_1lj4f")]
-position = Vector2(-326, -298)
+position = Vector2(-328, -296)
 texture = SubResource("AtlasTexture_ct2l8")
 
 [node name="Prop12" parent="Wing_l" unique_id=1716122102 instance=ExtResource("7_1lj4f")]
@@ -1117,7 +1117,7 @@ position = Vector2(88, 16)
 texture = SubResource("AtlasTexture_wys11")
 
 [node name="Prop13" parent="MaskRoom" unique_id=409594516 instance=ExtResource("7_1lj4f")]
-position = Vector2(88, -8)
+position = Vector2(96, -8)
 texture = SubResource("AtlasTexture_wys11")
 
 [node name="Labels" type="Node2D" parent="." unique_id=1582105709]
