@@ -26,11 +26,14 @@ func _physics_process(_delta: float) -> void:
 	velocity = input_direction * speed
 	
 	flashlight.visible = flashlight_enabled;
-	pointlight.visible = !flashlight_enabled;
 
 	set_flashlight_rotation()
 	
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:	
+	if event.is_action_pressed("flashlight"):
+		flashlight_enabled = !flashlight_enabled;
 
 func set_flashlight_rotation() -> void:
 	var mouse_position := get_global_mouse_position()
