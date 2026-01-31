@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://b2ndkyd8s38mw"]
 
+[ext_resource type="Shader" uid="uid://bvs7tkmbqhwop" path="res://assets/FXs/HitFlash.gdshader" id="1_rudd1"]
 [ext_resource type="Texture2D" uid="uid://bdnv4p1ak1omm" path="res://assets/FXs/breakParticle.png" id="1_xm5jp"]
 [ext_resource type="Texture2D" uid="uid://bxenfxoo46h5b" path="res://icon.svg" id="2_nfris"]
 [ext_resource type="Shader" uid="uid://lvx4dxrc01md" path="res://assets/FXs/DustFX.gdshader" id="3_kgqgg"]
 [ext_resource type="Texture2D" uid="uid://dxja1jgs48a0b" path="res://assets/FXs/dust.png" id="4_rudd1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hem6y"]
+shader = ExtResource("1_rudd1")
+shader_parameter/flashColor = Color(1, 1, 1, 1)
+shader_parameter/enable = false
 
 [sub_resource type="Animation" id="Animation_xm5jp"]
 length = 0.001
@@ -47,6 +53,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2(0, 0), Vector2(-4, 0), Vector2(2, -2), Vector2(-1, 0), Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_hem6y"]
 resource_name = "Shake 2"
@@ -62,6 +80,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(0, 0), Vector2(-8, 0), Vector2(4, 3), Vector2(-1, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.06981317007977318, -0.034906585, -0.017453292, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_tmkry"]
@@ -98,6 +128,44 @@ _data = {
 &"Shake": SubResource("Animation_nfris"),
 &"Shake 2": SubResource("Animation_hem6y"),
 &"Shake 3": SubResource("Animation_tmkry")
+}
+
+[sub_resource type="Animation" id="Animation_fj73f"]
+resource_name = "HitFlash"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rudd1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsiu5"]
+_data = {
+&"HitFlash": SubResource("Animation_fj73f"),
+&"RESET": SubResource("Animation_rudd1")
 }
 
 [sub_resource type="Curve" id="Curve_58ikj"]
@@ -184,23 +252,29 @@ fill_from = Vector2(0.5, 0.5)
 [node name="Particles" type="Node2D" unique_id=2145721971]
 
 [node name="PropTest" type="Sprite2D" parent="." unique_id=1028374070]
+material = SubResource("ShaderMaterial_hem6y")
 texture = ExtResource("2_nfris")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PropTest" unique_id=1953168978]
+[node name="ShakeAnimation" type="AnimationPlayer" parent="PropTest" unique_id=1953168978]
 libraries/ = SubResource("AnimationLibrary_kgqgg")
 
+[node name="HitFlashAnimation" type="AnimationPlayer" parent="PropTest" unique_id=1741063581]
+libraries/ = SubResource("AnimationLibrary_tsiu5")
+
 [node name="BreakParticles" type="GPUParticles2D" parent="." unique_id=1674841411]
-self_modulate = Color(0.07638372, 0.06290331, 0.072530635, 1)
+self_modulate = Color(0.04501333, 0.028800001, 0.08, 1)
 emitting = false
 texture = ExtResource("1_xm5jp")
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.9
+fixed_fps = 12
 process_material = SubResource("ParticleProcessMaterial_etnbm")
 
 [node name="Dust" type="Node2D" parent="." unique_id=1514419664]
 
 [node name="BG" type="ColorRect" parent="Dust" unique_id=1428467621]
+visible = false
 offset_right = 1168.0
 offset_bottom = 663.0
 color = Color(0, 0, 0, 1)
@@ -220,7 +294,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
 
 [node name="PointLight2D" type="PointLight2D" parent="Dust" unique_id=611811467]
-position = Vector2(346, 206)
+position = Vector2(346, 193)
 blend_mode = 2
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_rudd1")
