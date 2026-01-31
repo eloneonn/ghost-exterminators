@@ -27,6 +27,11 @@ func next_level() -> void:
     quota_this_level = Constants.STARTING_QUOTA + level;
     ghosts_captured_this_level = 0;
 
+func get_items_string() -> String:
+    return "\n".join(inventory.map(func(item: Enums.Item) -> String:
+        return Constants.ITEM_NAMES.get(item, Enums.Item.keys()[item])
+    ))
+
 func add_money(amount: int) -> void:
     total_earnings += amount;
     money += amount

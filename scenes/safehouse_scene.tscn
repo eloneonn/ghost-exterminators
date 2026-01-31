@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://c7lhvewysmr4j" path="res://scenes/player.tscn" id="2_ebyui"]
 [ext_resource type="PackedScene" uid="uid://b7dtp5o2krjce" path="res://scenes/interact.tscn" id="3_ebyui"]
 [ext_resource type="Texture2D" uid="uid://bxenfxoo46h5b" path="res://icon.svg" id="5_axsv3"]
+[ext_resource type="Theme" uid="uid://chhvtf2qcxb8j" path="res://theme.tres" id="6_xkx2a"]
+[ext_resource type="PackedScene" uid="uid://010e27ju6bgn" path="res://scenes/ui/upgrade_item.tscn" id="7_0fead"]
+
+[sub_resource type="Theme" id="Theme_xkx2a"]
 
 [node name="Safehouse" type="Node2D" unique_id=1595134865]
 script = ExtResource("1_lrfd8")
@@ -30,27 +34,6 @@ position = Vector2(57, -61)
 unique_name_in_owner = true
 position = Vector2(-27, -17)
 
-[node name="UpgradeUI" type="CanvasLayer" parent="." unique_id=1486600481]
-unique_name_in_owner = true
-layer = 2
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="UpgradeUI" unique_id=1207034326]
-offset_left = -19.0
-offset_top = -20.0
-offset_right = 81.0
-offset_bottom = 80.0
-
-[node name="GetMoneyButton" type="Button" parent="UpgradeUI/ColorRect" unique_id=953974814]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 255.0
-offset_top = 252.0
-offset_right = 391.0
-offset_bottom = 388.0
-text = "GET MONEY"
-icon = ExtResource("5_axsv3")
-
 [node name="Label" type="Label" parent="." unique_id=1903789580]
 offset_left = -191.0
 offset_top = -140.0
@@ -58,3 +41,98 @@ offset_right = -74.0
 offset_bottom = -91.0
 text = "WASD to move
 Mouse to point"
+
+[node name="UpgradeUI" type="CanvasLayer" parent="." unique_id=1486600481]
+unique_name_in_owner = true
+layer = 2
+visible = false
+
+[node name="Button" type="Button" parent="UpgradeUI" unique_id=1426730876]
+offset_left = 15.0
+offset_top = 54.0
+offset_right = 305.0
+offset_bottom = 85.0
+text = "test"
+
+[node name="ColorRect" type="ColorRect" parent="UpgradeUI" unique_id=446140888]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.083699994, 0.08747172, 0.31, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeUI" unique_id=1216456746]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xkx2a")
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="GetMoneyButton" type="Button" parent="UpgradeUI/MarginContainer" unique_id=953974814]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "GET MONEY"
+icon = ExtResource("5_axsv3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeUI/MarginContainer" unique_id=759600179]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=750372236]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UpgradeUI/MarginContainer/VBoxContainer/VBoxContainer" unique_id=141421116]
+layout_mode = 2
+theme = ExtResource("6_xkx2a")
+text = "Store"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=16578309]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="UpgradeUI/MarginContainer/VBoxContainer/VBoxContainer3" unique_id=1462781130]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_xkx2a")
+theme_override_font_sizes/font_size = 10
+
+[node name="UpgradeItems" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=348291851]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeItem" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems" unique_id=1603925993 instance=ExtResource("7_0fead")]
+layout_mode = 2
+cost = 50
+description = "Battery for flashlight"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems" unique_id=368780279]
+visible = false
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems/HBoxContainer" unique_id=682485651]
+layout_mode = 2
+theme = ExtResource("6_xkx2a")
+text = "Buy battery"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeUI/MarginContainer" unique_id=592167058]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer" unique_id=708420724]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UpgradeUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=479456657]
+layout_mode = 2
+theme = ExtResource("6_xkx2a")
+text = "Your items"
+
+[node name="ItemsList" type="Label" parent="UpgradeUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2052354129]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_xkx2a")
+theme_override_font_sizes/font_size = 10

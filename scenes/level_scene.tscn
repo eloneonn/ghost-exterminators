@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bof6jqll1yw28" path="res://assets/Dungeon_Tileset_Dark.png" id="3_fkwfp"]
 [ext_resource type="PackedScene" uid="uid://b7dtp5o2krjce" path="res://scenes/interact.tscn" id="4_1lj4f"]
 [ext_resource type="PackedScene" uid="uid://c7lhvewysmr4j" path="res://scenes/player.tscn" id="5_1lj4f"]
+[ext_resource type="PackedScene" uid="uid://7uu600b20wq2" path="res://scenes/ui/hud.tscn" id="6_eohcs"]
+[ext_resource type="PackedScene" uid="uid://bcbaphl6idug8" path="res://scenes/prop.tscn" id="7_1lj4f"]
+[ext_resource type="Script" uid="uid://b7jqjcgqhbtvr" path="res://scripts/intro.gd" id="7_2m3ut"]
+[ext_resource type="Texture2D" uid="uid://begyqtihjdqy6" path="res://assets/propmap.png" id="8_0jxn2"]
 
 [sub_resource type="Gradient" id="Gradient_7ddre"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -173,6 +177,71 @@ texture = ExtResource("3_fkwfp")
 occlusion_layer_0/light_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_ojpky")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu2va"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(48, 128, 16, 16)
+
+[sub_resource type="Animation" id="Animation_1lj4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroView/MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroView:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ojpky"]
+resource_name = "intro"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroView/MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 1.0333333, 2.9333334),
+"transitions": PackedFloat32Array(1, 1, 0.09473239),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroView:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lj4f"]
+_data = {
+&"RESET": SubResource("Animation_1lj4f"),
+&"intro": SubResource("Animation_ojpky")
+}
+
 [node name="LevelScene" type="Node2D" unique_id=155771848]
 script = ExtResource("1_2m3ut")
 
@@ -220,3 +289,36 @@ position_smoothing_speed = 10.0
 [node name="Door" parent="." unique_id=887784566 instance=ExtResource("4_1lj4f")]
 unique_name_in_owner = true
 position = Vector2(0, 32)
+
+[node name="HUD" parent="." unique_id=1983524308 instance=ExtResource("6_eohcs")]
+
+[node name="Prop" parent="." unique_id=1899897562 instance=ExtResource("7_1lj4f")]
+position = Vector2(0, -55)
+texture = SubResource("AtlasTexture_cu2va")
+
+[node name="IntroView" type="CanvasLayer" parent="." unique_id=1796729029]
+script = ExtResource("7_2m3ut")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="IntroView" unique_id=1746207078]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_1lj4f")
+autoplay = &"intro"
+
+[node name="MarginContainer" type="MarginContainer" parent="IntroView" unique_id=756194944]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="IntroView/MarginContainer" unique_id=1711160053]
+layout_mode = 2
+
+[node name="NightLabel" type="Label" parent="IntroView/MarginContainer/CenterContainer" unique_id=703783285]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="IntroView/MarginContainer" unique_id=767714946]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
