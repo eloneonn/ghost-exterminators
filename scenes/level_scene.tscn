@@ -198,6 +198,10 @@ region = Rect2(0, 64, 32, 32)
 atlas = ExtResource("7_ojpky")
 region = Rect2(176, 48, 16, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_78t5s"]
+atlas = ExtResource("7_ojpky")
+region = Rect2(192, 16, 16, 16)
+
 [node name="LevelScene" type="Node2D" unique_id=155771848]
 script = ExtResource("1_2m3ut")
 
@@ -266,3 +270,185 @@ texture = SubResource("AtlasTexture_cu2va")
 position = Vector2(168, -89)
 ghost_behaviour = 1
 texture = SubResource("AtlasTexture_2m3ut")
+
+[node name="BackRow" type="Node2D" parent="." unique_id=311971867]
+
+[node name="Prop9" parent="BackRow" unique_id=468884511 instance=ExtResource("6_2m3ut")]
+position = Vector2(72, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop5" parent="BackRow" unique_id=702267820 instance=ExtResource("6_2m3ut")]
+position = Vector2(8, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop" parent="BackRow" unique_id=192558283 instance=ExtResource("6_2m3ut")]
+position = Vector2(-56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop2" parent="BackRow" unique_id=2043098363 instance=ExtResource("6_2m3ut")]
+position = Vector2(-40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop3" parent="BackRow" unique_id=294087320 instance=ExtResource("6_2m3ut")]
+position = Vector2(-24, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop4" parent="BackRow" unique_id=938986149 instance=ExtResource("6_2m3ut")]
+position = Vector2(-8, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop6" parent="BackRow" unique_id=1191463059 instance=ExtResource("6_2m3ut")]
+position = Vector2(24, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop7" parent="BackRow" unique_id=740440486 instance=ExtResource("6_2m3ut")]
+position = Vector2(40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop8" parent="BackRow" unique_id=2144645359 instance=ExtResource("6_2m3ut")]
+position = Vector2(56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop10" parent="BackRow" unique_id=1122220325 instance=ExtResource("6_2m3ut")]
+position = Vector2(88, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Row" type="Node2D" parent="." unique_id=684504529]
+position = Vector2(0, -40)
+
+[node name="Prop9" parent="Row" unique_id=1738799875 instance=ExtResource("6_2m3ut")]
+position = Vector2(72, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop" parent="Row" unique_id=695718474 instance=ExtResource("6_2m3ut")]
+position = Vector2(-56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop2" parent="Row" unique_id=6788479 instance=ExtResource("6_2m3ut")]
+position = Vector2(-40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop3" parent="Row" unique_id=1084123509 instance=ExtResource("6_2m3ut")]
+position = Vector2(-24, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop4" parent="Row" unique_id=1148099373 instance=ExtResource("6_2m3ut")]
+position = Vector2(-8, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop7" parent="Row" unique_id=217362163 instance=ExtResource("6_2m3ut")]
+position = Vector2(40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop8" parent="Row" unique_id=1081484512 instance=ExtResource("6_2m3ut")]
+position = Vector2(56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop10" parent="Row" unique_id=1180295488 instance=ExtResource("6_2m3ut")]
+position = Vector2(88, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Row2" type="Node2D" parent="." unique_id=1302560531]
+position = Vector2(0, -80)
+
+[node name="Prop9" parent="Row2" unique_id=1173200712 instance=ExtResource("6_2m3ut")]
+position = Vector2(72, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop" parent="Row2" unique_id=1543940947 instance=ExtResource("6_2m3ut")]
+position = Vector2(-56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop2" parent="Row2" unique_id=385563801 instance=ExtResource("6_2m3ut")]
+position = Vector2(-40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop3" parent="Row2" unique_id=204550415 instance=ExtResource("6_2m3ut")]
+position = Vector2(-24, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop4" parent="Row2" unique_id=1226081438 instance=ExtResource("6_2m3ut")]
+position = Vector2(-8, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop7" parent="Row2" unique_id=292675249 instance=ExtResource("6_2m3ut")]
+position = Vector2(40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop8" parent="Row2" unique_id=815462244 instance=ExtResource("6_2m3ut")]
+position = Vector2(56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop10" parent="Row2" unique_id=375469044 instance=ExtResource("6_2m3ut")]
+position = Vector2(88, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Row3" type="Node2D" parent="." unique_id=879315823]
+position = Vector2(0, -120)
+
+[node name="Prop9" parent="Row3" unique_id=2022580775 instance=ExtResource("6_2m3ut")]
+position = Vector2(72, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop" parent="Row3" unique_id=1594908456 instance=ExtResource("6_2m3ut")]
+position = Vector2(-56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop2" parent="Row3" unique_id=1150667869 instance=ExtResource("6_2m3ut")]
+position = Vector2(-40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop3" parent="Row3" unique_id=1012142856 instance=ExtResource("6_2m3ut")]
+position = Vector2(-24, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop4" parent="Row3" unique_id=1506190702 instance=ExtResource("6_2m3ut")]
+position = Vector2(-8, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop7" parent="Row3" unique_id=1237714985 instance=ExtResource("6_2m3ut")]
+position = Vector2(40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop8" parent="Row3" unique_id=1214444440 instance=ExtResource("6_2m3ut")]
+position = Vector2(56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop10" parent="Row3" unique_id=1224599866 instance=ExtResource("6_2m3ut")]
+position = Vector2(88, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Row4" type="Node2D" parent="." unique_id=1679588749]
+position = Vector2(0, -160)
+
+[node name="Prop9" parent="Row4" unique_id=1864063488 instance=ExtResource("6_2m3ut")]
+position = Vector2(72, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop" parent="Row4" unique_id=483328836 instance=ExtResource("6_2m3ut")]
+position = Vector2(-56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop2" parent="Row4" unique_id=360852350 instance=ExtResource("6_2m3ut")]
+position = Vector2(-40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop3" parent="Row4" unique_id=1637277992 instance=ExtResource("6_2m3ut")]
+position = Vector2(-24, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop4" parent="Row4" unique_id=2026932532 instance=ExtResource("6_2m3ut")]
+position = Vector2(-8, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop7" parent="Row4" unique_id=1710085959 instance=ExtResource("6_2m3ut")]
+position = Vector2(40, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop8" parent="Row4" unique_id=1226568801 instance=ExtResource("6_2m3ut")]
+position = Vector2(56, -208)
+texture = SubResource("AtlasTexture_78t5s")
+
+[node name="Prop10" parent="Row4" unique_id=1310859495 instance=ExtResource("6_2m3ut")]
+position = Vector2(88, -208)
+texture = SubResource("AtlasTexture_78t5s")
