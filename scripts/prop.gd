@@ -1,4 +1,3 @@
-@tool
 class_name Prop extends CharacterBody2D
 
 @export var activation_radius: float = 80.0
