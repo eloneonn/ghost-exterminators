@@ -1,5 +1,7 @@
 extends Node
 
+signal quota_reached(quota: int)
+
 # Properties
 
 var level: int = 0;
@@ -61,6 +63,10 @@ func get_item_count(item: Enums.Item) -> int:
 func capture_ghost(value: int) -> void:
     ghosts_captured += 1
     ghosts_captured_this_level += 1
+
+    if (ghosts_captured_this_level >= quota_this_level):
+        quota_reached.emit(quota_this_level)
+    
     add_money(value)
 
 func destroy_prop(value: int) -> void:

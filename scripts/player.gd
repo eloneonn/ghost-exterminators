@@ -18,6 +18,12 @@ var sanity: int = 100;
 var battery_charge: int = Constants.BATTERY_MAX_CHARGE;
 var _battery_drain_accumulator: float = 0.0;
 
+func _ready() -> void:
+	GameManager.quota_reached.connect(_on_quota_reached)
+	debug_light_sprite.visible = false;
+	light_area.body_entered.connect(_on_light_area_body_entered)
+	light_area.body_exited.connect(_on_light_area_body_exited)
+
 func _on_light_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Prop:
 		#body.frozen = true;
@@ -27,10 +33,8 @@ func _on_light_area_body_exited(body: CharacterBody2D) -> void:
 	if body is Prop:
 		body.frozen = false;
 
-func _ready() -> void:
-	debug_light_sprite.visible = false;
-	light_area.body_entered.connect(_on_light_area_body_entered)
-	light_area.body_exited.connect(_on_light_area_body_exited)
+func _on_quota_reached(quota: int) -> void:
+	show_thought("I've reached my quota of " + str(quota) + " ghosts! I should go back home...", 0.0)
 
 func take_sanity_damage(damage: int) -> void:
 	sanity -= damage;
