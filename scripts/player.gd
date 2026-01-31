@@ -17,6 +17,9 @@ extends CharacterBody2D
 @onready var additivelight: PointLight2D = %Flashlight/AdditiveLight
 @onready var subtractivelight: PointLight2D = %Flashlight/SubtractiveLight
 @onready var light_area_collision: CollisionPolygon2D = %LightArea/CollisionPolygon2D
+@onready var footstep_player: AudioStreamPlayer2D = $FootstepPlayer
+
+var _footstep_timer: float = 0.0
 
 var sanity: int = 100;
 var battery_max_charge: int = Constants.BATTERY_MAX_CHARGE
@@ -30,6 +33,12 @@ func _ready() -> void:
 	debug_light_sprite.visible = false;
 	light_area.body_entered.connect(_on_light_area_body_entered)
 	light_area.body_exited.connect(_on_light_area_body_exited)
+	var step_stream: AudioStream = load("res://sfx/step.wav") as AudioStream
+	if step_stream:
+		footstep_player.stream = step_stream
+		footstep_player.pitch_scale = randf_range(0.8, 1.2)
+		footstep_player.volume_db = randf_range(-6.0, -2.0)
+		footstep_player.bus = "Sfx"
 	_cache_base_stats()
 	_apply_upgrades()
 	# if ghost_ray is GhostRay:
@@ -86,6 +95,21 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	_update_footsteps(delta)
+
+
+func _update_footsteps(delta: float) -> void:
+	if not is_instance_valid(footstep_player) or footstep_player.stream == null:
+		return
+	if velocity.length() > 0:
+		_footstep_timer += delta
+		if _footstep_timer >= (0.35 if GameManager.has_item(Enums.Item.PLAYER_SPEED) else 0.55):
+			_footstep_timer = 0.0
+			footstep_player.pitch_scale = randf_range(0.6, 1.4)
+			footstep_player.volume_db = randf_range(-6.0, -2.0)
+			footstep_player.play()
+	else:
+		_footstep_timer = 0.0
 
 func _update_battery(delta: float) -> void:
 	if not flashlight_enabled:
