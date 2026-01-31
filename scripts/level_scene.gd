@@ -9,6 +9,12 @@ func _ready() -> void:
 	door.set_prompt("Enter the Safehouse Scene (Press E)")
 	door.interacted.connect(_on_door_triggered)
 
+	if (GameManager.level == 1):
+		var player: Player = get_tree().get_first_node_in_group("player")
+		player.show_thought("The ghosts are hiding in the props, better start searching...", 5.0)
+		player.show_thought("I should use my GhostRay (left click) to catch them", 20.0)
+		player.show_thought("Hmm, I swear that thing moved...", 35.0)
+
 	_assign_random_ghosts()
 
 func _on_door_triggered() -> void:

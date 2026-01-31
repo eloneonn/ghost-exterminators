@@ -11,6 +11,8 @@ extends CharacterBody2D
 @onready var debug_light_sprite: Sprite2D = %DebugLightSprite
 @onready var light_area: Area2D = %LightArea
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var thought_label: Label = %ThoughtLabel
 
 var sanity: int = 100;
 var battery_charge: int = Constants.BATTERY_MAX_CHARGE;
@@ -98,3 +100,9 @@ func set_flashlight_rotation() -> void:
 
 	flashlight.rotation = angle
 	ghost_ray.rotation = angle
+
+func show_thought(thought: String, delay: float) -> void:
+	await get_tree().create_timer(delay).timeout
+
+	thought_label.text = thought
+	animation_player.play("thought")

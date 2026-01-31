@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://da1dkfcv602m8" path="res://assets/player.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://ihvp00r2ye5a" path="res://assets/beam_1.png" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://c6uifyeggxhiv" path="res://scenes/gun.tscn" id="4_dqkch"]
+[ext_resource type="Theme" uid="uid://chhvtf2qcxb8j" path="res://theme.tres" id="5_qlg0r"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhqgy"]
 light_mode = 1
@@ -30,6 +31,39 @@ width = 52
 height = 52
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "thought"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThoughtLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1, 5.2, 7),
+"transitions": PackedFloat32Array(0.37892887, 1, 1, 1.3195071),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThoughtLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 7.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjrip"]
+_data = {
+&"thought": SubResource("Animation_tuyoq")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=1413311515 groups=["player"]]
 light_mask = 0
@@ -104,3 +138,20 @@ texture = SubResource("GradientTexture2D_qhqgy")
 [node name="GhostRay" parent="." unique_id=1379834991 instance=ExtResource("4_dqkch")]
 unique_name_in_owner = true
 position = Vector2(0, 1)
+
+[node name="ThoughtLabel" type="Label" parent="." unique_id=439457103]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+z_index = 10
+offset_left = -149.0
+offset_top = 11.0
+offset_right = 158.0
+offset_bottom = 34.0
+theme = ExtResource("5_qlg0r")
+theme_override_font_sizes/font_size = 6
+text = "Thought"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=632447416]
+libraries/ = SubResource("AnimationLibrary_fjrip")
