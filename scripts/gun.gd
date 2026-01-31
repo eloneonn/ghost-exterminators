@@ -43,10 +43,7 @@ func _ready() -> void:
 	# _cache_base_stats()
 	# _apply_upgrades()
 	_set_active(false)
-<<<<<<< HEAD
 	# _apply_beam_geometry()
-=======
->>>>>>> 4eeae9b58502a8237dc967d7480fbf834bf179b0
 
 func _process(delta: float) -> void:
 	# Flip gun sprite when rotated to the left side so it doesn't appear upside down
@@ -165,12 +162,8 @@ func _cache_base_stats() -> void:
 # 		base_length += Constants.UPGRADE_GUN_RANGE_BONUS
 # 		base_width += Constants.UPGRADE_GUN_WIDTH_BONUS
 
-<<<<<<< HEAD
 # 	base_width = max(1.0, base_width)
 # 	_apply_beam_geometry()
-=======
-	base_width = max(1.0, base_width)
->>>>>>> 4eeae9b58502a8237dc967d7480fbf834bf179b0
 
 # 	if GameManager.has_item(Enums.Item.GUN_COOLING):
 # 		max_heat += Constants.UPGRADE_GUN_MAX_HEAT_BONUS
