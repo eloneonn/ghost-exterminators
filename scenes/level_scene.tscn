@@ -449,6 +449,9 @@ region = Rect2(112, 96, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_01g4s"]
 atlas = ExtResource("8_0jxn2")
 region = Rect2(37, 64, 8, 32)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cu2va"]
+blend_mode = 1
+light_mode = 2
 
 [node name="LevelScene" type="Node2D" unique_id=155771848]
 script = ExtResource("1_2m3ut")
@@ -1113,3 +1116,147 @@ texture = SubResource("AtlasTexture_wys11")
 [node name="Prop13" parent="MaskRoom" unique_id=409594516 instance=ExtResource("7_1lj4f")]
 position = Vector2(88, -8)
 texture = SubResource("AtlasTexture_wys11")
+[node name="Labels" type="Node2D" parent="." unique_id=1582105709]
+
+[node name="Auditorium" type="Label" parent="Labels" unique_id=1057420968]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -27.0
+offset_top = -316.0
+offset_right = 65.0
+offset_bottom = -293.0
+theme = ExtResource("10_0jxn2")
+text = "Auditorium"
+
+[node name="Main Stage" type="Label" parent="Labels" unique_id=253255646]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -30.0
+offset_top = -467.0
+offset_right = 56.0
+offset_bottom = -444.0
+text = "Main Stage"
+
+[node name="BackStage" type="Label" parent="Labels" unique_id=144800173]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -30.0
+offset_top = -573.0
+offset_right = 49.0
+offset_bottom = -550.0
+text = "Backstage"
+
+[node name="Flush Av_" type="Label" parent="Labels" unique_id=818311937]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -47.0
+offset_top = -794.0
+offset_right = 57.0
+offset_bottom = -771.0
+text = "Flush Avenue"
+
+[node name="Great Hall" type="Label" parent="Labels" unique_id=801519046]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = 343.0
+offset_top = -448.0
+offset_right = 421.0
+offset_bottom = -425.0
+text = "Great Hall"
+
+[node name="Great WC" type="Label" parent="Labels" unique_id=679030890]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = 379.0
+offset_top = -121.0
+offset_right = 452.0
+offset_bottom = -98.0
+text = "Great WC"
+
+[node name="Gauntlet Hall" type="Label" parent="Labels" unique_id=538112611]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -233.0
+offset_top = -275.0
+offset_right = -131.0
+offset_bottom = -226.0
+text = "Gauntlet
+   Hall"
+
+[node name="Dining Hall" type="Label" parent="Labels" unique_id=2057627368]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -387.0
+offset_top = -366.0
+offset_right = -302.0
+offset_bottom = -343.0
+text = "Dining Hall"
+
+[node name="Pantry" type="Label" parent="Labels" unique_id=37753013]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -387.0
+offset_top = -161.0
+offset_right = -333.0
+offset_bottom = -138.0
+text = "Pantry"
+
+[node name="Sauce Room" type="Label" parent="Labels" unique_id=1637416743]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -435.0
+offset_top = -101.0
+offset_right = -340.0
+offset_bottom = -52.0
+text = "Sauce 
+Room"
+
+[node name="Foyer" type="Label" parent="Labels" unique_id=210329762]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -12.0
+offset_top = -67.0
+offset_right = 42.0
+offset_bottom = -44.0
+text = "Foyer"
+
+[node name="Reading Nook" type="Label" parent="Labels" unique_id=2000009925]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -279.0
+offset_top = 79.0
+offset_right = -171.0
+offset_bottom = 102.0
+text = "Reading Nook"
+
+[node name="The Special Room" type="Label" parent="Labels" unique_id=308540399]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = 316.0
+offset_top = 132.0
+offset_right = 420.0
+offset_bottom = 155.0
+text = "Special Room"
+
+[node name="___" type="Label" parent="Labels" unique_id=1680476924]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = 383.0
+offset_top = 329.0
+offset_right = 437.0
+offset_bottom = 352.0
+text = "..."
