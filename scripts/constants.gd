@@ -18,7 +18,8 @@ const STARTING_QUOTA: int = 5;
 const STARTING_INVENTORY: Array[Enums.Item] = [
     Enums.Item.WEAPON1,
     Enums.Item.BATTERY,
-    Enums.Item.BATTERY
+    Enums.Item.BATTERY, 
+    Enums.Item.BETTER_FLASHLIGHT
 ];
 
 static var ITEM_PRICES: Dictionary = {
