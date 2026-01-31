@@ -123,6 +123,58 @@ _data = {
 &"intro": SubResource("Animation_ojpky")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i8xs"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(0, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw353"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(192, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lusm8"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw8fm"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(112, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gagx4"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(160, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbd8l"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwkc4"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7d3g"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1xxd"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hialq"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pky24"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcwpw"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytrdw"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
 [node name="LevelScene" type="Node2D" unique_id=155771848]
 script = ExtResource("1_2m3ut")
 
@@ -427,3 +479,60 @@ layout_mode = 2
 [node name="ColorRect" type="ColorRect" parent="IntroView/MarginContainer" unique_id=767714946]
 layout_mode = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Prop3" parent="." unique_id=156935180 instance=ExtResource("7_1lj4f")]
+position = Vector2(-1, -702)
+texture = SubResource("AtlasTexture_8i8xs")
+
+[node name="Backstage_props" type="Node2D" parent="." unique_id=1372145545]
+
+[node name="CoatRack" parent="Backstage_props" unique_id=1009091885 instance=ExtResource("7_1lj4f")]
+position = Vector2(-117, -700)
+texture = SubResource("AtlasTexture_vw353")
+
+[node name="Chair_r" parent="Backstage_props" unique_id=1701926236 instance=ExtResource("7_1lj4f")]
+position = Vector2(-94, -700)
+texture = SubResource("AtlasTexture_lusm8")
+
+[node name="Sofa_u" parent="Backstage_props" unique_id=510132287 instance=ExtResource("7_1lj4f")]
+position = Vector2(6, -672)
+texture = SubResource("AtlasTexture_gw8fm")
+
+[node name="Armchair" parent="Backstage_props" unique_id=1996337365 instance=ExtResource("7_1lj4f")]
+position = Vector2(-20, -679)
+texture = SubResource("AtlasTexture_gagx4")
+
+[node name="Armour" parent="Backstage_props" unique_id=742248010 instance=ExtResource("7_1lj4f")]
+position = Vector2(72, -702)
+texture = SubResource("AtlasTexture_nbd8l")
+
+[node name="Armour_2" parent="Backstage_props" unique_id=1658080650 instance=ExtResource("7_1lj4f")]
+position = Vector2(118, -702)
+texture = SubResource("AtlasTexture_hwkc4")
+
+[node name="Armour_hall" type="Node2D" parent="." unique_id=1135789424]
+position = Vector2(118, -702)
+
+[node name="Prop4" parent="Armour_hall" unique_id=665933776 instance=ExtResource("7_1lj4f")]
+position = Vector2(-346, 449)
+texture = SubResource("AtlasTexture_g7d3g")
+
+[node name="Prop" parent="Armour_hall" unique_id=1818959090 instance=ExtResource("7_1lj4f")]
+position = Vector2(-292, 449)
+texture = SubResource("AtlasTexture_y1xxd")
+
+[node name="Prop2" parent="Armour_hall" unique_id=535708960 instance=ExtResource("7_1lj4f")]
+position = Vector2(-350, 388)
+texture = SubResource("AtlasTexture_hialq")
+
+[node name="Prop3" parent="Armour_hall" unique_id=1663867809 instance=ExtResource("7_1lj4f")]
+position = Vector2(-289, 387)
+texture = SubResource("AtlasTexture_pky24")
+
+[node name="Prop5" parent="Armour_hall" unique_id=886168337 instance=ExtResource("7_1lj4f")]
+position = Vector2(-351, 319)
+texture = SubResource("AtlasTexture_wcwpw")
+
+[node name="Prop6" parent="Armour_hall" unique_id=1369271181 instance=ExtResource("7_1lj4f")]
+position = Vector2(-289, 318)
+texture = SubResource("AtlasTexture_ytrdw")
