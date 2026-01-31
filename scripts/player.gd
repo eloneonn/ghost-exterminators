@@ -10,10 +10,12 @@ extends CharacterBody2D
 @onready var ghost_ray: Node2D = %GhostRay  # or $GhostRay if not unique
 @onready var debug_light_sprite: Sprite2D = %DebugLightSprite
 @onready var light_area: Area2D = %LightArea
+@onready var sprite: Sprite2D = $Sprite2D
 
 func _on_light_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Prop:
-		body.frozen = true;
+		#body.frozen = true;
+		body.has_been_lit = true;
 
 func _on_light_area_body_exited(body: CharacterBody2D) -> void:
 	if body is Prop:
@@ -27,7 +29,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	var input_direction := Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
-	
+
 	flashlight.visible = flashlight_enabled;
 
 	flashlight.visible = flashlight_enabled
@@ -44,6 +46,11 @@ func _update_aim() -> void:
 	var mouse_position := get_global_mouse_position()
 	var direction := (mouse_position - global_position).normalized()
 	var angle := direction.angle()
+
+	if direction.x > 0:
+		sprite.flip_h = true
+	elif direction.x < 0:
+		sprite.flip_h = false
 
 	flashlight.rotation = angle
 	ghost_ray.rotation = angle

@@ -1,0 +1,305 @@
+[gd_scene format=3 uid="uid://b2ndkyd8s38mw"]
+
+[ext_resource type="Shader" uid="uid://bvs7tkmbqhwop" path="res://assets/FXs/HitFlash.gdshader" id="1_rudd1"]
+[ext_resource type="Texture2D" uid="uid://bdnv4p1ak1omm" path="res://assets/FXs/breakParticle.png" id="1_xm5jp"]
+[ext_resource type="Texture2D" uid="uid://bxenfxoo46h5b" path="res://icon.svg" id="2_nfris"]
+[ext_resource type="Shader" uid="uid://lvx4dxrc01md" path="res://assets/FXs/DustFX.gdshader" id="3_kgqgg"]
+[ext_resource type="Texture2D" uid="uid://dxja1jgs48a0b" path="res://assets/FXs/dust.png" id="4_rudd1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hem6y"]
+shader = ExtResource("1_rudd1")
+shader_parameter/flashColor = Color(1, 1, 1, 1)
+shader_parameter/enable = false
+
+[sub_resource type="Animation" id="Animation_xm5jp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nfris"]
+resource_name = "Shake"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.00076028705, 0.099239714, 0.19923972, 0.29923972, 0.39923972),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-4, 0), Vector2(2, -2), Vector2(-1, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hem6y"]
+resource_name = "Shake 2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-8, 0), Vector2(4, 3), Vector2(-1, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.06981317007977318, -0.034906585, -0.017453292, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tmkry"]
+resource_name = "Shake 3"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-8, -6), Vector2(3, -10), Vector2(-1, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.39914125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.13962634015954636, -0.1308996938995747, 0.03687471, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kgqgg"]
+_data = {
+&"RESET": SubResource("Animation_xm5jp"),
+&"Shake": SubResource("Animation_nfris"),
+&"Shake 2": SubResource("Animation_hem6y"),
+&"Shake 3": SubResource("Animation_tmkry")
+}
+
+[sub_resource type="Animation" id="Animation_fj73f"]
+resource_name = "HitFlash"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rudd1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsiu5"]
+_data = {
+&"HitFlash": SubResource("Animation_fj73f"),
+&"RESET": SubResource("Animation_rudd1")
+}
+
+[sub_resource type="Curve" id="Curve_58ikj"]
+_data = [Vector2(0.58563536, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.4555707, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_teqo1"]
+curve = SubResource("Curve_58ikj")
+
+[sub_resource type="Curve" id="Curve_v155h"]
+_data = [Vector2(0, 0), 0.0, 3.5323353, 0, 0, Vector2(0.980663, 1), 0.042139646, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_58ikj"]
+curve = SubResource("Curve_v155h")
+
+[sub_resource type="Curve" id="Curve_teqo1"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, -6.0576453, 0, 0, Vector2(1, -1), 0.07408595, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_olpxr"]
+curve = SubResource("Curve_teqo1")
+
+[sub_resource type="Curve" id="Curve_k4ytn"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7651934, -1), -8.138601, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_441bl"]
+curve = SubResource("Curve_k4ytn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_etnbm"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 180.00002
+angle_curve = SubResource("CurveTexture_58ikj")
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 15.0
+initial_velocity_max = 150.0
+angular_velocity_min = -180.00002
+angular_velocity_max = -1.6093254e-05
+angular_velocity_curve = SubResource("CurveTexture_olpxr")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 99.99999
+linear_accel_curve = SubResource("CurveTexture_441bl")
+scale_min = 0.39999998
+scale_max = 0.79999995
+alpha_curve = SubResource("CurveTexture_teqo1")
+
+[sub_resource type="Gradient" id="Gradient_rudd1"]
+offsets = PackedFloat32Array(0.45692885, 0.58426964)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hem6y"]
+frequency = 0.4271
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tmkry"]
+width = 32
+height = 32
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_hem6y")
+color_ramp = SubResource("Gradient_rudd1")
+seamless = true
+seamless_blend_skirt = 0.775
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgqgg"]
+shader = ExtResource("3_kgqgg")
+shader_parameter/mask = SubResource("NoiseTexture2D_tmkry")
+shader_parameter/speed = 0.13999999687072
+shader_parameter/amp = 0.1999999955296
+shader_parameter/fps = 8.0
+
+[sub_resource type="Gradient" id="Gradient_kgqgg"]
+offsets = PackedFloat32Array(0, 0.53015876)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rudd1"]
+gradient = SubResource("Gradient_kgqgg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Particles" type="Node2D" unique_id=2145721971]
+
+[node name="PropTest" type="Sprite2D" parent="." unique_id=1028374070]
+material = SubResource("ShaderMaterial_hem6y")
+texture = ExtResource("2_nfris")
+
+[node name="ShakeAnimation" type="AnimationPlayer" parent="PropTest" unique_id=1953168978]
+libraries/ = SubResource("AnimationLibrary_kgqgg")
+
+[node name="HitFlashAnimation" type="AnimationPlayer" parent="PropTest" unique_id=1741063581]
+libraries/ = SubResource("AnimationLibrary_tsiu5")
+
+[node name="BreakParticles" type="GPUParticles2D" parent="." unique_id=1674841411]
+self_modulate = Color(0.04501333, 0.028800001, 0.08, 1)
+emitting = false
+texture = ExtResource("1_xm5jp")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_etnbm")
+
+[node name="Dust" type="Node2D" parent="." unique_id=1514419664]
+
+[node name="BG" type="ColorRect" parent="Dust" unique_id=1428467621]
+visible = false
+offset_right = 1168.0
+offset_bottom = 663.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Dust" type="Sprite2D" parent="Dust" unique_id=1588358629]
+self_modulate = Color(1.0413129, 1.0413129, 1.0413129, 1)
+light_mask = 2
+visibility_layer = 2
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_kgqgg")
+position = Vector2(52, 43)
+texture = ExtResource("4_rudd1")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="PointLight2D" type="PointLight2D" parent="Dust" unique_id=611811467]
+position = Vector2(346, 193)
+blend_mode = 2
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_rudd1")
+texture_scale = 4.11
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=745688644]
+position = Vector2(345, 206)
+zoom = Vector2(3.235, 3.235)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c7lhvewysmr4j"]
 
-[ext_resource type="Texture2D" uid="uid://eqyh2dosrvof" path="res://assets/priest1_v1_1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dr82ni3xmqlqe" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://da1dkfcv602m8" path="res://assets/player.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://ihvp00r2ye5a" path="res://assets/beam_1.png" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://c6uifyeggxhiv" path="res://scenes/gun.tscn" id="4_dqkch"]
 
@@ -33,13 +33,13 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=1413311515 groups=["player"]]
 light_mask = 0
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504978614]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_qhqgy")
-texture = ExtResource("1_3vyb7")
+texture = ExtResource("2_dqkch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=356306731]
 sprite_frames = SubResource("SpriteFrames_g2els")
