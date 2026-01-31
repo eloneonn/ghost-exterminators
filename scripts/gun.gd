@@ -40,9 +40,10 @@ var _base_cool_per_second: float
 @onready var hit_shape: CollisionPolygon2D = $HitArea/CollisionPolygon2D
 
 func _ready() -> void:
-	_cache_base_stats()
-	_apply_upgrades()
+	# _cache_base_stats()
+	# _apply_upgrades()
 	_set_active(false)
+	# _apply_beam_geometry()
 
 func _process(delta: float) -> void:
 	# Flip gun sprite when rotated to the left side so it doesn't appear upside down
@@ -73,6 +74,9 @@ func _process(delta: float) -> void:
 func deal_damage() -> void:
 	for body in hit_area.get_overlapping_bodies():
 		if body is Prop:
+			if GameManager.has_item(Enums.Item.GUN_DAMAGE):
+				print("Applying damage upgrade")
+				damage_per_second += Constants.UPGRADE_GUN_DAMAGE_BONUS
 			body.take_damage(damage_per_second)
 
 func _update_heat(delta: float, wants_fire: bool) -> void:
@@ -138,29 +142,30 @@ func _cache_base_stats() -> void:
 	_base_heat_per_second = heat_per_second
 	_base_cool_per_second = cool_per_second
 
-func _apply_upgrades() -> void:
-	print("Applying GhostRay upgrades...")
-	if GameManager == null:
-		return
+# func _apply_upgrades() -> void:
+# 	print("Applying GhostRay upgrades...")
+# 	if GameManager == null:
+# 		return
 
-	damage_per_second = _base_damage_per_second
-	base_length = _base_length
-	base_width = _base_width
-	max_heat = _base_max_heat
-	heat_per_second = _base_heat_per_second
-	cool_per_second = _base_cool_per_second
-	print(GameManager.has_item(Enums.Item.GUN_DAMAGE), " he has it bruf")
-	if GameManager.has_item(Enums.Item.GUN_DAMAGE):
-		print("Applying damage upgrade")
-		damage_per_second += Constants.UPGRADE_GUN_DAMAGE_BONUS
-	if GameManager.has_item(Enums.Item.GUN_RANGE):
-		print("Applying range upgrade")
-		base_length += Constants.UPGRADE_GUN_RANGE_BONUS
-		base_width += Constants.UPGRADE_GUN_WIDTH_BONUS
+# 	damage_per_second = _base_damage_per_second
+# 	base_length = _base_length
+# 	base_width = _base_width
+# 	max_heat = _base_max_heat
+# 	heat_per_second = _base_heat_per_second
+# 	cool_per_second = _base_cool_per_second
+# 	print(GameManager.has_item(Enums.Item.GUN_DAMAGE), " he has it bruf")
+# 	if GameManager.has_item(Enums.Item.GUN_DAMAGE):
+# 		print("Applying damage upgrade")
+# 		damage_per_second += Constants.UPGRADE_GUN_DAMAGE_BONUS
+# 	if GameManager.has_item(Enums.Item.GUN_RANGE):
+# 		print("Applying range upgrade")
+# 		base_length += Constants.UPGRADE_GUN_RANGE_BONUS
+# 		base_width += Constants.UPGRADE_GUN_WIDTH_BONUS
 
-	base_width = max(1.0, base_width)
+# 	base_width = max(1.0, base_width)
+# 	_apply_beam_geometry()
 
-	if GameManager.has_item(Enums.Item.GUN_COOLING):
-		max_heat += Constants.UPGRADE_GUN_MAX_HEAT_BONUS
-		cool_per_second += Constants.UPGRADE_GUN_COOL_RATE_BONUS
-		heat_per_second = max(1.0, heat_per_second - Constants.UPGRADE_GUN_HEAT_RATE_REDUCTION)
+# 	if GameManager.has_item(Enums.Item.GUN_COOLING):
+# 		max_heat += Constants.UPGRADE_GUN_MAX_HEAT_BONUS
+# 		cool_per_second += Constants.UPGRADE_GUN_COOL_RATE_BONUS
+# 		heat_per_second = max(1.0, heat_per_second - Constants.UPGRADE_GUN_HEAT_RATE_REDUCTION)

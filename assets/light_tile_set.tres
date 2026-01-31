@@ -120,6 +120,10 @@ texture = ExtResource("1_kgdum")
 2:0/0 = 0
 2:0/0/z_index = 1
 2:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_4h72d")
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
+2:2/0 = 0
 
 [resource]
 occlusion_layer_0/light_mask = 3

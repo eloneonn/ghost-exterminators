@@ -2,7 +2,7 @@ class_name Prop extends CharacterBody2D
 
 @export var activation_radius: float = 80.0
 @export var jumpscare_radius: float = 20.0
-@export var speed: float = 10.0
+@export var speed: float = 50.0
 @export var stupidFleeSpeed = 40.0
 @export var health: int = 100;
 @export var ghost: bool = false;
@@ -151,7 +151,7 @@ func _physics_process(_delta):
 	var distance = global_position.distance_to(player.global_position)
 
 	if ghost:
-		print(distance)
+		# print(distance)
 		
 		if distance <= jumpscare_radius:
 			jumpscare()
@@ -159,7 +159,7 @@ func _physics_process(_delta):
 
 		match ghost_behaviour:
 			GhostBehaviour.ATTACK:
-				if sensors_lit < 2 and distance <= activation_radius:
+				if sensors_lit < 2 and distance <= activation_radius * 3.0:
 					follow_player()
 			GhostBehaviour.STUPID_FLEE:
 				if has_been_lit and sensors_lit <= 2:

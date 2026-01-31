@@ -31,8 +31,8 @@ func _ready() -> void:
 	light_area.body_exited.connect(_on_light_area_body_exited)
 	_cache_base_stats()
 	_apply_upgrades()
-	if ghost_ray is GhostRay:
-		ghost_ray._apply_upgrades()
+	# if ghost_ray is GhostRay:
+	# 	ghost_ray._apply_upgrades()
 
 func _process(_delta: float) -> void:
 	if (GameManager.has_item(Enums.Item.BETTER_FLASHLIGHT)):
@@ -146,3 +146,4 @@ func _apply_upgrades() -> void:
 		battery_max_charge += Constants.UPGRADE_PLAYER_BATTERY_BONUS
 
 	battery_charge = battery_max_charge
+

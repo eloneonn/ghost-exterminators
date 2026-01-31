@@ -61,6 +61,6 @@ func _on_upgrade_purchased(_item: Enums.Item) -> void:
 	var player := get_tree().get_first_node_in_group("player") as Player
 	if player != null:
 		player._apply_upgrades()
-		var ray := player.ghost_ray
-		if ray is GhostRay:
-			ray._apply_upgrades()
+		# var ray := player.ghost_ray
+		# if ray is GhostRay:
+		# 	ray._apply_upgrades()
