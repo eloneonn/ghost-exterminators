@@ -16,7 +16,6 @@ tile_set = ExtResource("1_fclo3")
 [node name="Player" parent="." unique_id=1413311515 instance=ExtResource("2_ebyui")]
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=211299421]
-zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -31,12 +30,13 @@ position = Vector2(-97, -14)
 [node name="UpgradeUI" type="CanvasLayer" parent="." unique_id=1486600481]
 unique_name_in_owner = true
 layer = 2
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="UpgradeUI" unique_id=1207034326]
 offset_left = -19.0
 offset_top = -20.0
-offset_right = 979.0
-offset_bottom = 978.0
+offset_right = 81.0
+offset_bottom = 80.0
 
 [node name="GetMoneyButton" type="Button" parent="UpgradeUI/ColorRect" unique_id=953974814]
 unique_name_in_owner = true
