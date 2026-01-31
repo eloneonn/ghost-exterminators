@@ -37,15 +37,18 @@ var _base_cool_per_second: float
 
 @onready var beam_sprite: Sprite2D = $BeamSprite
 @onready var hit_area: Area2D = $HitArea
-@onready var hit_shape: CollisionShape2D = $HitArea/CollisionShape2D
+@onready var hit_shape: CollisionPolygon2D = $HitArea/CollisionPolygon2D
 
 func _ready() -> void:
 	_cache_base_stats()
 	_apply_upgrades()
 	_set_active(false)
-	_apply_beam_geometry()
 
 func _process(delta: float) -> void:
+	# Flip gun sprite when rotated to the left side so it doesn't appear upside down
+	var pointing_left := rotation > PI / 2.0 or rotation < -PI / 2.0
+	beam_sprite.scale.y = -1.0 if pointing_left else 1.0
+
 	# If overheated, you can't fire until cooled enough
 	var wants_fire := Input.is_action_pressed("shoot")
 	is_firing = wants_fire and not is_overheated
@@ -106,27 +109,6 @@ func _set_active(active: bool) -> void:
 	else:
 		beam_sprite.modulate.a = 1.0
 
-
-func _apply_beam_geometry() -> void:
-	var length := base_length# * length_mult
-	var width := base_width# * width_mult
-
-	# Update collision rectangle
-	var rect := hit_shape.shape as RectangleShape2D
-	if rect:
-		rect.size = Vector2(length, width)
-
-	# # Push hitbox forward so it starts at muzzle (not centered on player)
-	# hit_shape.position = Vector2(length * 0.5, 0)
-
-	# Update beam sprite visuals to match (assumes sprite points to the right)
-	# You can do either scale or region; scale is fine for a placeholder.
-	beam_sprite.position = Vector2(length * 0.5, 0)
-
-	# If your texture is 1x1 or small, scaling works great.
-	# Scale X to length, Y to width (tweak divisor based on your texture size)
-	beam_sprite.scale = Vector2(length / 64.0, width / 64.0)
-
 func _update_beam_color(_delta: float) -> void:
 	if max_heat <= 0.0:
 		return
@@ -137,7 +119,8 @@ func _update_beam_color(_delta: float) -> void:
 		# Flash between red and dark red
 		var t := (sin(Time.get_ticks_msec() / 1000.0 * overheated_flash_speed) + 1.0) * 0.5
 		beam_sprite.modulate = hot_color.lerp(Color(0.4, 0.0, 0.0), t)
-		beam_sprite.scale.y *= lerp(0.9, 1.1, t)
+		var flip_sign := -1.0 if (rotation > PI / 2.0 or rotation < -PI / 2.0) else 1.0
+		beam_sprite.scale.y = flip_sign * lerp(0.9, 1.1, t)
 	else:
 		# Smooth gradient: cool → warm → hot
 		if heat_ratio < 0.5:
@@ -176,7 +159,6 @@ func _apply_upgrades() -> void:
 		base_width += Constants.UPGRADE_GUN_WIDTH_BONUS
 
 	base_width = max(1.0, base_width)
-	_apply_beam_geometry()
 
 	if GameManager.has_item(Enums.Item.GUN_COOLING):
 		max_heat += Constants.UPGRADE_GUN_MAX_HEAT_BONUS
