@@ -128,4 +128,3 @@ func _apply_upgrades() -> void:
 		battery_max_charge += Constants.UPGRADE_PLAYER_BATTERY_BONUS
 
 	battery_charge = battery_max_charge
-
