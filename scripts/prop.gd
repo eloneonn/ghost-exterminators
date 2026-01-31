@@ -47,6 +47,7 @@ var frozen: bool = false;
 var player: CharacterBody2D
 
 func _ready():
+	add_to_group("props")
 	if texture != null:
 		sprite.texture = texture;
 	
@@ -178,7 +179,7 @@ func update_light_ratio():
 		lit_count += 1
 
 	sensors_lit = lit_count;
-	print("Sensors lit:", sensors_lit, " / ", total_points)
+	# print("Sensors lit:", sensors_lit, " / ", total_points)
 
 func follow_player() -> void:
 	var direction = (player.global_position - global_position).normalized()
