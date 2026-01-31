@@ -64,6 +64,13 @@ interact={
 , null]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Tiles"
+2d_physics/layer_3="Props"
+2d_physics/layer_4="Light"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

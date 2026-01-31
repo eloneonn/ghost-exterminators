@@ -5,6 +5,21 @@ class_name Player extends CharacterBody2D
 
 @onready var flashlight: Node2D = %Flashlight
 @onready var pointlight: Node2D = %PointLight
+@onready var debug_light_sprite: Sprite2D = %DebugLightSprite
+@onready var light_area: Area2D = %LightArea
+
+func _on_light_area_body_entered(body: CharacterBody2D) -> void:
+	if body is Prop:
+		body.frozen = true;
+
+func _on_light_area_body_exited(body: CharacterBody2D) -> void:
+	if body is Prop:
+		body.frozen = false;
+
+func _ready() -> void:
+	debug_light_sprite.visible = false;
+	light_area.body_entered.connect(_on_light_area_body_entered)
+	light_area.body_exited.connect(_on_light_area_body_exited)
 
 func _physics_process(_delta: float) -> void:
 	var input_direction := Input.get_vector("left", "right", "up", "down")

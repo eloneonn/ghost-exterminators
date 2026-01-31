@@ -71,6 +71,19 @@ shadow_item_cull_mask = 2
 texture = ExtResource("3_qhqgy")
 texture_scale = 0.1
 
+[node name="DebugLightSprite" type="Sprite2D" parent="Flashlight" unique_id=1897615350]
+unique_name_in_owner = true
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_qhqgy")
+
+[node name="LightArea" type="Area2D" parent="Flashlight" unique_id=296855073]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight/LightArea" unique_id=1939522007]
+polygon = PackedVector2Array(104, -48, 104, 48, 0, 0)
+
 [node name="PointLight" type="Node2D" parent="." unique_id=338882737]
 unique_name_in_owner = true
 
