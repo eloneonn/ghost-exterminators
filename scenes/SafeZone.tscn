@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://if3trh31wcxc"]
+
+[node name="SafeZone" type="Node2D" unique_id=1079298145 groups=["safeZones"]]
+
+[node name="SafeZone" type="Marker2D" parent="." unique_id=1601094728]
+
+[node name="Sprite2D" type="Sprite2D" parent="SafeZone" unique_id=1666209004]
+
+[node name="Area2D" type="Area2D" parent="SafeZone" unique_id=1752119131]
