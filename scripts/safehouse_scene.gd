@@ -16,7 +16,19 @@ func _ready() -> void:
 	upgrade_desk.interacted.connect(_on_upgrade_desk_interacted)
 	#add_money_button.pressed.connect(_on_add_money_button_pressed)
 	_connect_upgrade_items()
-	
+
+	var player: Player = get_tree().get_first_node_in_group("player")
+	if (GameManager.level == 0):
+		player.show_thought("All right, let's get this show on the road!", 0.0)
+	if (GameManager.level == 1):
+		player.show_thought("That was intense... I better upgrade my gear for tomorrow.", 0.0)
+	if (GameManager.level == 2):
+		player.show_thought("Phew, that was a close one... I need to get some rest.", 0.0)
+	if (GameManager.level == 3):
+		player.show_thought("I'm getting the hang of this! Another day, another shift of ghost extermination.", 0.0)
+	if (GameManager.level >= 4):
+		player.show_thought("I can't think of anytinh else to write here, thanks so much for playing!", 0.0)
+
 func _process(_delta: float) -> void:
 	items_list.text = GameManager.get_items_string()
 	money_label.text = "Money: " + str(GameManager.get_money())

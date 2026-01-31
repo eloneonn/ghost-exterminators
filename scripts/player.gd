@@ -22,6 +22,7 @@ var sanity: int = 100;
 var battery_max_charge: int = Constants.BATTERY_MAX_CHARGE
 var battery_charge: int = Constants.BATTERY_MAX_CHARGE;
 var _battery_drain_accumulator: float = 0.0;
+var _sanity_bleed_accumulator: float = 0.0;
 var _base_speed: float
 
 func _ready() -> void:
@@ -72,6 +73,7 @@ func _physics_process(delta: float) -> void:
 	velocity = input_direction * speed
 
 	_update_battery(delta)
+	_update_sanity_bleed(delta)
 
 	flashlight.visible = flashlight_enabled;
 
@@ -101,6 +103,18 @@ func _update_battery(delta: float) -> void:
 			battery_charge = battery_max_charge
 		else:
 			flashlight_enabled = false
+
+
+func _update_sanity_bleed(delta: float) -> void:
+	## When out of flashlight (no charge and no spare batteries), lose a little sanity every second.
+	if battery_charge > 0 or GameManager.has_item(Enums.Item.BATTERY):
+		_sanity_bleed_accumulator = 0.0
+		return
+
+	_sanity_bleed_accumulator += delta
+	while _sanity_bleed_accumulator >= 1.0:
+		_sanity_bleed_accumulator -= 1.0
+		take_sanity_damage(Constants.SANITY_BLEED_NO_FLASHLIGHT)
 
 
 func _update_aim() -> void:
