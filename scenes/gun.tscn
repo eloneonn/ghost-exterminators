@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bwmyob1bbrhd4" path="res://scripts/gun.gd" id="1_og67c"]
 [ext_resource type="Texture2D" uid="uid://boqdrkrciy8c0" path="res://assets/gun.png" id="2_og67c"]
+[ext_resource type="AudioStream" uid="uid://cfqm6h1lxnqll" path="res://sfx/ray_impact.wav" id="3_ray_impact"]
+[ext_resource type="AudioStream" uid="uid://wesq0drlw6cm" path="res://sfx/ray_loop.wav" id="4_ray_loop"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_og67c"]
 light_mode = 1
@@ -25,3 +27,9 @@ material = SubResource("CanvasItemMaterial_og67c")
 position = Vector2(6, 0)
 texture = ExtResource("2_og67c")
 flip_h = true
+
+[node name="RayImpactPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1616624178]
+stream = ExtResource("3_ray_impact")
+
+[node name="RayLoopPlayer" type="AudioStreamPlayer2D" parent="." unique_id=166702507]
+stream = ExtResource("4_ray_loop")

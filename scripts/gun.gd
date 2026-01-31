@@ -26,6 +26,7 @@ signal overheated_changed(is_overheated: bool)
 var heat: float = 0.0
 var is_overheated: bool = false
 var is_firing: bool = false
+var _was_firing: bool = false
 var damage_timer: float = 0.0
 
 var _base_damage_per_second: float
@@ -38,8 +39,15 @@ var _base_cool_per_second: float
 @onready var beam_sprite: Sprite2D = $BeamSprite
 @onready var hit_area: Area2D = $HitArea
 @onready var hit_shape: CollisionPolygon2D = $HitArea/CollisionPolygon2D
+@onready var ray_impact_player: AudioStreamPlayer2D = $RayImpactPlayer
+@onready var ray_loop_player: AudioStreamPlayer2D = $RayLoopPlayer
 
 func _ready() -> void:
+	# Enable looping for ray_loop
+	var loop_stream := ray_loop_player.stream as AudioStreamWAV
+	if loop_stream:
+		loop_stream.loop_mode = AudioStreamWAV.LoopMode.LOOP_FORWARD
+	
 	# _cache_base_stats()
 	# _apply_upgrades()
 	_set_active(false)
@@ -56,6 +64,14 @@ func _process(delta: float) -> void:
 
 	# Visual + hitbox active only when actually firing
 	_set_active(is_firing)
+
+	# SFX: ray_impact on shoot start, ray_loop while holding
+	if is_firing and not _was_firing:
+		ray_impact_player.play()
+		ray_loop_player.playing = true
+	elif not is_firing and _was_firing:
+		ray_loop_player.playing = false
+	_was_firing = is_firing
 
 	# Heat logic
 	_update_heat(delta, wants_fire)
