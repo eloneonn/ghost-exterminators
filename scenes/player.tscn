@@ -122,42 +122,6 @@ animation = &"idle"
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_3vyb7")
 
-[node name="Flashlight" type="Node2D" parent="." unique_id=1091737022]
-unique_name_in_owner = true
-
-[node name="AdditiveLight" type="PointLight2D" parent="Flashlight" unique_id=576742718]
-light_mask = 0
-visibility_layer = 0
-shadow_enabled = true
-shadow_filter_smooth = 1.0
-texture = ExtResource("3_qhqgy")
-texture_scale = 0.1
-
-[node name="SubtractiveLight" type="PointLight2D" parent="Flashlight" unique_id=316401614]
-light_mask = 0
-visibility_layer = 0
-energy = 3.0
-blend_mode = 1
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_filter_smooth = 2.0
-shadow_item_cull_mask = 2
-texture = ExtResource("3_qhqgy")
-texture_scale = 0.1
-
-[node name="DebugLightSprite" type="Sprite2D" parent="Flashlight" unique_id=1897615350]
-unique_name_in_owner = true
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_qhqgy")
-
-[node name="LightArea" type="Area2D" parent="Flashlight" unique_id=296855073]
-unique_name_in_owner = true
-collision_layer = 8
-collision_mask = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight/LightArea" unique_id=1939522007]
-polygon = PackedVector2Array(104, -48, 104, 48, 0, 0)
-
 [node name="PointLight" type="Node2D" parent="." unique_id=338882737]
 unique_name_in_owner = true
 
@@ -176,7 +140,43 @@ texture = SubResource("GradientTexture2D_qhqgy")
 
 [node name="GhostRay" parent="." unique_id=1379834991 instance=ExtResource("4_dqkch")]
 unique_name_in_owner = true
-position = Vector2(0, 1)
+
+[node name="Flashlight" type="Node2D" parent="GhostRay" unique_id=1091737022]
+unique_name_in_owner = true
+position = Vector2(4, -1)
+
+[node name="AdditiveLight" type="PointLight2D" parent="GhostRay/Flashlight" unique_id=576742718]
+light_mask = 0
+visibility_layer = 0
+shadow_enabled = true
+shadow_filter_smooth = 1.0
+texture = ExtResource("3_qhqgy")
+texture_scale = 0.1
+
+[node name="SubtractiveLight" type="PointLight2D" parent="GhostRay/Flashlight" unique_id=316401614]
+light_mask = 0
+visibility_layer = 0
+energy = 3.0
+blend_mode = 1
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_filter_smooth = 2.0
+shadow_item_cull_mask = 2
+texture = ExtResource("3_qhqgy")
+texture_scale = 0.1
+
+[node name="DebugLightSprite" type="Sprite2D" parent="GhostRay/Flashlight" unique_id=1897615350]
+unique_name_in_owner = true
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_qhqgy")
+
+[node name="LightArea" type="Area2D" parent="GhostRay/Flashlight" unique_id=296855073]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GhostRay/Flashlight/LightArea" unique_id=1939522007]
+polygon = PackedVector2Array(104, -48, 104, 48, 0, 0)
 
 [node name="ThoughtLabel" type="Label" parent="." unique_id=439457103]
 unique_name_in_owner = true

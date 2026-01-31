@@ -95,7 +95,7 @@ func _update_aim() -> void:
 	elif direction.x < 0:
 		sprite.flip_h = false
 
-	flashlight.rotation = angle
+	# flashlight.rotation = angle
 	ghost_ray.rotation = angle
 
 	# Optional: position the gun slightly in front of the player
@@ -104,14 +104,6 @@ func _update_aim() -> void:
 func _unhandled_input(event: InputEvent) -> void:	
 	if event.is_action_pressed("flashlight"):
 		flashlight_enabled = !flashlight_enabled;
-
-func set_flashlight_rotation() -> void:
-	var mouse_position := get_global_mouse_position()
-	var direction := (mouse_position - global_position).normalized()
-	var angle := direction.angle()
-
-	flashlight.rotation = angle
-	ghost_ray.rotation = angle
 
 func show_thought(thought: String, delay: float) -> void:
 	await get_tree().create_timer(delay).timeout
