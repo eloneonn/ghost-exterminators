@@ -38,6 +38,8 @@ func _on_quota_reached(quota: int) -> void:
 
 func take_sanity_damage(damage: int) -> void:
 	sanity -= damage;
+	animation_player.play("hurt")
+
 	if sanity <= 0:
 		GameManager.end_game(Enums.GameEnding.INSANITY);
 

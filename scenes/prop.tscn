@@ -1,9 +1,20 @@
 [gd_scene format=3 uid="uid://bcbaphl6idug8"]
 
 [ext_resource type="Script" uid="uid://cige5ygn4hycb" path="res://scripts/prop.gd" id="1_l5lq6"]
+[ext_resource type="Texture2D" uid="uid://bxenfxoo46h5b" path="res://icon.svg" id="2_m6nas"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n1e5n"]
+resource_local_to_scene = true
 light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_m6nas"]
+offsets = PackedFloat32Array(0.13319673, 0.7028689)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p0f5n"]
+gradient = SubResource("Gradient_m6nas")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5lq6"]
 
@@ -22,14 +33,128 @@ radius = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_61kf7"]
 radius = 1.0
 
+[sub_resource type="Animation" id="Animation_m6nas"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CanvasItemMaterial_n1e5n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RevealLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RevealLight:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("GradientTexture2D_p0f5n")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RevealLight:texture_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_n1e5n"]
+resource_name = "jumpscare"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprite2D:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("CanvasItemMaterial_n1e5n"), SubResource("CanvasItemMaterial_n1e5n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RevealLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 1.9667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("RevealLight:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RevealLight:texture_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1.6333333, 2),
+"transitions": PackedFloat32Array(0.076946534, 0.21763757, 0.23325811, 0.4061258),
+"update": 0,
+"values": [0.01, 1.0, 1.0, 0.01]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6nas"]
+_data = {
+&"RESET": SubResource("Animation_m6nas"),
+&"jumpscare": SubResource("Animation_n1e5n")
+}
+
 [node name="Prop" type="CharacterBody2D" unique_id=1899897562]
 collision_layer = 4
-collision_mask = 31
+collision_mask = 26
 script = ExtResource("1_l5lq6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1888285308]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_n1e5n")
+texture = ExtResource("2_m6nas")
+
+[node name="RevealLight" type="PointLight2D" parent="." unique_id=2081606893]
+visible = false
+texture = SubResource("GradientTexture2D_p0f5n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1347407220]
 shape = SubResource("CircleShape2D_l5lq6")
@@ -77,3 +202,6 @@ collision_mask = 8
 position = Vector2(0, 4)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_61kf7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=650230292]
+libraries/ = SubResource("AnimationLibrary_m6nas")
