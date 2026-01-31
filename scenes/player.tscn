@@ -14,18 +14,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(11, 13)
 
-[sub_resource type="Gradient" id="Gradient_g2els"]
-offsets = PackedFloat32Array(0, 0.6686747)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-metadata/_snap_count = 2
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
-gradient = SubResource("Gradient_g2els")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="Gradient" id="Gradient_qhqgy"]
 offsets = PackedFloat32Array(0, 0.001, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
@@ -49,6 +37,18 @@ width = 300
 height = 60
 fill_from = Vector2(0.5, 0)
 
+[sub_resource type="Gradient" id="Gradient_g2els"]
+offsets = PackedFloat32Array(0, 0.71516395)
+colors = PackedColorArray(0.39498678, 0.3949867, 0.3949867, 1, 0, 0, 0, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
+gradient = SubResource("Gradient_g2els")
+width = 52
+height = 52
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D" unique_id=1413311515 groups=["player"]]
 light_mask = 0
 collision_mask = 2
@@ -66,27 +66,38 @@ animation = &"idle"
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_3vyb7")
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=183468709]
-visible = false
-shadow_enabled = true
-shadow_filter = 2
-texture = SubResource("GradientTexture2D_qhqgy")
-
 [node name="Flashlight" type="Node2D" parent="." unique_id=1091737022]
 unique_name_in_owner = true
 
 [node name="AdditiveLight" type="PointLight2D" parent="Flashlight" unique_id=576742718]
 light_mask = 0
 visibility_layer = 0
-energy = 2.0
+energy = 3.0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_dqkch")
 
 [node name="SubtractiveLight" type="PointLight2D" parent="Flashlight" unique_id=316401614]
 light_mask = 0
 visibility_layer = 0
+energy = 3.0
 blend_mode = 1
 range_item_cull_mask = 2
 shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_fjrip")
+
+[node name="PointLight" type="Node2D" parent="." unique_id=338882737]
+unique_name_in_owner = true
+
+[node name="PointLightAdditive" type="PointLight2D" parent="PointLight" unique_id=183468709]
+shadow_enabled = true
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_qhqgy")
+
+[node name="PointLightSubtractive" type="PointLight2D" parent="PointLight" unique_id=1052580881]
+blend_mode = 1
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_qhqgy")

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://7uu600b20wq2"]
+
+[ext_resource type="Script" uid="uid://ovyfqcrc7yhm" path="res://scripts/hud.gd" id="1_0mwgc"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1983524308]
+script = ExtResource("1_0mwgc")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1150014384]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=54906651]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1012593220]
+layout_mode = 2
+
+[node name="BatteryLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2010063548]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
