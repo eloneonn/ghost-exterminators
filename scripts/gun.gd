@@ -79,8 +79,8 @@ func _process(delta: float) -> void:
 	# Damage if firing (once per second)
 	if is_firing:
 		damage_timer += delta
-		if damage_timer >= 0.2:
-			damage_timer -= 0.2
+		if damage_timer >= 0.3:
+			damage_timer -= 0.3
 			deal_damage()
 	else:
 		damage_timer = 0.0

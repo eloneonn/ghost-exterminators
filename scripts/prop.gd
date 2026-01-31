@@ -68,6 +68,8 @@ var frozen: bool = false;
 var player: CharacterBody2D
 
 const PROPS_SFX_DIR := "res://sfx/props"
+const SFX_SMASH := "res://sfx/smash.ogg"
+const SFX_BREAK := "res://sfx/break.wav"
 var _prop_sound_paths: PackedStringArray = []
 var _prop_sound_timer: Timer
 
@@ -110,6 +112,18 @@ func _ready():
 	add_child(_prop_sound_timer)
 	_prop_sound_timer.start()
 
+
+func _play_sfx(path: String, audio_player: AudioStreamPlayer2D) -> void:
+	if not is_instance_valid(audio_player):
+		return
+	var stream: AudioStream = load(path) as AudioStream
+	if stream:
+		audio_player.stream = stream
+		audio_player.pitch_scale = 1.0
+		audio_player.pitch_scale = randf_range(0.8, 1.2)
+		audio_player.volume_db = 0.0
+		audio_player.bus = "Sfx"
+		audio_player.play()
 
 func _play_random_prop_sound() -> void:
 	if _prop_sound_paths.is_empty() or not is_instance_valid(prop_sound_player):
@@ -321,6 +335,7 @@ func take_damage(damage: int) -> void:
 	var shake_anims := ["Shake", "Shake 2", "Shake 3"]
 	shake_anim_player.play(shake_anims[randi() % shake_anims.size()])
 	flash_anim_player.play("flash")
+	_play_sfx(SFX_SMASH, prop_sound_player)
 
 	print("Prop took damage: ", damage)
 	health -= damage
@@ -335,6 +350,16 @@ func die() -> void:
 		GameManager.capture_ghost(self.value)
 	else:
 		GameManager.destroy_prop(self.value)
+
+	# Play die SFX: smash + break (reparent so sounds finish after we're freed)
+	var break_player := AudioStreamPlayer2D.new()
+	add_child(break_player)
+	_play_sfx(SFX_SMASH, prop_sound_player)
+	_play_sfx(SFX_BREAK, break_player)
+	get_tree().current_scene.add_child(prop_sound_player)
+	get_tree().current_scene.add_child(break_player)
+	prop_sound_player.finished.connect(prop_sound_player.queue_free)
+	break_player.finished.connect(break_player.queue_free)
 
 	animation_player.play("die")
 	await animation_player.animation_finished
