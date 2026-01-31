@@ -34,13 +34,37 @@ position = Vector2(57, -61)
 unique_name_in_owner = true
 position = Vector2(-27, -17)
 
-[node name="Label" type="Label" parent="." unique_id=1903789580]
-offset_left = -191.0
-offset_top = -140.0
-offset_right = -74.0
-offset_bottom = -91.0
-text = "WASD to move
-Mouse to point"
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=535605259]
+offset_left = -178.99998
+offset_top = -106.0
+offset_right = -34.195847
+offset_bottom = 63.0
+scale = Vector2(0.99444675, 1)
+theme = ExtResource("6_xkx2a")
+theme_override_font_sizes/normal_font_size = 10
+text = "Catch ghosts to fill your quota and get your salary. Don't break stuff or you wont be paid.
+
+Use salary to buy upgrades at the desk here."
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=104807803]
+offset_left = -13.999998
+offset_top = -83.0
+offset_right = 60.41324
+offset_bottom = -16.0
+scale = Vector2(0.99444675, 1)
+theme = ExtResource("6_xkx2a")
+theme_override_font_sizes/normal_font_size = 6
+text = "When you're ready, enter through the door."
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=585631723]
+offset_left = -181.99998
+offset_top = 18.0
+offset_right = 116.65852
+offset_bottom = 85.0
+scale = Vector2(0.99444675, 1)
+theme = ExtResource("6_xkx2a")
+theme_override_font_sizes/normal_font_size = 7
+text = "Move: WASD   Interact: E   Aim: Mouse   Shoot: Left mouse button   Flashlight: F"
 
 [node name="UpgradeUI" type="CanvasLayer" parent="." unique_id=1486600481]
 unique_name_in_owner = true
