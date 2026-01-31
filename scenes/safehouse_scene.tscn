@@ -58,7 +58,6 @@ position = Vector2(-15, -5)
 
 [node name="TutorialText" type="RichTextLabel" parent="." unique_id=535605259]
 unique_name_in_owner = true
-visible = false
 offset_left = -205.99998
 offset_top = -107.0
 offset_right = -61.195847

@@ -63,8 +63,13 @@ var has_been_lit: bool = false
 var frozen: bool = false;
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var prop_sound_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var player: CharacterBody2D
+
+const PROPS_SFX_DIR := "res://sfx/props"
+var _prop_sound_paths: PackedStringArray = []
+var _prop_sound_timer: Timer
 
 func _ready():
 	add_to_group("props")
@@ -82,8 +87,44 @@ func _ready():
 	sensor_bottom.area_exited.connect(_on_exit_area_bottom_sensor)
 	sensor_left.area_exited.connect(_on_exit_area_left_sensor)
 	sensor_right.area_exited.connect(_on_exit_area_right_sensor)
-	
-	
+
+	if !ghost:
+		return
+
+	# Build list of prop sound effect paths
+	var dir := DirAccess.open(PROPS_SFX_DIR)
+	if dir:
+		dir.list_dir_begin()
+		var file_name := dir.get_next()
+		while file_name != "":
+			if not dir.current_is_dir() and file_name.get_extension() in ["wav", "aiff", "ogg"]:
+				_prop_sound_paths.append(PROPS_SFX_DIR.path_join(file_name))
+			file_name = dir.get_next()
+		dir.list_dir_end()
+
+	# Timer to play a random prop sound every 10 seconds
+	_prop_sound_timer = Timer.new()
+	_prop_sound_timer.wait_time = randf_range(15.0, 50.0)
+	_prop_sound_timer.one_shot = false
+	_prop_sound_timer.timeout.connect(_play_random_prop_sound)
+	add_child(_prop_sound_timer)
+	_prop_sound_timer.start()
+
+
+func _play_random_prop_sound() -> void:
+	if _prop_sound_paths.is_empty() or not is_instance_valid(prop_sound_player):
+		return
+	var path: String = _prop_sound_paths[randi() % _prop_sound_paths.size()]
+	print("Playing prop sound: ", path)
+	var stream: AudioStream = load(path) as AudioStream
+	if stream:
+		prop_sound_player.stream = stream
+		prop_sound_player.pitch_scale = randf_range(0.8, 1.2)
+		prop_sound_player.volume_db = randf_range(-12.0, -5.0)
+		prop_sound_player.bus = "Sfx"
+		prop_sound_player.play()
+
+
 func _on_enter_area_center_sensor(_area: Area2D):
 	center_lit = true;
 	update_light_ratio();
@@ -145,7 +186,6 @@ func jumpscare() -> void:
 func _physics_process(_delta):
 	if player == null:
 		player = get_tree().get_first_node_in_group("player")
-		print("Player found:", player)
 		return
 
 	var distance = global_position.distance_to(player.global_position)
