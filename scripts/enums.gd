@@ -4,3 +4,8 @@ enum Item {
     BATTERY,
     WEAPON1,
 }
+
+enum GameEnding {
+    INSANITY,
+    DEBTPRISON
+}

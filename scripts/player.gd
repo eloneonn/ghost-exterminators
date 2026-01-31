@@ -12,6 +12,10 @@ extends CharacterBody2D
 @onready var light_area: Area2D = %LightArea
 @onready var sprite: Sprite2D = $Sprite2D
 
+var sanity: int = 100;
+var battery_charge: int = Constants.BATTERY_MAX_CHARGE;
+var _battery_drain_accumulator: float = 0.0;
+
 func _on_light_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Prop:
 		#body.frozen = true;
@@ -26,9 +30,16 @@ func _ready() -> void:
 	light_area.body_entered.connect(_on_light_area_body_entered)
 	light_area.body_exited.connect(_on_light_area_body_exited)
 
-func _physics_process(_delta: float) -> void:
+func take_sanity_damage(damage: int) -> void:
+	sanity -= damage;
+	if sanity <= 0:
+		GameManager.end_game(Enums.GameEnding.INSANITY);
+
+func _physics_process(delta: float) -> void:
 	var input_direction := Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
+
+	_update_battery(delta)
 
 	flashlight.visible = flashlight_enabled;
 
@@ -40,6 +51,24 @@ func _physics_process(_delta: float) -> void:
 	_update_aim()
 
 	move_and_slide()
+
+
+func _update_battery(delta: float) -> void:
+	if not flashlight_enabled:
+		return
+
+	_battery_drain_accumulator += delta
+	while _battery_drain_accumulator >= 1.0 and battery_charge > 0:
+		_battery_drain_accumulator -= 1.0
+		battery_charge -= 1
+
+	if battery_charge <= 0:
+		_battery_drain_accumulator = 0.0
+		if GameManager.has_item(Enums.Item.BATTERY):
+			GameManager.remove_item(Enums.Item.BATTERY)
+			battery_charge = Constants.BATTERY_MAX_CHARGE
+		else:
+			flashlight_enabled = false
 
 
 func _update_aim() -> void:

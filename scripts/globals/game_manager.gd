@@ -14,6 +14,9 @@ var total_time: float = 0.0;
 var total_earnings: int = 0;
 var total_expenses: int = 0;
 
+var quota_this_level: int = Constants.STARTING_QUOTA;
+var ghosts_captured_this_level: int = 0;
+
 func _ready() -> void:
     money = Constants.STARTING_MONEY;
     for item in Constants.STARTING_INVENTORY:
@@ -21,6 +24,8 @@ func _ready() -> void:
 
 func next_level() -> void:
     level += 1
+    quota_this_level = Constants.STARTING_QUOTA + level;
+    ghosts_captured_this_level = 0;
 
 func add_money(amount: int) -> void:
     total_earnings += amount;
@@ -50,11 +55,12 @@ func get_item_count(item: Enums.Item) -> int:
 
 func capture_ghost(value: int) -> void:
     ghosts_captured += 1
+    ghosts_captured_this_level += 1
     add_money(value)
 
 func destroy_prop(value: int) -> void:
     props_destroyed += 1
     remove_money(value)
 
-func end_game() -> void:
+func end_game(_ending: Enums.GameEnding) -> void:
     get_tree().change_scene_to_file("res://scenes/end_game_scene.tscn")
