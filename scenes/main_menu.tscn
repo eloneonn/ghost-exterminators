@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://1h6wsw5qpb3f"]
 
 [ext_resource type="Script" uid="uid://bnlhnhq2huv1m" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://cqm5rkejcrsdr" path="res://music/main_menu.wav" id="2_ekxnf"]
 
 [node name="MainMenu" type="MarginContainer" unique_id=1268208862]
 anchors_preset = 15
@@ -32,3 +33,7 @@ text = "Start test scene"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start game"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=616912323]
+stream = ExtResource("2_ekxnf")
+autoplay = true
