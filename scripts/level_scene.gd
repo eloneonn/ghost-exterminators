@@ -56,7 +56,7 @@ func _get_level_lines(level: int) -> Array[String]:
 	var by_level := {
 		1: [
 			"The ghosts are hiding in the props... better start searching.",
-			"GhostRay (left click) should do the trick. Please don't explode.",
+			"GhostRay (hold down left mouse click) should do the trick. Please don't explode.",
 			"Hmm... I swear that thing moved."
 		],
 		2: [
