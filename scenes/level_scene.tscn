@@ -1437,7 +1437,6 @@ tile_map_data = PackedByteArray("AAD8//z/AAAHAAMAAAD8////AAAHAAMAAAADAP//AAAHAAM
 tile_set = SubResource("TileSet_vw353")
 
 [node name="Player" parent="." unique_id=1413311515 instance=ExtResource("5_1lj4f")]
-visible = false
 position = Vector2(15, 16)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=408036016 groups=["camera"]]
@@ -2258,6 +2257,20 @@ offset_right = 47.0
 offset_bottom = -45.0
 theme = ExtResource("10_0jxn2")
 text = "Foyer"
+
+[node name="Foyer2" type="Label" parent="Labels" unique_id=31895356]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = -123.0
+offset_top = 46.0
+offset_right = 149.0
+offset_bottom = 73.0
+theme = ExtResource("10_0jxn2")
+theme_override_font_sizes/font_size = 8
+text = "When you have caught enough ghosts,
+return here to go back home"
+horizontal_alignment = 1
 
 [node name="Reading Nook" type="Label" parent="Labels" unique_id=2000009925]
 light_mask = 2

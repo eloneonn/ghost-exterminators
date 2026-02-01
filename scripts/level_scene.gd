@@ -172,7 +172,7 @@ func _on_door_triggered() -> void:
 		player.show_thought("I need to capture at least " + str(GameManager.quota_this_level) + " ghosts to tonight...", 0.0)
 		return
 	
-	get_tree().change_scene_to_file("res://scenes/safehouse_scene.tscn")
+	GameManager.goto_scene("res://scenes/safehouse_scene.tscn")
 
 func _assign_random_ghosts() -> void:
 	print("Assigning random ghosts...")

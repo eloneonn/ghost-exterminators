@@ -73,10 +73,15 @@ var frozen: bool = false;
 
 var player: CharacterBody2D
 
-const PROPS_SFX_DIR := "res://sfx/props"
 const SFX_SMASH := "res://sfx/smash.ogg"
 const SFX_BREAK := "res://sfx/break.wav"
-var _prop_sound_paths: PackedStringArray = []
+# Preloaded - DirAccess fails on web export (HTML5)
+const PROPS_SFX_STREAMS: Array[AudioStream] = [
+	preload("res://sfx/props/clink.wav"),
+	preload("res://sfx/props/creak.wav"),
+	preload("res://sfx/props/drawer.wav"),
+	preload("res://sfx/props/rattling.wav"),
+]
 var _prop_sound_timer: Timer
 
 func _ready():
@@ -98,17 +103,6 @@ func _ready():
 
 	if !ghost:
 		return
-
-	# Build list of prop sound effect paths
-	var dir := DirAccess.open(PROPS_SFX_DIR)
-	if dir:
-		dir.list_dir_begin()
-		var file_name := dir.get_next()
-		while file_name != "":
-			if not dir.current_is_dir() and file_name.get_extension() in ["wav", "aiff", "ogg"]:
-				_prop_sound_paths.append(PROPS_SFX_DIR.path_join(file_name))
-			file_name = dir.get_next()
-		dir.list_dir_end()
 
 	# Timer to play a random prop sound every 10 seconds
 	_prop_sound_timer = Timer.new()
@@ -132,17 +126,14 @@ func _play_sfx(path: String, audio_player: AudioStreamPlayer2D) -> void:
 		audio_player.play()
 
 func _play_random_prop_sound() -> void:
-	if _prop_sound_paths.is_empty() or not is_instance_valid(prop_sound_player):
+	if PROPS_SFX_STREAMS.is_empty() or not is_instance_valid(prop_sound_player):
 		return
-	var path: String = _prop_sound_paths[randi() % _prop_sound_paths.size()]
-
-	var stream: AudioStream = load(path) as AudioStream
-	if stream:
-		prop_sound_player.stream = stream
-		prop_sound_player.pitch_scale = randf_range(0.8, 1.2)
-		prop_sound_player.volume_db = randf_range(-12.0, -5.0)
-		prop_sound_player.bus = "SFX"
-		prop_sound_player.play()
+	var stream: AudioStream = PROPS_SFX_STREAMS[randi() % PROPS_SFX_STREAMS.size()]
+	prop_sound_player.stream = stream
+	prop_sound_player.pitch_scale = randf_range(0.8, 1.2)
+	prop_sound_player.volume_db = randf_range(-12.0, -5.0)
+	prop_sound_player.bus = "SFX"
+	prop_sound_player.play()
 
 
 func _on_enter_area_center_sensor(_area: Area2D):
