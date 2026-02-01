@@ -24,8 +24,7 @@ var total_expenses: int = 0;
 var quota_this_level: int = Constants.STARTING_QUOTA;
 var ghosts_captured_this_level: int = 0;
 var money_earned_this_level: int = 0;
-var ghost_amount = quota_this_level * randi_range(2,4);
-
+var ghost_amount = clamp(173 * randf_range(0.15, 0.3), quota_this_level * 1.5, 173);
 
 func _ready() -> void:
     money = Constants.STARTING_MONEY;
