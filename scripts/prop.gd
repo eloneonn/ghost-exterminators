@@ -8,6 +8,9 @@ class_name Prop extends CharacterBody2D
 @export var ghost: bool = false;
 @export var sanity_damage: int = 25;
 @export var jumpscare_delay: float = 3;
+@export var post_jumpscare_slow_duration: float = 3
+@export var post_jumpscare_speed_multiplier: float = 0.35
+@export var attack_stop_distance: float = 18.0
 
 @onready var sensor_center: Area2D = $Sensor_Center;
 @onready var sensor_top: Area2D = $Sensor_Top;
@@ -22,6 +25,7 @@ class_name Prop extends CharacterBody2D
 signal jumpscared
 
 var jumpscaring: bool = false
+var _slow_until_msec: int = 0
 
 #Types of ghost behaviour
 enum GhostBehaviour {
@@ -186,6 +190,7 @@ func jumpscare() -> void:
 	var camera: Camera = get_tree().get_first_node_in_group("camera");
 
 	animation_player.play("jumpscare")
+	velocity = Vector2.ZERO
 
 	camera.shake(1.0, 10.0, 10.0)
 	
@@ -200,6 +205,7 @@ func jumpscare() -> void:
 	await get_tree().create_timer(jumpscare_delay).timeout
 
 	jumpscaring = false
+	_slow_until_msec = Time.get_ticks_msec() + int(post_jumpscare_slow_duration * 1000.0)
 
 func _physics_process(_delta):
 	if player == null:
@@ -331,8 +337,16 @@ func choose_safe_zone():
 
 
 func follow_player() -> void:
+	var distance := global_position.distance_to(player.global_position)
+	if distance <= attack_stop_distance:
+		velocity = Vector2.ZERO
+		return
+
 	var direction = (player.global_position - global_position).normalized()
-	velocity = direction * speed
+	var current_speed := speed
+	if Time.get_ticks_msec() < _slow_until_msec:
+		current_speed *= post_jumpscare_speed_multiplier
+	velocity = direction * current_speed
 
 	move_and_slide()
 
