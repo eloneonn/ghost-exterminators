@@ -59,4 +59,5 @@ Vitor Alves"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=616912323]
 stream = ExtResource("2_ekxnf")
+volume_db = 7.5
 autoplay = true

@@ -182,22 +182,23 @@ func _on_exit_area_right_sensor(_area: Area2D):
 	update_light_ratio();
 
 func jumpscare() -> void:
-	if jumpscaring:
-		return
-
-	jumpscaring = true
 	jumpscared.emit()
-	print("Jumpscaring")
 	var camera: Camera = get_tree().get_first_node_in_group("camera");
 
 	animation_player.play("jumpscare")
 
 	camera.shake(1.0, 10.0, 10.0)
 	
-	player.take_sanity_damage(sanity_damage)
+	var player_died = player.take_sanity_damage(sanity_damage);
+
+	if player_died:
+		queue_free()
+		return
+
 	player.show_thought("Aaaaaah!", 0.0)
 
 	await get_tree().create_timer(jumpscare_delay).timeout
+
 	jumpscaring = false
 
 func _physics_process(_delta):
@@ -210,7 +211,8 @@ func _physics_process(_delta):
 	if ghost:
 		# print(distance)
 		
-		if distance <= jumpscare_radius:
+		if distance <= jumpscare_radius and !jumpscaring:
+			jumpscaring = true
 			jumpscare()
 			return
 

@@ -1229,10 +1229,10 @@ Room"
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_cu2va")
-offset_left = -12.0
-offset_top = -67.0
-offset_right = 42.0
-offset_bottom = -44.0
+offset_left = 12.0
+offset_top = -59.0
+offset_right = 66.0
+offset_bottom = -36.0
 text = "Foyer"
 
 [node name="Reading Nook" type="Label" parent="Labels" unique_id=2000009925]
