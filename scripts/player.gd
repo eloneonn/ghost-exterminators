@@ -24,7 +24,7 @@ extends CharacterBody2D
 
 var _footstep_timer: float = 0.0
 
-var sanity: int = 100;
+var sanity: int = 125;
 var battery_max_charge: int = Constants.BATTERY_MAX_CHARGE
 var battery_charge: int = Constants.BATTERY_MAX_CHARGE;
 var _battery_drain_accumulator: float = 0.0;
