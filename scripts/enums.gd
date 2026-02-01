@@ -13,5 +13,6 @@ enum Item {
 
 enum GameEnding {
     INSANITY,
-    DEBTPRISON
+    DEBTPRISON,
+    BANKRUPTCY,
 }
