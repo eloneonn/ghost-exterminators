@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cyj4tnb0v88og"]
 
 [ext_resource type="Script" uid="uid://bil67hutl0o27" path="res://scripts/level_scene.gd" id="1_2m3ut"]
-[ext_resource type="Shader" path="res://assets/FXs/Fog.gdshader" id="2_cupps"]
+[ext_resource type="Shader" uid="uid://5foribjw5j6m" path="res://assets/FXs/Fog.gdshader" id="2_cupps"]
 [ext_resource type="TileSet" uid="uid://chau7bghnpulr" path="res://assets/light_tile_set.tres" id="2_fkwfp"]
 [ext_resource type="Shader" uid="uid://lvx4dxrc01md" path="res://assets/FXs/DustFX.gdshader" id="2_lkilr"]
 [ext_resource type="Texture2D" uid="uid://dxja1jgs48a0b" path="res://assets/FXs/dust.png" id="3_cupps"]
@@ -1417,6 +1417,7 @@ tile_map_data = PackedByteArray("AAD8//z/AAAHAAMAAAD8////AAAHAAMAAAADAP//AAAHAAM
 tile_set = SubResource("TileSet_vw353")
 
 [node name="Player" parent="." unique_id=1413311515 instance=ExtResource("5_1lj4f")]
+visible = false
 position = Vector2(15, 16)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=408036016 groups=["camera"]]
@@ -2287,12 +2288,12 @@ text = "Ornament
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_cu2va")
-offset_left = 445.0
-offset_top = -754.0
-offset_right = 525.0
-offset_bottom = -679.0
+offset_left = 459.0
+offset_top = -767.0
+offset_right = 539.0
+offset_bottom = -692.0
 text = "Closet 
-	of
+	     of
 Shame"
 
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=846098806]
