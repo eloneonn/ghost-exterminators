@@ -50,7 +50,7 @@ func end_timer() -> float:
 
 func next_level() -> void:
 	level += 1
-	quota_this_level = Constants.STARTING_QUOTA + level;
+	quota_this_level = ceili(Constants.STARTING_QUOTA * 1.5);
 	ghosts_captured_this_level = 0;
 	money_earned_this_level = 0;
 

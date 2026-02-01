@@ -13,7 +13,7 @@ const BASE_SALARY: int = 300;
 
 const STARTING_MONEY: int = 300;
 
-const STARTING_QUOTA: int = 3;
+const STARTING_QUOTA: int = 4;
 
 const STARTING_INVENTORY: Array[Enums.Item] = [
     Enums.Item.WEAPON1,
