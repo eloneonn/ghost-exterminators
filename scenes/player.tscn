@@ -207,7 +207,6 @@ texture = SubResource("GradientTexture2D_qhqgy")
 
 [node name="GhostRay" parent="." unique_id=1379834991 instance=ExtResource("4_dqkch")]
 unique_name_in_owner = true
-cool_color = Color(0.1254902, 0.61960787, 0.4392157, 0)
 
 [node name="Flashlight" type="Node2D" parent="GhostRay" unique_id=1091737022]
 unique_name_in_owner = true

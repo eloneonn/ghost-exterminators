@@ -58,16 +58,18 @@ position = Vector2(-15, -5)
 
 [node name="TutorialText" type="RichTextLabel" parent="." unique_id=535605259]
 unique_name_in_owner = true
-offset_left = -205.99998
+offset_left = -206.0
 offset_top = -107.0
-offset_right = -61.195847
+offset_right = -45.106506
 offset_bottom = 62.0
 scale = Vector2(0.99444675, 1)
 theme = ExtResource("6_xkx2a")
 theme_override_font_sizes/normal_font_size = 10
-text = "Catch ghosts to fill your quota and get your salary. Don't break stuff or you wont be paid.
+text = "Ghost Control Inc. Employment Contract:
 
-Use salary to buy upgrades at the desk here."
+The theater is overrun with ghosts hiding in everyday objects. Catch them to get paid. Don't break stuff.
+
+Use your salary to buy upgrades at the desk when you return here."
 
 [node name="StatsText" type="RichTextLabel" parent="." unique_id=979793562]
 unique_name_in_owner = true
@@ -81,10 +83,10 @@ theme_override_font_sizes/normal_font_size = 10
 
 [node name="TutorialDoor" type="RichTextLabel" parent="." unique_id=104807803]
 unique_name_in_owner = true
-offset_left = -52.0
-offset_top = -80.0
-offset_right = 22.413239
-offset_bottom = -13.0
+offset_left = 36.0
+offset_top = -95.0
+offset_right = 79.24012
+offset_bottom = -28.0
 scale = Vector2(0.99444675, 1)
 theme = ExtResource("6_xkx2a")
 theme_override_font_sizes/normal_font_size = 6
@@ -99,6 +101,17 @@ scale = Vector2(0.99444675, 1)
 theme = ExtResource("6_xkx2a")
 theme_override_font_sizes/normal_font_size = 7
 text = "Move: WASD   Interact: E   Aim: Mouse   Shoot: Left mouse button   Flashlight: F   Pause: Esc"
+
+[node name="Label" type="Label" parent="." unique_id=749959076]
+z_index = 10
+offset_left = -26.0
+offset_top = 2.0
+offset_right = 14.0
+offset_bottom = 25.0
+rotation = -1.5707964
+theme = ExtResource("6_xkx2a")
+theme_override_font_sizes/font_size = 6
+text = "Store"
 
 [node name="UpgradeUI" type="CanvasLayer" parent="." unique_id=1486600481]
 unique_name_in_owner = true

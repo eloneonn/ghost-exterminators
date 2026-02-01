@@ -51,7 +51,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 8
-text = "Credits:
+text = "Made by:
 
 Artem Rybushkin
 Joonatan Aurasmaa
@@ -68,5 +68,5 @@ text = "Start game"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=616912323]
 stream = ExtResource("2_ekxnf")
-volume_db = 7.5
+volume_db = 12.0
 autoplay = true

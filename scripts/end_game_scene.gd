@@ -9,7 +9,7 @@ func _ready() -> void:
         "\nStatistics: \n\n"
         + "Nights survived: " + str(GameManager.level) + "\n"
         + "Ghosts captured: " + str(GameManager.ghosts_captured) + "\n"
-        + "Props destroyed: " + str(GameManager.props_destroyed) + "\n"
+        + "Objects destroyed: " + str(GameManager.props_destroyed) + "\n"
         + "Total earnings: " + str(GameManager.total_earnings) + " coins\n"
         + "Total expenses: " + str(GameManager.total_expenses) + " coins\n"
         + "Total time spent in the masion: " + str(int(GameManager.total_time)) + " seconds"
