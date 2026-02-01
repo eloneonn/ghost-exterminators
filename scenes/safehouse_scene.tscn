@@ -103,7 +103,6 @@ text = "Move: WASD   Interact: E   Aim: Mouse   Shoot: Left mouse button   Flash
 [node name="UpgradeUI" type="CanvasLayer" parent="." unique_id=1486600481]
 unique_name_in_owner = true
 layer = 2
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="UpgradeUI" unique_id=446140888]
 anchors_preset = 15
@@ -118,94 +117,119 @@ color = Color(0.083699994, 0.08747172, 0.31, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = 42.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 theme = SubResource("Theme_xkx2a")
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UpgradeUI/MarginContainer" unique_id=592167058]
 layout_mode = 2
-alignment = 2
+theme_override_constants/separation = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer" unique_id=708420724]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="UpgradeUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=479456657]
 layout_mode = 2
 theme = ExtResource("6_xkx2a")
+theme_override_font_sizes/font_size = 8
 text = "Your items"
 
 [node name="ItemsList" type="Label" parent="UpgradeUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2052354129]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
 theme = ExtResource("6_xkx2a")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeUI/MarginContainer" unique_id=759600179]
+[node name="StoreColumn" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer" unique_id=609384221]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=750372236]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UpgradeUI/MarginContainer/VBoxContainer/VBoxContainer" unique_id=141421116]
+[node name="Label" type="Label" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn" unique_id=141421116]
 layout_mode = 2
 theme = ExtResource("6_xkx2a")
+theme_override_font_sizes/font_size = 8
 text = "Store"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=16578309]
-layout_mode = 2
-
-[node name="MoneyLabel" type="Label" parent="UpgradeUI/MarginContainer/VBoxContainer/VBoxContainer3" unique_id=1462781130]
+[node name="MoneyLabel" type="Label" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn" unique_id=1462781130]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("6_xkx2a")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 
-[node name="UpgradeItems" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=348291851]
+[node name="StoreGrid" type="HBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn" unique_id=1784262594]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="StoreColumnLeft" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid" unique_id=1252040288]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="UpgradeItems" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnLeft" unique_id=348291851]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="UpgradeItem" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems" unique_id=1603925993 instance=ExtResource("7_0fead")]
+[node name="UpgradeItem" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnLeft/UpgradeItems" unique_id=1603925993 instance=ExtResource("7_0fead")]
 cost = 50
 description = "Battery for flashlight"
 
-[node name="UpgradeItems2" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=1643862517]
+[node name="UpgradeItems2" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnLeft" unique_id=1643862517]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="UpgradeItemGunDamage" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems2" unique_id=1932635 instance=ExtResource("7_0fead")]
+[node name="UpgradeItemGunDamage" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnLeft/UpgradeItems2" unique_id=1932635 instance=ExtResource("7_0fead")]
 item = 2
 cost = 250
 description = "Increase GhostRay damage."
 
-[node name="UpgradeItems3" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=1746887725]
+[node name="StoreColumnRight" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid" unique_id=961450825]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="UpgradeItems3" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight" unique_id=1746887725]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="UpgradeItemGunRange" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems3" unique_id=1606005816 instance=ExtResource("7_0fead")]
+[node name="UpgradeItemGunRange" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight/UpgradeItems3" unique_id=1606005816 instance=ExtResource("7_0fead")]
 item = 3
 cost = 200
 description = "Longer and narrower beam."
 
-[node name="UpgradeItems4" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=1228919084]
+[node name="UpgradeItems4" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight" unique_id=1228919084]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="UpgradeItemPlayerSpeed" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems4" unique_id=200449691 instance=ExtResource("7_0fead")]
+[node name="UpgradeItemPlayerSpeed" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight/UpgradeItems4" unique_id=200449691 instance=ExtResource("7_0fead")]
 item = 5
 cost = 180
 description = "Move faster."
 
-[node name="UpgradeItems5" type="VBoxContainer" parent="UpgradeUI/MarginContainer/VBoxContainer" unique_id=117795991]
+[node name="UpgradeItems5" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight" unique_id=117795991]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="UpgradeItemPlayerBattery" parent="UpgradeUI/MarginContainer/VBoxContainer/UpgradeItems5" unique_id=499020685 instance=ExtResource("7_0fead")]
+[node name="UpgradeItemPlayerBattery" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight/UpgradeItems5" unique_id=499020685 instance=ExtResource("7_0fead")]
 item = 6
 cost = 150
 description = "Hold more battery charge."
