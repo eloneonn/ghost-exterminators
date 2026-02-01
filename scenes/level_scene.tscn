@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cyj4tnb0v88og"]
 
 [ext_resource type="Script" uid="uid://bil67hutl0o27" path="res://scripts/level_scene.gd" id="1_2m3ut"]
-[ext_resource type="Shader" path="res://assets/FXs/Fog.gdshader" id="2_cupps"]
+[ext_resource type="Shader" uid="uid://5foribjw5j6m" path="res://assets/FXs/Fog.gdshader" id="2_cupps"]
 [ext_resource type="TileSet" uid="uid://chau7bghnpulr" path="res://assets/light_tile_set.tres" id="2_fkwfp"]
 [ext_resource type="Shader" uid="uid://lvx4dxrc01md" path="res://assets/FXs/DustFX.gdshader" id="2_lkilr"]
 [ext_resource type="Texture2D" uid="uid://dxja1jgs48a0b" path="res://assets/FXs/dust.png" id="3_cupps"]
@@ -1350,6 +1350,26 @@ region = Rect2(96, 96, 16, 32)
 atlas = ExtResource("15_vw353")
 region = Rect2(176, 192, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vgsb"]
+atlas = ExtResource("15_vw353")
+region = Rect2(48, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kimtc"]
+atlas = ExtResource("15_vw353")
+region = Rect2(48, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfjmj"]
+atlas = ExtResource("15_vw353")
+region = Rect2(48, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n3rp"]
+atlas = ExtResource("15_vw353")
+region = Rect2(80, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1c2d"]
+atlas = ExtResource("15_vw353")
+region = Rect2(80, 64, 16, 32)
+
 [node name="LevelScene" type="Node2D" unique_id=155771848]
 script = ExtResource("1_2m3ut")
 
@@ -2378,3 +2398,25 @@ texture = SubResource("AtlasTexture_slsga")
 [node name="Prop14" parent="Shame Closet" unique_id=749164464 instance=ExtResource("7_1lj4f")]
 position = Vector2(486, -708)
 texture = SubResource("AtlasTexture_nsqwb")
+
+[node name="Passthrough_office" type="Node2D" parent="." unique_id=118921983]
+
+[node name="Prop" parent="Passthrough_office" unique_id=866617623 instance=ExtResource("7_1lj4f")]
+position = Vector2(220, -688)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop2" parent="Passthrough_office" unique_id=1680021794 instance=ExtResource("7_1lj4f")]
+position = Vector2(272, -688)
+texture = SubResource("AtlasTexture_kimtc")
+
+[node name="Prop3" parent="Passthrough_office" unique_id=851147257 instance=ExtResource("7_1lj4f")]
+position = Vector2(246, -689)
+texture = SubResource("AtlasTexture_rfjmj")
+
+[node name="Prop4" parent="Passthrough_office" unique_id=761965129 instance=ExtResource("7_1lj4f")]
+position = Vector2(197, -678)
+texture = SubResource("AtlasTexture_1n3rp")
+
+[node name="Prop5" parent="Passthrough_office" unique_id=442816816 instance=ExtResource("7_1lj4f")]
+position = Vector2(197, -656)
+texture = SubResource("AtlasTexture_e1c2d")
