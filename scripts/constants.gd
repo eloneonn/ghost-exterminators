@@ -11,9 +11,9 @@ const BASE_TIME_BONUS: int = 200;
 ## Base salary for the player paid every day
 const BASE_SALARY: int = 300;
 
-const STARTING_MONEY: int = 500;
+const STARTING_MONEY: int = 300;
 
-const STARTING_QUOTA: int = 5;
+const STARTING_QUOTA: int = 3;
 
 const STARTING_INVENTORY: Array[Enums.Item] = [
     Enums.Item.WEAPON1,
@@ -45,7 +45,7 @@ static var ITEM_NAMES: Dictionary = {
 const BATTERY_MAX_CHARGE: int = 60;
 
 ## Upgrade bonuses
-const UPGRADE_GUN_DAMAGE_BONUS: float = 110.0
+const UPGRADE_GUN_DAMAGE_BONUS: float = 25.0
 const UPGRADE_GUN_RANGE_BONUS: float = 30.0
 const UPGRADE_GUN_WIDTH_BONUS: float = -200.0
 const UPGRADE_GUN_MAX_HEAT_BONUS: float = 30.0
