@@ -1,7 +1,7 @@
 class_name Prop extends CharacterBody2D
 
 @export var activation_radius: float = 80.0
-@export var jumpscare_radius: float = 20.0
+@export var jumpscare_radius: float = 32.0
 @export var speed: float = 50.0
 @export var stupidFleeSpeed = 40.0
 @export var health: int = 100;
@@ -18,6 +18,8 @@ class_name Prop extends CharacterBody2D
 @onready var shake_anim_player: AnimationPlayer = %ShakeAnimation;
 @onready var flash_anim_player: AnimationPlayer = %FlashAnimation;
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D;
+
+signal jumpscared
 
 var jumpscaring: bool = false
 
@@ -122,20 +124,20 @@ func _play_sfx(path: String, audio_player: AudioStreamPlayer2D) -> void:
 		audio_player.pitch_scale = 1.0
 		audio_player.pitch_scale = randf_range(0.8, 1.2)
 		audio_player.volume_db = 0.0
-		audio_player.bus = "Sfx"
+		audio_player.bus = "SFX"
 		audio_player.play()
 
 func _play_random_prop_sound() -> void:
 	if _prop_sound_paths.is_empty() or not is_instance_valid(prop_sound_player):
 		return
 	var path: String = _prop_sound_paths[randi() % _prop_sound_paths.size()]
-	print("Playing prop sound: ", path)
+
 	var stream: AudioStream = load(path) as AudioStream
 	if stream:
 		prop_sound_player.stream = stream
 		prop_sound_player.pitch_scale = randf_range(0.8, 1.2)
 		prop_sound_player.volume_db = randf_range(-12.0, -5.0)
-		prop_sound_player.bus = "Sfx"
+		prop_sound_player.bus = "SFX"
 		prop_sound_player.play()
 
 
@@ -180,21 +182,23 @@ func _on_exit_area_right_sensor(_area: Area2D):
 	update_light_ratio();
 
 func jumpscare() -> void:
-	if jumpscaring:
-		return
-
-	jumpscaring = true
-	print("Jumpscaring")
+	jumpscared.emit()
 	var camera: Camera = get_tree().get_first_node_in_group("camera");
 
 	animation_player.play("jumpscare")
 
 	camera.shake(1.0, 10.0, 10.0)
 	
-	player.take_sanity_damage(sanity_damage)
+	var player_died = player.take_sanity_damage(sanity_damage);
+
+	if player_died:
+		queue_free()
+		return
+
 	player.show_thought("Aaaaaah!", 0.0)
 
 	await get_tree().create_timer(jumpscare_delay).timeout
+
 	jumpscaring = false
 
 func _physics_process(_delta):
@@ -207,7 +211,8 @@ func _physics_process(_delta):
 	if ghost:
 		# print(distance)
 		
-		if distance <= jumpscare_radius:
+		if distance <= jumpscare_radius and !jumpscaring:
+			jumpscaring = true
 			jumpscare()
 			return
 
@@ -353,6 +358,7 @@ func die() -> void:
 
 	# Play die SFX: smash + break (reparent so sounds finish after we're freed)
 	var break_player := AudioStreamPlayer2D.new()
+	break_player.bus = "SFX"
 	add_child(break_player)
 	_play_sfx(SFX_SMASH, prop_sound_player)
 	_play_sfx(SFX_BREAK, break_player)

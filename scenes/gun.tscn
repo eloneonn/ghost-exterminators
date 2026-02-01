@@ -30,6 +30,8 @@ flip_h = true
 
 [node name="RayImpactPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1616624178]
 stream = ExtResource("3_ray_impact")
+bus = &"SFX"
 
 [node name="RayLoopPlayer" type="AudioStreamPlayer2D" parent="." unique_id=166702507]
 stream = ExtResource("4_ray_loop")
+bus = &"SFX"

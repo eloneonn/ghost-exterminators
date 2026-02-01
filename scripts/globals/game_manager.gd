@@ -80,3 +80,16 @@ func destroy_prop(value: int) -> void:
 
 func end_game(_ending: Enums.GameEnding) -> void:
     get_tree().change_scene_to_file("res://scenes/end_game_scene.tscn")
+
+func reset_game() -> void:
+    level = 0;
+    money = Constants.STARTING_MONEY;
+    inventory = Constants.STARTING_INVENTORY;
+    ghosts_captured = 0;
+    ghosts_captured_this_level = 0;
+    money_earned_this_level = 0;
+    props_destroyed = 0;
+    total_time = 0.0;
+    total_earnings = 0;
+    total_expenses = 0;
+    quota_this_level = Constants.STARTING_QUOTA;

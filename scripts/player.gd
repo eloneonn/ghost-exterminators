@@ -80,12 +80,15 @@ func _on_light_area_body_exited(body: CharacterBody2D) -> void:
 func _on_quota_reached(quota: int) -> void:
 	show_thought("I've reached my quota of " + str(quota) + " ghosts! I should go back home...", 0.0)
 
-func take_sanity_damage(damage: int) -> void:
+func take_sanity_damage(damage: int) -> bool:
 	sanity -= damage;
 	animation_player.play("hurt")
 
 	if sanity <= 0:
 		GameManager.end_game(Enums.GameEnding.INSANITY);
+		return true
+		
+	return false
 
 func _physics_process(delta: float) -> void:
 	var input_direction := Input.get_vector("left", "right", "up", "down")
@@ -178,7 +181,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			flashlight_player.play()
 
 func show_thought(thought: String, delay: float) -> void:
-	await get_tree().create_timer(delay).timeout
+	if get_tree() != null:
+		await get_tree().create_timer(delay).timeout
 
 	thought_label.text = thought
 	animation_player.play("thought")

@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var battery_rect: TextureRect = %BatteryTexture
 @onready var battery_label: Label = %BatteryLabel
 @onready var quota_label: Label = %QuotaLabel
-@onready var sanity_label: Label = %SanityLabel
 @onready var coin_label: Label = %CoinLabel
 
 func _process(_delta: float) -> void:

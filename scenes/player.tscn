@@ -197,8 +197,11 @@ vertical_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=632447416]
 libraries/ = SubResource("AnimationLibrary_fjrip")
 
-[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1792816616]
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
-[node name="FlashlightPlayer" type="AudioStreamPlayer2D" parent="." unique_id=320240763]
+[node name="FlashlightPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
-[node name="BatteryPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1115558234]
+[node name="BatteryPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
