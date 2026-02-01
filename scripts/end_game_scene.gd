@@ -23,7 +23,7 @@ func _ready() -> void:
         + "Objects destroyed: " + str(GameManager.props_destroyed) + "\n"
         + "Total earnings: " + str(GameManager.total_earnings) + " coins\n"
         + "Total expenses: " + str(GameManager.total_expenses) + " coins\n"
-        + "Total time spent in the masion: " + str(int(GameManager.total_time)) + " seconds"
+        + "Total time spent in the theater: " + str(int(GameManager.total_time)) + " seconds"
     )
 
 func _on_main_menu_btn_pressed() -> void:

@@ -9,7 +9,6 @@ const MUTED_DB := -80.0
 @onready var door: Node = %Door
 @onready var pause_menu: CanvasLayer = %PauseMenu
 
-@export var ghost_count: int = GameManager.ghost_amount     # how many props become ghosts
 @export var randomize_behaviour: bool = true
 
 var _music_calm: AudioStreamPlayer
@@ -22,7 +21,6 @@ func _ready() -> void:
 	_connect_jumpscare_signals()
 	GameManager.start_timer()
 
-	print(ghost_count, " ghosts will be assigned in this level)")
 	door.set_prompt("Enter the Safehouse Scene (Press E)")
 	door.interacted.connect(_on_door_triggered)
 
@@ -198,6 +196,8 @@ func _assign_random_ghosts() -> void:
 	if props.is_empty():
 		push_warning("No props found (group 'props' empty).")
 		return
+
+	var ghost_count = clamp(173 * randf_range(0.15, 0.3), GameManager.quota_this_level * 1.5, 173);
 
 	# Clamp so we don't ask more ghosts than props
 	var count: int = clamp(ghost_count, 0, props.size())

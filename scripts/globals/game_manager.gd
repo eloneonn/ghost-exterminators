@@ -27,7 +27,6 @@ var total_expenses: int = 0;
 var quota_this_level: int = Constants.STARTING_QUOTA;
 var ghosts_captured_this_level: int = 0;
 var money_earned_this_level: int = 0;
-var ghost_amount = clamp(173 * randf_range(0.15, 0.3), quota_this_level * 1.5, 173);
 
 func _ready() -> void:
 	money = Constants.STARTING_MONEY;
@@ -50,7 +49,7 @@ func end_timer() -> float:
 
 func next_level() -> void:
 	level += 1
-	quota_this_level = ceili(Constants.STARTING_QUOTA * 1.5);
+	quota_this_level = ceili(Constants.STARTING_QUOTA + level * 1.5);
 	ghosts_captured_this_level = 0;
 	money_earned_this_level = 0;
 
