@@ -1,14 +1,20 @@
 extends MarginContainer
 
 @onready var stats_label: Label = %StatsLabel
+@onready var main_menu_btn: Button = %ReturnBtn
 
 func _ready() -> void:
+    main_menu_btn.pressed.connect(_on_main_menu_btn_pressed)
     stats_label.text = (
-        "Stats: \n"
+        "\nStatistics: \n\n"
+        + "Nights survived: " + str(GameManager.level) + "\n"
         + "Ghosts captured: " + str(GameManager.ghosts_captured) + "\n"
         + "Props destroyed: " + str(GameManager.props_destroyed) + "\n"
-        + "Total earnings: " + str(GameManager.total_earnings) + "\n"
-        + "Total expenses: " + str(GameManager.total_expenses) + "\n"
-        + "Total time spent in thes theater: " + str(GameManager.total_time)
+        + "Total earnings: " + str(GameManager.total_earnings) + " coins\n"
+        + "Total expenses: " + str(GameManager.total_expenses) + " coins\n"
+        + "Total time spent in the theater: " + str(GameManager.total_time) + " seconds"
     )
-    
+
+func _on_main_menu_btn_pressed() -> void:
+    GameManager.reset_game()
+    get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
