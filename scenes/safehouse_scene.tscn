@@ -60,14 +60,14 @@ position = Vector2(-15, -5)
 unique_name_in_owner = true
 offset_left = -206.0
 offset_top = -107.0
-offset_right = -61.19586
+offset_right = -45.106506
 offset_bottom = 62.0
 scale = Vector2(0.99444675, 1)
 theme = ExtResource("6_xkx2a")
 theme_override_font_sizes/normal_font_size = 10
 text = "Ghost Control Inc. Employment Contract:
 
-The theater is overrun with ghosts. Catch them to get paid. Don't break stuff.
+The theater is overrun with ghosts hiding in everyday objects. Catch them to get paid. Don't break stuff.
 
 Use your salary to buy upgrades at the desk when you return here."
 
