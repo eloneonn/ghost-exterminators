@@ -86,6 +86,7 @@ func take_sanity_damage(damage: int) -> bool:
 	animation_player.play("hurt")
 
 	if sanity <= 0:
+		GameManager.end_timer()
 		GameManager.end_game(Enums.GameEnding.INSANITY);
 		return true
 		

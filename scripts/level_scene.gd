@@ -20,6 +20,7 @@ var _volume_tween: Tween
 func _ready() -> void:
 	_setup_music()
 	_connect_jumpscare_signals()
+	GameManager.start_timer()
 
 	print(ghost_count, " ghosts will be assigned in this level)")
 	door.set_prompt("Enter the Safehouse Scene (Press E)")
@@ -164,8 +165,13 @@ func _on_aggressive_hold_timeout() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		Engine.time_scale = 0.0 if Engine.time_scale == 1.0 else 1.0
-		pause_menu.visible = !pause_menu.visible
+		var is_pausing := Engine.time_scale == 1.0
+		Engine.time_scale = 0.0 if is_pausing else 1.0
+		pause_menu.visible = is_pausing
+		if is_pausing:
+			GameManager.pause_timer()
+		else:
+			GameManager.start_timer()
 
 func _on_door_triggered() -> void:
 	if (GameManager.ghosts_captured_this_level < GameManager.quota_this_level):
@@ -173,6 +179,7 @@ func _on_door_triggered() -> void:
 		player.show_thought("I need to capture at least " + str(GameManager.quota_this_level) + " ghosts to tonight...", 0.0)
 		return
 	
+	GameManager.pause_timer()
 	GameManager.goto_scene("res://scenes/safehouse_scene.tscn")
 
 func _assign_random_ghosts() -> void:
