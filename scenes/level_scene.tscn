@@ -1862,10 +1862,12 @@ texture = SubResource("AtlasTexture_xii70")
 
 [node name="BookshelfProp" parent="EntranceProps" unique_id=1068882780 instance=ExtResource("7_1lj4f")]
 position = Vector2(-95, -99)
+excluded_from_ghosts = true
 texture = SubResource("AtlasTexture_1lj4f")
 
 [node name="Bookshelf2Prop" parent="EntranceProps" unique_id=1171394291 instance=ExtResource("7_1lj4f")]
 position = Vector2(114, -101)
+excluded_from_ghosts = true
 texture = SubResource("AtlasTexture_ojpky")
 
 [node name="ShelfProp2" parent="EntranceProps" unique_id=139541576 instance=ExtResource("7_1lj4f")]
@@ -2572,7 +2574,7 @@ position = Vector2(281, -80)
 texture = SubResource("AtlasTexture_bot8o")
 
 [node name="Prop7" parent="Node2D" unique_id=803792460 instance=ExtResource("7_1lj4f")]
-position = Vector2(-137, -63)
+position = Vector2(-189, -80)
 texture = SubResource("AtlasTexture_xpvx7")
 
 [node name="Prop6" parent="Node2D" unique_id=1936076003 instance=ExtResource("7_1lj4f")]

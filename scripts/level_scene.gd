@@ -181,7 +181,7 @@ func _assign_random_ghosts() -> void:
 	var props: Array = get_tree().get_nodes_in_group("props")
 
 	# Safety: only keep actual Prop nodes
-	props = props.filter(func(n): return n is Prop)
+	props = props.filter(func(n): return n is Prop and n.excluded_from_ghosts == false)
 	print("Found", props, "props in the scene.")
 	if props.is_empty():
 		push_warning("No props found (group 'props' empty).")

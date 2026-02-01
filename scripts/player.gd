@@ -85,6 +85,8 @@ func take_sanity_damage(damage: int) -> bool:
 	sanity -= damage;
 	animation_player.play("hurt")
 
+	await get_tree().create_timer(0.7).timeout
+
 	if sanity <= 0:
 		GameManager.end_game(Enums.GameEnding.INSANITY);
 		return true

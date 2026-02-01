@@ -11,6 +11,7 @@ class_name Prop extends CharacterBody2D
 @export var post_jumpscare_slow_duration: float = 3
 @export var post_jumpscare_speed_multiplier: float = 0.35
 @export var attack_stop_distance: float = 18.0
+@export var excluded_from_ghosts: bool = false
 
 @onready var sensor_center: Area2D = $Sensor_Center;
 @onready var sensor_top: Area2D = $Sensor_Top;
@@ -21,6 +22,7 @@ class_name Prop extends CharacterBody2D
 @onready var shake_anim_player: AnimationPlayer = %ShakeAnimation;
 @onready var flash_anim_player: AnimationPlayer = %FlashAnimation;
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D;
+
 
 signal jumpscared
 
@@ -185,7 +187,7 @@ func jumpscare() -> void:
 
 	camera.shake(1.0, 10.0, 10.0)
 	
-	var player_died = player.take_sanity_damage(sanity_damage);
+	var player_died = await player.take_sanity_damage(sanity_damage);
 
 	if player_died:
 		queue_free()
@@ -355,6 +357,7 @@ func take_damage(damage: int) -> void:
 func die() -> void:
 	sprite.visible = false
 	collision_shape_2d.disabled = true
+	sanity_damage = 0
 
 	if ghost:
 		GameManager.capture_ghost(self.value)

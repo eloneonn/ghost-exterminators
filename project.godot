@@ -13,6 +13,7 @@ config_version=5
 config/name="GhostExterminators"
 run/main_scene="uid://1h6wsw5qpb3f"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/image="uid://ciaaocrgni4qj"
 config/icon="res://icon.svg"
 
 [audio]
