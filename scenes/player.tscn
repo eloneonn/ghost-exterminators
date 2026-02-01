@@ -25,7 +25,7 @@ size = Vector2(11, 13)
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
 offsets = PackedFloat32Array(0, 0.71516395)
-colors = PackedColorArray(0.39498678, 0.3949867, 0.3949867, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.39498678, 0.3949867, 0.3949867, 1, 0, 0, 0, 0)
 metadata/_snap_count = 2
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
@@ -126,6 +126,7 @@ shape = SubResource("RectangleShape2D_3vyb7")
 unique_name_in_owner = true
 
 [node name="PointLightAdditive" type="PointLight2D" parent="PointLight" unique_id=183468709]
+energy = 3.17
 shadow_enabled = true
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_qhqgy")

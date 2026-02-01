@@ -1,5 +1,5 @@
 shader_type canvas_item;
-render_mode light_only, blend_mix;
+render_mode light_only, blend_add;
 
 uniform sampler2D mask;
 
