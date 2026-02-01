@@ -1,12 +1,219 @@
 [gd_scene format=3 uid="uid://c6uifyeggxhiv"]
 
 [ext_resource type="Script" uid="uid://bwmyob1bbrhd4" path="res://scripts/gun.gd" id="1_og67c"]
-[ext_resource type="Texture2D" uid="uid://boqdrkrciy8c0" path="res://assets/gun.png" id="2_og67c"]
+[ext_resource type="Texture2D" uid="uid://b7fyi4y1e60a8" path="res://assets/gun.png" id="2_og67c"]
 [ext_resource type="AudioStream" uid="uid://cfqm6h1lxnqll" path="res://sfx/ray_impact.wav" id="3_ray_impact"]
 [ext_resource type="AudioStream" uid="uid://wesq0drlw6cm" path="res://sfx/ray_loop.wav" id="4_ray_loop"]
+[ext_resource type="Shader" uid="uid://c41xropkoeayx" path="res://assets/FXs/GunCone.gdshader" id="5_haq8l"]
+[ext_resource type="Texture2D" uid="uid://ihvp00r2ye5a" path="res://assets/beam_1.png" id="6_bmp1f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_og67c"]
 light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_6oi81"]
+offsets = PackedFloat32Array(0.7509434, 0.9622642)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ergiu"]
+gradient = SubResource("Gradient_6oi81")
+fill = 1
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(1, 0.4875346)
+
+[sub_resource type="Gradient" id="Gradient_5lyo6"]
+offsets = PackedFloat32Array(0.61886793, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lu2bp"]
+noise_type = 0
+seed = 18
+frequency = 0.0434
+fractal_type = 3
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8h1lf"]
+width = 64
+height = 128
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_lu2bp")
+color_ramp = SubResource("Gradient_5lyo6")
+seamless = true
+seamless_blend_skirt = 0.75
+
+[sub_resource type="Gradient" id="Gradient_6hbmn"]
+offsets = PackedFloat32Array(0.50566036, 0.68679243)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4fxfn"]
+noise_type = 0
+frequency = 0.016
+fractal_type = 3
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8cgvb"]
+width = 128
+height = 128
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_4fxfn")
+color_ramp = SubResource("Gradient_6hbmn")
+seamless = true
+seamless_blend_skirt = 0.562
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrmri"]
+shader = ExtResource("5_haq8l")
+shader_parameter/fxTransparency = 0.0
+shader_parameter/coneColor = Color(1, 0.50533336, 0.47000003, 0.7137255)
+shader_parameter/speed1 = 1.30000001937156
+shader_parameter/speed2 = 0.90000001341108
+shader_parameter/noise1 = SubResource("NoiseTexture2D_8h1lf")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_8cgvb")
+shader_parameter/gradientMask = SubResource("GradientTexture2D_ergiu")
+
+[sub_resource type="Gradient" id="Gradient_tmkry"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.50479233, 0.7635783)
+colors = PackedColorArray(1, 0.25490198, 0.25490198, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gvx52"]
+gradient = SubResource("Gradient_tmkry")
+width = 4
+height = 4
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_fa1ey"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18947369, 1), 0.0, 0.0, 0, 0, Vector2(0.8491228, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_tmkry"]
+curve = SubResource("Curve_fa1ey")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wi2m7"]
+particle_flag_disable_z = true
+initial_velocity_min = 31.01
+initial_velocity_max = 62.43
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_tmkry")
+
+[sub_resource type="Gradient" id="Gradient_8h1lf"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qc2nv"]
+gradient = SubResource("Gradient_8h1lf")
+width = 1
+height = 8
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Curve" id="Curve_xi512"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.73333335, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_adhd1"]
+curve = SubResource("Curve_xi512")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gdjye"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 28.019
+flatness = 1.0
+initial_velocity_min = 103.439995
+initial_velocity_max = 188.06
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_adhd1")
+color = Color(1, 1, 1, 0.5137255)
+
+[sub_resource type="Animation" id="Animation_adhd1"]
+resource_name = "Shooting"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/fxTransparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666669),
+"transitions": PackedFloat32Array(1, 4.594793),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spray:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FastParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_nfidh"]
+resource_name = "StopShooting"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/fxTransparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(2.5491211, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spray:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FastParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dtghq"]
+_data = {
+&"Shooting": SubResource("Animation_adhd1"),
+&"StopShooting": SubResource("Animation_nfidh")
+}
 
 [node name="Gun" type="Node2D" unique_id=1379834991]
 script = ExtResource("1_og67c")
@@ -35,3 +242,32 @@ bus = &"SFX"
 [node name="RayLoopPlayer" type="AudioStreamPlayer2D" parent="." unique_id=166702507]
 stream = ExtResource("4_ray_loop")
 bus = &"SFX"
+
+[node name="ConeFx" type="Sprite2D" parent="." unique_id=1724147190]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_rrmri")
+position = Vector2(9.999999, 0)
+scale = Vector2(0.07613186, 0.092552364)
+texture = ExtResource("6_bmp1f")
+
+[node name="Spray" type="GPUParticles2D" parent="ConeFx" unique_id=121400133]
+scale = Vector2(10, 10)
+emitting = false
+amount = 24
+texture = SubResource("GradientTexture2D_gvx52")
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_wi2m7")
+
+[node name="FastParticles" type="GPUParticles2D" parent="ConeFx" unique_id=517595327]
+scale = Vector2(10, 10)
+emitting = false
+amount = 24
+texture = SubResource("GradientTexture2D_qc2nv")
+lifetime = 0.5
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_gdjye")
+
+[node name="ConeAnim" type="AnimationPlayer" parent="ConeFx" unique_id=1407540767]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_dtghq")

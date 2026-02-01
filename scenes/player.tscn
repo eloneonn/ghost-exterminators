@@ -141,10 +141,11 @@ texture = SubResource("GradientTexture2D_qhqgy")
 
 [node name="GhostRay" parent="." unique_id=1379834991 instance=ExtResource("4_dqkch")]
 unique_name_in_owner = true
+cool_color = Color(0.1254902, 0.61960787, 0.4392157, 0)
 
 [node name="Flashlight" type="Node2D" parent="GhostRay" unique_id=1091737022]
 unique_name_in_owner = true
-position = Vector2(4, -1)
+position = Vector2(0, -1)
 
 [node name="AdditiveLight" type="PointLight2D" parent="GhostRay/Flashlight" unique_id=576742718]
 light_mask = 0
@@ -197,11 +198,11 @@ vertical_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=632447416]
 libraries/ = SubResource("AnimationLibrary_fjrip")
 
-[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." unique_id=962085736]
 bus = &"SFX"
 
-[node name="FlashlightPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="FlashlightPlayer" type="AudioStreamPlayer2D" parent="." unique_id=17318794]
 bus = &"SFX"
 
-[node name="BatteryPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="BatteryPlayer" type="AudioStreamPlayer2D" parent="." unique_id=401385987]
 bus = &"SFX"

@@ -2014,10 +2014,10 @@ Room"
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_cu2va")
-offset_left = 12.0
-offset_top = -59.0
-offset_right = 66.0
-offset_bottom = -36.0
+offset_left = -7.0
+offset_top = -68.0
+offset_right = 47.0
+offset_bottom = -45.0
 theme = ExtResource("10_0jxn2")
 text = "Foyer"
 
