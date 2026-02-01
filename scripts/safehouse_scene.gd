@@ -50,7 +50,7 @@ func _process(_delta: float) -> void:
 func _on_door_triggered() -> void:
 	GameManager.next_level()
 	print("Starting level" + str(GameManager.level))
-	get_tree().change_scene_to_file("res://scenes/level_scene.tscn")
+	GameManager.goto_scene("res://scenes/level_scene.tscn")
 
 func _on_add_money_button_pressed() -> void:
 	GameManager.add_money(100)

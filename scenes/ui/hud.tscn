@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ovyfqcrc7yhm" path="res://scripts/hud.gd" id="1_0mwgc"]
 [ext_resource type="Texture2D" uid="uid://dyo2lceatkxhl" path="res://assets/Coin .png" id="2_bo48s"]
 [ext_resource type="Theme" uid="uid://chhvtf2qcxb8j" path="res://theme.tres" id="3_8qguk"]
+[ext_resource type="Texture2D" uid="uid://bmlv0ih7yvjge" path="res://assets/ghost.png" id="4_8qguk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_136eg"]
 atlas = ExtResource("2_bo48s")
@@ -62,7 +63,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=437883500]
 layout_mode = 2
-texture = SubResource("AtlasTexture_136eg")
+texture = ExtResource("4_8qguk")
 stretch_mode = 3
 
 [node name="QuotaLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2133532897]

@@ -6,6 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpvv5"]
 radius = 16.4
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b1101"]
+blend_mode = 1
+light_mode = 1
+
 [node name="Door" type="Node2D" unique_id=887784566]
 script = ExtResource("1_hpvv5")
 
@@ -18,6 +22,7 @@ debug_color = Color(0.6120216, 0.5378068, 1.92523e-07, 0.41960785)
 [node name="Prompt" type="Label" parent="." unique_id=1002910040]
 visible = false
 z_index = 100
+material = SubResource("CanvasItemMaterial_b1101")
 offset_left = -7.0
 offset_top = -20.0
 offset_right = 133.0

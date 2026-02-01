@@ -2,6 +2,11 @@ extends Node
 
 signal quota_reached(quota: int)
 
+const LOADING_SCREEN_PATH := "res://scenes/loading_screen.tscn"
+
+# Scene transition
+var pending_scene_path: String = ""
+
 # Properties
 
 var level: int = 0;
@@ -81,6 +86,10 @@ func destroy_prop(value: int) -> void:
 
 func end_game(_ending: Enums.GameEnding) -> void:
     get_tree().change_scene_to_file("res://scenes/end_game_scene.tscn")
+
+func goto_scene(scene_path: String) -> void:
+    pending_scene_path = scene_path
+    get_tree().change_scene_to_file(LOADING_SCREEN_PATH)
 
 func reset_game() -> void:
     level = 0;
