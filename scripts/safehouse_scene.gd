@@ -41,7 +41,7 @@ func _ready() -> void:
 	if (GameManager.level == 3):
 		player.show_thought("I'm getting the hang of this! Another day, another shift of ghost extermination.", 0.0)
 	if (GameManager.level >= 4):
-		player.show_thought("I can't think of anytinh else to write here, thanks so much for playing!", 0.0)
+		player.show_thought("I can't think of anyting else to write here, thanks so much for playing!", 0.0)
 
 func _process(_delta: float) -> void:
 	items_list.text = GameManager.get_items_string()
