@@ -19,6 +19,8 @@ class_name Prop extends CharacterBody2D
 @onready var flash_anim_player: AnimationPlayer = %FlashAnimation;
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D;
 
+signal jumpscared
+
 var jumpscaring: bool = false
 
 #Types of ghost behaviour
@@ -184,6 +186,7 @@ func jumpscare() -> void:
 		return
 
 	jumpscaring = true
+	jumpscared.emit()
 	print("Jumpscaring")
 	var camera: Camera = get_tree().get_first_node_in_group("camera");
 
