@@ -5,6 +5,8 @@ extends Node2D
 @onready var upgrade_ui: Node = %UpgradeUI
 #@onready var add_money_button: Button = %GetMoneyButton
 
+@onready var close_button: Button = %CloseBtn
+
 @onready var money_label: Label = %MoneyLabel
 @onready var items_list: Label = %ItemsList
 @onready var upgrade_items_container: VBoxContainer = %UpgradeItems
@@ -20,7 +22,8 @@ func _ready() -> void:
 	upgrade_desk.interacted.connect(_on_upgrade_desk_interacted)
 	#add_money_button.pressed.connect(_on_add_money_button_pressed)
 	_connect_upgrade_items()
-	
+
+	close_button.pressed.connect(_on_close_btn_pressed)
 	if GameManager.level == 0:
 		tutorial_text.visible = true;
 		tutorial_door.visible = true;
@@ -56,6 +59,10 @@ func _on_add_money_button_pressed() -> void:
 	GameManager.add_money(100)
 	print("Added money!")
 	print("Current money:" + str(GameManager.get_money()))
+
+func _on_close_btn_pressed() -> void:
+	upgrade_ui.visible = false
+
 func _on_upgrade_desk_interacted() -> void:
 	if upgrade_ui.visible:
 		upgrade_ui.visible = false

@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var debug_light_sprite: Sprite2D = %DebugLightSprite
 @onready var light_area: Area2D = %LightArea
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var thought_label: Label = %ThoughtLabel
 
@@ -109,6 +110,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	_update_footsteps(delta)
+	_update_walk_animation()
 
 
 func _update_footsteps(delta: float) -> void:
@@ -123,6 +125,14 @@ func _update_footsteps(delta: float) -> void:
 			footstep_player.play()
 	else:
 		_footstep_timer = 0.0
+
+func _update_walk_animation() -> void:
+	if velocity.length() > 0:
+		if animated_sprite.animation != "walk":
+			animated_sprite.play("walk")
+	else:
+		if animated_sprite.animation != "idle":
+			animated_sprite.play("idle")
 
 func _update_battery(delta: float) -> void:
 	if not flashlight_enabled:
@@ -165,8 +175,10 @@ func _update_aim() -> void:
 
 	if direction.x > 0:
 		sprite.flip_h = true
+		animated_sprite.flip_h = true
 	elif direction.x < 0:
 		sprite.flip_h = false
+		animated_sprite.flip_h = false
 
 	# flashlight.rotation = angle
 	ghost_ray.rotation = angle
