@@ -9,7 +9,7 @@ const MUTED_DB := -80.0
 @onready var door: Node = %Door
 @onready var pause_menu: CanvasLayer = %PauseMenu
 
-@export var ghost_count: int = GameManager.quota_this_level * randi_range(1, 3)       # how many props become ghosts
+@export var ghost_count: int = GameManager.ghost_amount     # how many props become ghosts
 @export var randomize_behaviour: bool = true
 
 var _music_calm: AudioStreamPlayer
@@ -21,7 +21,7 @@ func _ready() -> void:
 	_setup_music()
 	_connect_jumpscare_signals()
 
-	print(ghost_count, " ghosts will be assigned in this level.")
+	print(ghost_count, " ghosts will be assigned in this level)")
 	door.set_prompt("Enter the Safehouse Scene (Press E)")
 	door.interacted.connect(_on_door_triggered)
 
@@ -54,24 +54,24 @@ func _show_level_dialogue(level: int) -> void:
 func _get_level_lines(level: int) -> Array[String]:
 	var by_level := {
 		1: [
-			"The ghosts are hiding in the props… better start searching.",
-			"GhostRay (left click) should do the trick. Please don’t explode.",
-			"Hmm… I swear that thing moved…"
+			"The ghosts are hiding in the props... better start searching.",
+			"GhostRay (left click) should do the trick. Please don't explode.",
+			"Hmm... I swear that thing moved."
 		],
 		2: [
 			"Okay. Same deal: props are suspicious, hallways are worse.",
 			"If I hear whispers behind me, I’m simply not turning around.",
-			"This place has big ‘don’t split up’ energy. So I won’t."
+			"This place has big 'don't split up' energy. So I won't."
 		],
 		3: [
-			"All right… I’m not new anymore. I’m a professional.",
-			"Ghosts: you get one jump-scare for free. After that, it’s business.",
-			"If a cursed mirror shows my doom, I’m charging it rent."
+			"All right... I'm not new anymore. I'm a professional.",
+			"Ghosts: you get one jump-scare for free. After that, it's business.",
+			"If a cursed mirror shows my doom, I'm charging it rent."
 		],
 		4: [
 			"Night four. The haunted decor is starting to feel… predictable.",
-			"If the lights flicker, that’s just the ghosts applauding my work.",
-			"Come on then. I’m basically the final boss now."
+			"If the lights flicker, that's just the ghosts applauding my work.",
+			"Come on then. I'm basically the final boss now."
 		]
 	}
 
@@ -84,25 +84,26 @@ func _get_level_lines(level: int) -> Array[String]:
 func _get_random_stinger() -> String:
 	var stingers: Array[String] = [
 		"Rule #1: never say 'What could possibly go wrong?' out loud.",
-		"If a creepy doll is in here, I´m leaving. Immediately.",
-		"If I hear spooky piano music, I’m turning around. Not today.",
-		"Somewhere a narrator is like: ‘He was, in fact, not fine.’",
-		"If a child giggles in the hallway… nope. Filing a complaint.",
-		"If the door creaks open by itself, I’m creaking out of here.",
+		"If a creepy doll is in here, I'm leaving. Immediately.",
+		"If I hear spooky piano music, I'm turning around. Not today.",
+		"Somewhere a narrator is like: 'He was, in fact, not fine.'",
+		"If a child giggles in the hallway. nope. Filing a complaint.",
+		"If the door creaks open by itself, I'm creaking out of here.",
 		"Why are there always candles? Is there an interior designer ghost?",
-		"If I see a shadowy figure, I’m asking for its autograph.",
-		"Note to self: never trust a ghost that offers to ‘play a game.’",
-		"If I find a Ouija board, I’m ghosting this job.",
+		"If I see a shadowy figure, I'm asking for its autograph.",
+		"Note to self: never trust a ghost that offers to 'play a game.'",
+		"If I find a Ouija board, I'm ghosting this job.",
 		"Why do ghosts always haunt places with bad Wi-Fi?",
-		"If I see a floating orb, I’m calling it ‘Bob’ and moving on",
+		"If I see a floating orb, I'm calling it 'Bob' and moving on",
 		"Is it just me, or do haunted houses always smell like mold?",
-		"If a ghost asks me to ‘join them,’ I’m declining the invitation.",
+		"If a ghost asks me to 'join them,' I'm declining the invitation.",
 		"Why do ghosts always seem to prefer old, creaky furniture?",
-		"If I hear footsteps behind me, I’m not looking back.",
+		"If I hear footsteps behind me, I'm not looking back.",
 		"Why is it that every haunted house has at least one creepy attic?",
-		"If a ghost offers me a deal, I’m reading the fine print carefully.",
+		"If a ghost offers me a deal, I'm reading the fine print carefully.",
 		"Why do ghosts always seem to appear in the most inconvenient places?",
-		"If I see a ghostly figure in a mirror, I’m not making eye contact",
+		"If I see a ghostly figure in a mirror, I'm not making eye contact",
+		"Some people spend their time at gamejams. I spend mine evicting ghosts."
 		]
 
 	var rng := RandomNumberGenerator.new()

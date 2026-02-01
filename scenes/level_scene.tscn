@@ -7,14 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://dxja1jgs48a0b" path="res://assets/FXs/dust.png" id="3_cupps"]
 [ext_resource type="PackedScene" uid="uid://b7dtp5o2krjce" path="res://scenes/interact.tscn" id="4_1lj4f"]
 [ext_resource type="PackedScene" uid="uid://c7lhvewysmr4j" path="res://scenes/player.tscn" id="5_1lj4f"]
-[ext_resource type="Script" uid="uid://roj22rip7sr0" path="res://scripts/camera.gd" id="5_cu2va"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="5_cu2va"]
 [ext_resource type="PackedScene" uid="uid://7uu600b20wq2" path="res://scenes/ui/hud.tscn" id="6_eohcs"]
 [ext_resource type="Texture2D" uid="uid://ty50ed8qoqw8" path="res://assets/tiledark.png" id="6_vw353"]
 [ext_resource type="PackedScene" uid="uid://bcbaphl6idug8" path="res://scenes/prop.tscn" id="7_1lj4f"]
-[ext_resource type="Script" uid="uid://b7jqjcgqhbtvr" path="res://scripts/intro.gd" id="7_2m3ut"]
+[ext_resource type="Script" path="res://scripts/intro.gd" id="7_2m3ut"]
 [ext_resource type="Texture2D" uid="uid://begyqtihjdqy6" path="res://assets/propmap.png" id="8_0jxn2"]
 [ext_resource type="Theme" uid="uid://chhvtf2qcxb8j" path="res://theme.tres" id="10_0jxn2"]
 [ext_resource type="Texture2D" uid="uid://ci3f3yvm5a6j8" path="res://assets/light.png" id="15_vw353"]
+[ext_resource type="PackedScene" path="res://scenes/SafeZone.tscn" id="16_lusm8"]
 
 [sub_resource type="Gradient" id="Gradient_lusm8"]
 offsets = PackedFloat32Array(0, 0.00754717, 0.88301885)
@@ -1295,20 +1296,20 @@ blend_mode = 1
 light_mode = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yk5a2"]
-atlas = ExtResource("15_vw353")
-region = Rect2(32, 128, 16, 16)
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 48, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fk7a"]
-atlas = ExtResource("15_vw353")
-region = Rect2(0, 128, 16, 16)
+atlas = ExtResource("8_0jxn2")
+region = Rect2(80, 96, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfxsv"]
-atlas = ExtResource("15_vw353")
-region = Rect2(32, 128, 16, 16)
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ixb5"]
-atlas = ExtResource("15_vw353")
-region = Rect2(32, 128, 16, 16)
+atlas = ExtResource("8_0jxn2")
+region = Rect2(96, 96, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ssrnq"]
 atlas = ExtResource("15_vw353")
@@ -1351,128 +1352,20 @@ atlas = ExtResource("15_vw353")
 region = Rect2(176, 192, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vgsb"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 64, 32, 32)
+atlas = ExtResource("8_0jxn2")
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kimtc"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 64, 32, 32)
+atlas = ExtResource("8_0jxn2")
+region = Rect2(112, 128, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfjmj"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 32, 32, 16)
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1n3rp"]
-atlas = ExtResource("15_vw353")
-region = Rect2(80, 64, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1c2d"]
-atlas = ExtResource("15_vw353")
-region = Rect2(80, 64, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rvvcp"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 128, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olkv6"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 128, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cw3xy"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 128, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uguy4"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 128, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y1vfx"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 128, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cegrl"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 128, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hiipa"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 128, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_duc41"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 128, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dlb7l"]
-atlas = ExtResource("15_vw353")
-region = Rect2(48, 128, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xpvx7"]
-atlas = ExtResource("15_vw353")
-region = Rect2(176, 48, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bot8o"]
-atlas = ExtResource("15_vw353")
-region = Rect2(80, 96, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ihouq"]
-atlas = ExtResource("15_vw353")
-region = Rect2(160, 184, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cb85q"]
-atlas = ExtResource("15_vw353")
-region = Rect2(160, 184, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtmlv"]
-atlas = ExtResource("15_vw353")
-region = Rect2(176, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l1o3f"]
-atlas = ExtResource("15_vw353")
-region = Rect2(96, 160, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_038fs"]
-atlas = ExtResource("15_vw353")
-region = Rect2(192, 32, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ybuhx"]
-atlas = ExtResource("15_vw353")
-region = Rect2(128, 96, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ithp"]
-atlas = ExtResource("15_vw353")
-region = Rect2(128, 96, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7vtmn"]
-atlas = ExtResource("15_vw353")
-region = Rect2(64, 160, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_734a4"]
-atlas = ExtResource("15_vw353")
-region = Rect2(64, 160, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f52kr"]
-atlas = ExtResource("15_vw353")
-region = Rect2(176, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyl25"]
-atlas = ExtResource("15_vw353")
-region = Rect2(176, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5gwql"]
-atlas = ExtResource("15_vw353")
-region = Rect2(176, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_87t0l"]
-atlas = ExtResource("15_vw353")
-region = Rect2(128, 48, 48, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fq05b"]
-atlas = ExtResource("15_vw353")
-region = Rect2(128, 48, 48, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pxeue"]
-atlas = ExtResource("15_vw353")
-region = Rect2(128, 48, 48, 32)
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
 
 [node name="LevelScene" type="Node2D" unique_id=155771848]
 script = ExtResource("1_2m3ut")
@@ -1701,41 +1594,6 @@ texture = SubResource("AtlasTexture_78t5s")
 position = Vector2(88, -208)
 texture = SubResource("AtlasTexture_78t5s")
 
-[node name="Row4" type="Node2D" parent="TheatherHallProps" unique_id=1679588749]
-position = Vector2(0, -160)
-
-[node name="Prop9" parent="TheatherHallProps/Row4" unique_id=1864063488 instance=ExtResource("7_1lj4f")]
-position = Vector2(72, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop" parent="TheatherHallProps/Row4" unique_id=483328836 instance=ExtResource("7_1lj4f")]
-position = Vector2(-56, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop2" parent="TheatherHallProps/Row4" unique_id=360852350 instance=ExtResource("7_1lj4f")]
-position = Vector2(-40, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop3" parent="TheatherHallProps/Row4" unique_id=1637277992 instance=ExtResource("7_1lj4f")]
-position = Vector2(-24, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop4" parent="TheatherHallProps/Row4" unique_id=2026932532 instance=ExtResource("7_1lj4f")]
-position = Vector2(-8, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop7" parent="TheatherHallProps/Row4" unique_id=1710085959 instance=ExtResource("7_1lj4f")]
-position = Vector2(40, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop8" parent="TheatherHallProps/Row4" unique_id=1226568801 instance=ExtResource("7_1lj4f")]
-position = Vector2(56, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop10" parent="TheatherHallProps/Row4" unique_id=1310859495 instance=ExtResource("7_1lj4f")]
-position = Vector2(88, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
 [node name="StageProps" type="Node2D" parent="." unique_id=1472644691]
 position = Vector2(16, -32)
 
@@ -1958,7 +1816,7 @@ position = Vector2(405, 113)
 texture = SubResource("AtlasTexture_10qpx")
 
 [node name="Prop2" parent="Extension_r" unique_id=1285535556 instance=ExtResource("7_1lj4f")]
-position = Vector2(299, 115)
+position = Vector2(296, 144)
 texture = SubResource("AtlasTexture_lw5jg")
 
 [node name="Prop3" parent="Extension_r" unique_id=1840532172 instance=ExtResource("7_1lj4f")]
@@ -1966,11 +1824,11 @@ position = Vector2(391, 370)
 texture = SubResource("AtlasTexture_u8fe7")
 
 [node name="Prop4" parent="Extension_r" unique_id=1627813726 instance=ExtResource("7_1lj4f")]
-position = Vector2(373, 334)
+position = Vector2(368, 336)
 texture = SubResource("AtlasTexture_ayr5r")
 
 [node name="Prop5" parent="Extension_r" unique_id=242273189 instance=ExtResource("7_1lj4f")]
-position = Vector2(411, 333)
+position = Vector2(416, 336)
 texture = SubResource("AtlasTexture_vfeax")
 
 [node name="Prop6" parent="Extension_r" unique_id=497977217 instance=ExtResource("7_1lj4f")]
@@ -2355,10 +2213,10 @@ Room"
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_cu2va")
-offset_left = -7.0
-offset_top = -68.0
-offset_right = 47.0
-offset_bottom = -45.0
+offset_left = -8.0
+offset_top = -64.0
+offset_right = 46.0
+offset_bottom = -41.0
 theme = ExtResource("10_0jxn2")
 text = "Foyer"
 
@@ -2425,10 +2283,11 @@ text = "Ornament
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_cu2va")
-offset_left = 459.0
-offset_top = -767.0
-offset_right = 539.0
-offset_bottom = -692.0
+offset_left = 464.0
+offset_top = -768.0
+offset_right = 544.0
+offset_bottom = -693.0
+theme = ExtResource("10_0jxn2")
 text = "Closet 
 	     of
 Shame"
@@ -2468,6 +2327,42 @@ theme = ExtResource("10_0jxn2")
 text = "Game paused,
 press esc to continue"
 horizontal_alignment = 1
+
+[node name="Prop2" parent="." unique_id=86049454 instance=ExtResource("7_1lj4f")]
+position = Vector2(208, -784)
+texture = SubResource("AtlasTexture_yk5a2")
+
+[node name="Prop4" parent="." unique_id=1280527287 instance=ExtResource("7_1lj4f")]
+position = Vector2(192, -752)
+texture = SubResource("AtlasTexture_4fk7a")
+
+[node name="Prop5" parent="." unique_id=1575088882 instance=ExtResource("7_1lj4f")]
+position = Vector2(208, -752)
+texture = SubResource("AtlasTexture_kfxsv")
+
+[node name="Prop6" parent="." unique_id=639053374 instance=ExtResource("7_1lj4f")]
+position = Vector2(248, -808)
+texture = SubResource("AtlasTexture_6ixb5")
+
+[node name="Prop7" parent="." unique_id=1423807830 instance=ExtResource("7_1lj4f")]
+position = Vector2(272, -808)
+texture = SubResource("AtlasTexture_6ixb5")
+
+[node name="SafeZones" type="Node2D" parent="." unique_id=1515956745]
+
+[node name="SafeZone4" parent="SafeZones" unique_id=1079298145 instance=ExtResource("16_lusm8")]
+position = Vector2(376, -320)
+
+[node name="SafeZone" parent="SafeZones" unique_id=1654840289 instance=ExtResource("16_lusm8")]
+
+[node name="SafeZone2" parent="SafeZones" unique_id=560864772 instance=ExtResource("16_lusm8")]
+position = Vector2(360, -728)
+
+[node name="SafeZone3" parent="SafeZones" unique_id=1947594596 instance=ExtResource("16_lusm8")]
+position = Vector2(-344, -48)
+
+[node name="SafeZone5" parent="SafeZones" unique_id=88351871 instance=ExtResource("16_lusm8")]
+position = Vector2(376, 104)
 
 [node name="Shame Closet" type="Node2D" parent="." unique_id=80787127]
 
@@ -2527,130 +2422,36 @@ texture = SubResource("AtlasTexture_slsga")
 position = Vector2(486, -708)
 texture = SubResource("AtlasTexture_nsqwb")
 
-[node name="Passthrough_office" type="Node2D" parent="." unique_id=118921983]
+[node name="StorageRoom" type="Node2D" parent="." unique_id=945508741]
 
-[node name="Prop" parent="Passthrough_office" unique_id=866617623 instance=ExtResource("7_1lj4f")]
-position = Vector2(220, -688)
+[node name="Prop" parent="StorageRoom" unique_id=1188058697 instance=ExtResource("7_1lj4f")]
+position = Vector2(208, -688)
 texture = SubResource("AtlasTexture_2vgsb")
 
-[node name="Prop2" parent="Passthrough_office" unique_id=1680021794 instance=ExtResource("7_1lj4f")]
-position = Vector2(272, -688)
+[node name="Prop2" parent="StorageRoom" unique_id=928932991 instance=ExtResource("7_1lj4f")]
+position = Vector2(232, -672)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop3" parent="StorageRoom" unique_id=1658126105 instance=ExtResource("7_1lj4f")]
+position = Vector2(248, -688)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop4" parent="StorageRoom" unique_id=640155519 instance=ExtResource("7_1lj4f")]
+position = Vector2(208, -664)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop5" parent="StorageRoom" unique_id=814108635 instance=ExtResource("7_1lj4f")]
+position = Vector2(224, -648)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop8" parent="." unique_id=70318929 instance=ExtResource("7_1lj4f")]
+position = Vector2(200, -640)
 texture = SubResource("AtlasTexture_kimtc")
 
-[node name="Prop3" parent="Passthrough_office" unique_id=851147257 instance=ExtResource("7_1lj4f")]
-position = Vector2(246, -689)
+[node name="Prop9" parent="." unique_id=1123928839 instance=ExtResource("7_1lj4f")]
+position = Vector2(-8, -376)
 texture = SubResource("AtlasTexture_rfjmj")
 
-[node name="Prop4" parent="Passthrough_office" unique_id=761965129 instance=ExtResource("7_1lj4f")]
-position = Vector2(197, -678)
+[node name="Prop10" parent="." unique_id=2023857675 instance=ExtResource("7_1lj4f")]
+position = Vector2(64, -440)
 texture = SubResource("AtlasTexture_1n3rp")
-
-[node name="Prop5" parent="Passthrough_office" unique_id=442816816 instance=ExtResource("7_1lj4f")]
-position = Vector2(197, -656)
-texture = SubResource("AtlasTexture_e1c2d")
-
-[node name="Ballroom" type="Node2D" parent="." unique_id=346479446]
-
-[node name="Prop" parent="Ballroom" unique_id=1728450957 instance=ExtResource("7_1lj4f")]
-position = Vector2(201, -788)
-texture = SubResource("AtlasTexture_rvvcp")
-
-[node name="Prop2" parent="Ballroom" unique_id=90577478 instance=ExtResource("7_1lj4f")]
-position = Vector2(222, -788)
-texture = SubResource("AtlasTexture_olkv6")
-
-[node name="Prop3" parent="Ballroom" unique_id=696930076 instance=ExtResource("7_1lj4f")]
-position = Vector2(244, -788)
-texture = SubResource("AtlasTexture_cw3xy")
-
-[node name="Prop4" parent="Ballroom" unique_id=938156282 instance=ExtResource("7_1lj4f")]
-position = Vector2(265, -788)
-texture = SubResource("AtlasTexture_uguy4")
-
-[node name="Prop5" parent="Ballroom" unique_id=2123708449 instance=ExtResource("7_1lj4f")]
-position = Vector2(286, -788)
-texture = SubResource("AtlasTexture_y1vfx")
-
-[node name="Prop6" parent="Ballroom" unique_id=1619298932 instance=ExtResource("7_1lj4f")]
-position = Vector2(307, -788)
-texture = SubResource("AtlasTexture_cegrl")
-
-[node name="Prop7" parent="Ballroom" unique_id=35624309 instance=ExtResource("7_1lj4f")]
-position = Vector2(328, -788)
-texture = SubResource("AtlasTexture_hiipa")
-
-[node name="Prop8" parent="Ballroom" unique_id=1604498637 instance=ExtResource("7_1lj4f")]
-position = Vector2(349, -787)
-texture = SubResource("AtlasTexture_duc41")
-
-[node name="Prop9" parent="Ballroom" unique_id=37675283 instance=ExtResource("7_1lj4f")]
-position = Vector2(370, -787)
-texture = SubResource("AtlasTexture_dlb7l")
-
-[node name="Prop10" parent="Ballroom" unique_id=949280343 instance=ExtResource("7_1lj4f")]
-position = Vector2(390, -787)
-texture = SubResource("AtlasTexture_xpvx7")
-
-[node name="Prop11" parent="Ballroom" unique_id=1315840297 instance=ExtResource("7_1lj4f")]
-position = Vector2(196, -757)
-texture = SubResource("AtlasTexture_bot8o")
-
-[node name="Prop12" parent="Ballroom" unique_id=1595980510 instance=ExtResource("7_1lj4f")]
-position = Vector2(214, -737)
-texture = SubResource("AtlasTexture_ihouq")
-
-[node name="Prop13" parent="Ballroom" unique_id=1309646769 instance=ExtResource("7_1lj4f")]
-position = Vector2(239, -736)
-texture = SubResource("AtlasTexture_cb85q")
-
-[node name="Prop14" parent="Ballroom" unique_id=141777729 instance=ExtResource("7_1lj4f")]
-position = Vector2(222, -757)
-texture = SubResource("AtlasTexture_gtmlv")
-
-[node name="Prop15" parent="Ballroom" unique_id=1909901885 instance=ExtResource("7_1lj4f")]
-position = Vector2(413, -635)
-texture = SubResource("AtlasTexture_l1o3f")
-
-[node name="Prop16" parent="Ballroom" unique_id=1033477465 instance=ExtResource("7_1lj4f")]
-position = Vector2(413, -657)
-texture = SubResource("AtlasTexture_038fs")
-
-[node name="Prop17" parent="Ballroom" unique_id=1610987495 instance=ExtResource("7_1lj4f")]
-position = Vector2(321, -713)
-texture = SubResource("AtlasTexture_ybuhx")
-
-[node name="Prop18" parent="Ballroom" unique_id=1731049263 instance=ExtResource("7_1lj4f")]
-position = Vector2(321, -615)
-texture = SubResource("AtlasTexture_0ithp")
-
-[node name="Prop19" parent="Ballroom" unique_id=1171187137 instance=ExtResource("7_1lj4f")]
-position = Vector2(337, -635)
-texture = SubResource("AtlasTexture_7vtmn")
-
-[node name="Prop20" parent="Ballroom" unique_id=1049940188 instance=ExtResource("7_1lj4f")]
-position = Vector2(340, -697)
-texture = SubResource("AtlasTexture_734a4")
-
-[node name="Prop21" parent="Ballroom" unique_id=1428277042 instance=ExtResource("7_1lj4f")]
-position = Vector2(320, -667)
-texture = SubResource("AtlasTexture_f52kr")
-
-[node name="Prop22" parent="Ballroom" unique_id=331955089 instance=ExtResource("7_1lj4f")]
-position = Vector2(342, -667)
-texture = SubResource("AtlasTexture_fyl25")
-
-[node name="Prop23" parent="Ballroom" unique_id=975106682 instance=ExtResource("7_1lj4f")]
-position = Vector2(364, -667)
-texture = SubResource("AtlasTexture_5gwql")
-
-[node name="Prop24" parent="Ballroom" unique_id=1578250611 instance=ExtResource("7_1lj4f")]
-position = Vector2(270, -756)
-texture = SubResource("AtlasTexture_87t0l")
-
-[node name="Prop25" parent="Ballroom" unique_id=1031588755 instance=ExtResource("7_1lj4f")]
-position = Vector2(312, -755)
-texture = SubResource("AtlasTexture_fq05b")
-
-[node name="Prop26" parent="Ballroom" unique_id=472499532 instance=ExtResource("7_1lj4f")]
-position = Vector2(352, -754)
-texture = SubResource("AtlasTexture_pxeue")
