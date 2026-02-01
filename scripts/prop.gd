@@ -1,7 +1,7 @@
 class_name Prop extends CharacterBody2D
 
 @export var activation_radius: float = 80.0
-@export var jumpscare_radius: float = 20.0
+@export var jumpscare_radius: float = 32.0
 @export var speed: float = 50.0
 @export var stupidFleeSpeed = 40.0
 @export var health: int = 100;
