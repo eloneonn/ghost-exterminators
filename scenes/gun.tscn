@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c6uifyeggxhiv"]
 
 [ext_resource type="Script" uid="uid://bwmyob1bbrhd4" path="res://scripts/gun.gd" id="1_og67c"]
-[ext_resource type="Texture2D" uid="uid://boqdrkrciy8c0" path="res://assets/gun.png" id="2_og67c"]
+[ext_resource type="Texture2D" uid="uid://b7fyi4y1e60a8" path="res://assets/gun.png" id="2_og67c"]
 [ext_resource type="AudioStream" uid="uid://cfqm6h1lxnqll" path="res://sfx/ray_impact.wav" id="3_ray_impact"]
 [ext_resource type="AudioStream" uid="uid://wesq0drlw6cm" path="res://sfx/ray_loop.wav" id="4_ray_loop"]
 
@@ -10,7 +10,6 @@ light_mode = 1
 
 [node name="Gun" type="Node2D" unique_id=1379834991]
 script = ExtResource("1_og67c")
-cool_color = Color(0.12217867, 0.6207746, 0.44198692, 1)
 
 [node name="HitArea" type="Area2D" parent="." unique_id=893302884]
 unique_name_in_owner = true
