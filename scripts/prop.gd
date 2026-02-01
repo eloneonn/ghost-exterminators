@@ -124,20 +124,20 @@ func _play_sfx(path: String, audio_player: AudioStreamPlayer2D) -> void:
 		audio_player.pitch_scale = 1.0
 		audio_player.pitch_scale = randf_range(0.8, 1.2)
 		audio_player.volume_db = 0.0
-		audio_player.bus = "Sfx"
+		audio_player.bus = "SFX"
 		audio_player.play()
 
 func _play_random_prop_sound() -> void:
 	if _prop_sound_paths.is_empty() or not is_instance_valid(prop_sound_player):
 		return
 	var path: String = _prop_sound_paths[randi() % _prop_sound_paths.size()]
-	print("Playing prop sound: ", path)
+
 	var stream: AudioStream = load(path) as AudioStream
 	if stream:
 		prop_sound_player.stream = stream
 		prop_sound_player.pitch_scale = randf_range(0.8, 1.2)
 		prop_sound_player.volume_db = randf_range(-12.0, -5.0)
-		prop_sound_player.bus = "Sfx"
+		prop_sound_player.bus = "SFX"
 		prop_sound_player.play()
 
 
@@ -356,6 +356,7 @@ func die() -> void:
 
 	# Play die SFX: smash + break (reparent so sounds finish after we're freed)
 	var break_player := AudioStreamPlayer2D.new()
+	break_player.bus = "SFX"
 	add_child(break_player)
 	_play_sfx(SFX_SMASH, prop_sound_player)
 	_play_sfx(SFX_BREAK, break_player)
