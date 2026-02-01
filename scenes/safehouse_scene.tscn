@@ -196,7 +196,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="UpgradeItem" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnLeft/UpgradeItems" unique_id=1603925993 instance=ExtResource("7_0fead")]
-cost = 50
+cost = 300
 description = "Battery for flashlight"
 
 [node name="UpgradeItems2" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnLeft" unique_id=1643862517]
@@ -206,7 +206,7 @@ size_flags_horizontal = 3
 
 [node name="UpgradeItemGunDamage" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnLeft/UpgradeItems2" unique_id=1932635 instance=ExtResource("7_0fead")]
 item = 2
-cost = 250
+cost = 500
 description = "Increase GhostRay damage."
 
 [node name="StoreColumnRight" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid" unique_id=961450825]
@@ -221,7 +221,7 @@ size_flags_horizontal = 3
 
 [node name="UpgradeItemGunRange" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight/UpgradeItems3" unique_id=1606005816 instance=ExtResource("7_0fead")]
 item = 3
-cost = 200
+cost = 500
 description = "Longer and narrower beam."
 
 [node name="UpgradeItems4" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight" unique_id=1228919084]
@@ -231,7 +231,7 @@ size_flags_horizontal = 3
 
 [node name="UpgradeItemPlayerSpeed" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight/UpgradeItems4" unique_id=200449691 instance=ExtResource("7_0fead")]
 item = 5
-cost = 180
+cost = 400
 description = "Move faster."
 
 [node name="UpgradeItems5" type="VBoxContainer" parent="UpgradeUI/MarginContainer/HBoxContainer/StoreColumn/StoreGrid/StoreColumnRight" unique_id=117795991]

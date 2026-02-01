@@ -1351,6 +1351,22 @@ region = Rect2(96, 96, 16, 32)
 atlas = ExtResource("15_vw353")
 region = Rect2(176, 192, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vgsb"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kimtc"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(112, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfjmj"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n3rp"]
+atlas = ExtResource("8_0jxn2")
+region = Rect2(176, 96, 16, 32)
+
 [node name="LevelScene" type="Node2D" unique_id=155771848]
 script = ExtResource("1_2m3ut")
 
@@ -1578,41 +1594,6 @@ texture = SubResource("AtlasTexture_78t5s")
 position = Vector2(88, -208)
 texture = SubResource("AtlasTexture_78t5s")
 
-[node name="Row4" type="Node2D" parent="TheatherHallProps" unique_id=1679588749]
-position = Vector2(0, -160)
-
-[node name="Prop9" parent="TheatherHallProps/Row4" unique_id=1864063488 instance=ExtResource("7_1lj4f")]
-position = Vector2(72, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop" parent="TheatherHallProps/Row4" unique_id=483328836 instance=ExtResource("7_1lj4f")]
-position = Vector2(-56, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop2" parent="TheatherHallProps/Row4" unique_id=360852350 instance=ExtResource("7_1lj4f")]
-position = Vector2(-40, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop3" parent="TheatherHallProps/Row4" unique_id=1637277992 instance=ExtResource("7_1lj4f")]
-position = Vector2(-24, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop4" parent="TheatherHallProps/Row4" unique_id=2026932532 instance=ExtResource("7_1lj4f")]
-position = Vector2(-8, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop7" parent="TheatherHallProps/Row4" unique_id=1710085959 instance=ExtResource("7_1lj4f")]
-position = Vector2(40, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop8" parent="TheatherHallProps/Row4" unique_id=1226568801 instance=ExtResource("7_1lj4f")]
-position = Vector2(56, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
-[node name="Prop10" parent="TheatherHallProps/Row4" unique_id=1310859495 instance=ExtResource("7_1lj4f")]
-position = Vector2(88, -208)
-texture = SubResource("AtlasTexture_78t5s")
-
 [node name="StageProps" type="Node2D" parent="." unique_id=1472644691]
 position = Vector2(16, -32)
 
@@ -1835,7 +1816,7 @@ position = Vector2(405, 113)
 texture = SubResource("AtlasTexture_10qpx")
 
 [node name="Prop2" parent="Extension_r" unique_id=1285535556 instance=ExtResource("7_1lj4f")]
-position = Vector2(299, 115)
+position = Vector2(296, 144)
 texture = SubResource("AtlasTexture_lw5jg")
 
 [node name="Prop3" parent="Extension_r" unique_id=1840532172 instance=ExtResource("7_1lj4f")]
@@ -1843,11 +1824,11 @@ position = Vector2(391, 370)
 texture = SubResource("AtlasTexture_u8fe7")
 
 [node name="Prop4" parent="Extension_r" unique_id=1627813726 instance=ExtResource("7_1lj4f")]
-position = Vector2(373, 334)
+position = Vector2(368, 336)
 texture = SubResource("AtlasTexture_ayr5r")
 
 [node name="Prop5" parent="Extension_r" unique_id=242273189 instance=ExtResource("7_1lj4f")]
-position = Vector2(411, 333)
+position = Vector2(416, 336)
 texture = SubResource("AtlasTexture_vfeax")
 
 [node name="Prop6" parent="Extension_r" unique_id=497977217 instance=ExtResource("7_1lj4f")]
@@ -2232,10 +2213,10 @@ Room"
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_cu2va")
-offset_left = -7.0
-offset_top = -68.0
-offset_right = 47.0
-offset_bottom = -45.0
+offset_left = -8.0
+offset_top = -64.0
+offset_right = 46.0
+offset_bottom = -41.0
 theme = ExtResource("10_0jxn2")
 text = "Foyer"
 
@@ -2302,10 +2283,11 @@ text = "Ornament
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_cu2va")
-offset_left = 459.0
-offset_top = -767.0
-offset_right = 539.0
-offset_bottom = -692.0
+offset_left = 464.0
+offset_top = -768.0
+offset_right = 544.0
+offset_bottom = -693.0
+theme = ExtResource("10_0jxn2")
 text = "Closet 
 	     of
 Shame"
@@ -2373,7 +2355,6 @@ position = Vector2(-344, -48)
 position = Vector2(376, 104)
 
 [node name="Shame Closet" type="Node2D" parent="." unique_id=80787127]
-position = Vector2(-256, -624)
 
 [node name="Prop" parent="Shame Closet" unique_id=458247305 instance=ExtResource("7_1lj4f")]
 position = Vector2(449, -783)
@@ -2430,3 +2411,37 @@ texture = SubResource("AtlasTexture_slsga")
 [node name="Prop14" parent="Shame Closet" unique_id=749164464 instance=ExtResource("7_1lj4f")]
 position = Vector2(486, -708)
 texture = SubResource("AtlasTexture_nsqwb")
+
+[node name="StorageRoom" type="Node2D" parent="." unique_id=945508741]
+
+[node name="Prop" parent="StorageRoom" unique_id=1188058697 instance=ExtResource("7_1lj4f")]
+position = Vector2(208, -688)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop2" parent="StorageRoom" unique_id=928932991 instance=ExtResource("7_1lj4f")]
+position = Vector2(232, -672)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop3" parent="StorageRoom" unique_id=1658126105 instance=ExtResource("7_1lj4f")]
+position = Vector2(248, -688)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop4" parent="StorageRoom" unique_id=640155519 instance=ExtResource("7_1lj4f")]
+position = Vector2(208, -664)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop5" parent="StorageRoom" unique_id=814108635 instance=ExtResource("7_1lj4f")]
+position = Vector2(224, -648)
+texture = SubResource("AtlasTexture_2vgsb")
+
+[node name="Prop8" parent="." unique_id=70318929 instance=ExtResource("7_1lj4f")]
+position = Vector2(200, -640)
+texture = SubResource("AtlasTexture_kimtc")
+
+[node name="Prop9" parent="." unique_id=1123928839 instance=ExtResource("7_1lj4f")]
+position = Vector2(-8, -376)
+texture = SubResource("AtlasTexture_rfjmj")
+
+[node name="Prop10" parent="." unique_id=2023857675 instance=ExtResource("7_1lj4f")]
+position = Vector2(64, -440)
+texture = SubResource("AtlasTexture_1n3rp")
