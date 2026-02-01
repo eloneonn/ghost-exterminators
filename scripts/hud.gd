@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var battery_label: Label = %BatteryLabel
 @onready var quota_label: Label = %QuotaLabel
 @onready var coin_label: Label = %CoinLabel
+@onready var sanity_bar: ProgressBar = %SanityBar
 
 func _process(_delta: float) -> void:
 	var player = get_tree().get_first_node_in_group("player") as Player
@@ -22,3 +23,4 @@ func _process(_delta: float) -> void:
 		battery_label.text = str(GameManager.get_item_count(Enums.Item.BATTERY))
 		quota_label.text = "%d/%d" % [GameManager.ghosts_captured_this_level, GameManager.quota_this_level]
 		coin_label.text = str(GameManager.get_money())
+		sanity_bar.value = player.sanity

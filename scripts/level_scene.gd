@@ -25,13 +25,89 @@ func _ready() -> void:
 	door.set_prompt("Enter the Safehouse Scene (Press E)")
 	door.interacted.connect(_on_door_triggered)
 
-	if (GameManager.level == 1):
-		var player: Player = get_tree().get_first_node_in_group("player")
-		player.show_thought("The ghosts are hiding in the props, better start searching...", 5.0)
-		player.show_thought("I should use my GhostRay (left click) to catch them", 20.0)
-		player.show_thought("Hmm, I swear that thing moved...", 35.0)
+	_show_level_dialogue(GameManager.level)
 
 	_assign_random_ghosts()
+
+
+func _show_level_dialogue(level: int) -> void:
+	var player: Player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+
+	# Level-start dialogue progression: more confident and cocky over time.
+	var lines := _get_level_lines(level)
+	if lines.is_empty():
+		return
+
+	# Timing: early lines front-loaded. We also have a random extra punchline.
+	var base_times := [5.0, 20.0, 35.0]
+	for i in range(min(lines.size(), base_times.size())):
+		player.show_thought(lines[i], base_times[i])
+
+	# 55% chance to add a random horror-comedy stinger a bit later.
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	if rng.randf() < 0.55:
+		player.show_thought(_get_random_stinger(), 50.0)
+
+func _get_level_lines(level: int) -> Array[String]:
+	var by_level := {
+		1: [
+			"The ghosts are hiding in the props… better start searching.",
+			"GhostRay (left click) should do the trick. Please don’t explode.",
+			"Hmm… I swear that thing moved…"
+		],
+		2: [
+			"Okay. Same deal: props are suspicious, hallways are worse.",
+			"If I hear whispers behind me, I’m simply not turning around.",
+			"This place has big ‘don’t split up’ energy. So I won’t."
+		],
+		3: [
+			"All right… I’m not new anymore. I’m a professional.",
+			"Ghosts: you get one jump-scare for free. After that, it’s business.",
+			"If a cursed mirror shows my doom, I’m charging it rent."
+		],
+		4: [
+			"Night four. The haunted decor is starting to feel… predictable.",
+			"If the lights flicker, that’s just the ghosts applauding my work.",
+			"Come on then. I’m basically the final boss now."
+		]
+	}
+
+	var set: Array = by_level.get(level, [])
+	var out: Array[String] = []
+	for s in set:
+		out.append(str(s))
+	return out
+
+func _get_random_stinger() -> String:
+	var stingers: Array[String] = [
+		"Rule #1: never say 'What could possibly go wrong?' out loud.",
+		"If a creepy doll is in here, I´m leaving. Immediately.",
+		"If I hear spooky piano music, I’m turning around. Not today.",
+		"Somewhere a narrator is like: ‘He was, in fact, not fine.’",
+		"If a child giggles in the hallway… nope. Filing a complaint.",
+		"If the door creaks open by itself, I’m creaking out of here.",
+		"Why are there always candles? Is there an interior designer ghost?",
+		"If I see a shadowy figure, I’m asking for its autograph.",
+		"Note to self: never trust a ghost that offers to ‘play a game.’",
+		"If I find a Ouija board, I’m ghosting this job.",
+		"Why do ghosts always haunt places with bad Wi-Fi?",
+		"If I see a floating orb, I’m calling it ‘Bob’ and moving on",
+		"Is it just me, or do haunted houses always smell like mold?",
+		"If a ghost asks me to ‘join them,’ I’m declining the invitation.",
+		"Why do ghosts always seem to prefer old, creaky furniture?",
+		"If I hear footsteps behind me, I’m not looking back.",
+		"Why is it that every haunted house has at least one creepy attic?",
+		"If a ghost offers me a deal, I’m reading the fine print carefully.",
+		"Why do ghosts always seem to appear in the most inconvenient places?",
+		"If I see a ghostly figure in a mirror, I’m not making eye contact",
+		]
+
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	return stingers[rng.randi_range(0, stingers.size() - 1)]
 
 func _setup_music() -> void:
 	_music_calm = AudioStreamPlayer.new()
