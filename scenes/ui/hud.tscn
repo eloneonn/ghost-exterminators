@@ -68,3 +68,15 @@ stretch_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_8qguk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=504971779]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="SanityBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1391722146]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_8qguk")
+value = 20.0
+show_percentage = false
