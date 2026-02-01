@@ -23,8 +23,8 @@ void fragment() {
 	vec2 uv1 = UV;
 	vec2 uv2 = UV;
 	
-	uv1.y = fract(uv1.y + TIME * speed1);
-	uv2.y = fract(uv2.y + TIME * speed2);
+	uv1.x = fract(uv1.x - TIME * speed1);
+	uv2.x = fract(uv2.x - TIME * speed2);
 	
 	vec4 waveTexture = texture(noise1, uv1) * texture(noise2, uv2);
 	vec4 finalColor = coneColor + vec4(waveTexture.rgb, waveTexture.r);

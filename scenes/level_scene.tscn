@@ -1,8 +1,11 @@
 [gd_scene format=4 uid="uid://cyj4tnb0v88og"]
 
 [ext_resource type="Script" uid="uid://bil67hutl0o27" path="res://scripts/level_scene.gd" id="1_2m3ut"]
+[ext_resource type="Shader" uid="uid://5foribjw5j6m" path="res://assets/FXs/Fog.gdshader" id="2_cupps"]
 [ext_resource type="TileSet" uid="uid://chau7bghnpulr" path="res://assets/light_tile_set.tres" id="2_fkwfp"]
+[ext_resource type="Shader" uid="uid://lvx4dxrc01md" path="res://assets/FXs/DustFX.gdshader" id="2_lkilr"]
 [ext_resource type="TileSet" uid="uid://cpkvagn5d1x67" path="res://assets/dark_tile_set.tres" id="3_cu2va"]
+[ext_resource type="Texture2D" uid="uid://dxja1jgs48a0b" path="res://assets/FXs/dust.png" id="3_cupps"]
 [ext_resource type="PackedScene" uid="uid://b7dtp5o2krjce" path="res://scenes/interact.tscn" id="4_1lj4f"]
 [ext_resource type="PackedScene" uid="uid://c7lhvewysmr4j" path="res://scenes/player.tscn" id="5_1lj4f"]
 [ext_resource type="Script" uid="uid://roj22rip7sr0" path="res://scripts/camera.gd" id="5_cu2va"]
@@ -19,6 +22,68 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_7ddre")
 width = 5000
 height = 5000
+
+[sub_resource type="Gradient" id="Gradient_lusm8"]
+offsets = PackedFloat32Array(0, 0.00754717, 0.88301885)
+colors = PackedColorArray(0, 0, 0, 1, 0.06792453, 0.06792453, 0.06792453, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8i8xs"]
+seed = 40
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ergiu"]
+noise = SubResource("FastNoiseLite_8i8xs")
+color_ramp = SubResource("Gradient_lusm8")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gw8fm"]
+seed = 5
+frequency = 1.0
+fractal_octaves = 8
+fractal_lacunarity = 1.98
+fractal_gain = 0.48
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nfidh"]
+width = 128
+noise = SubResource("FastNoiseLite_gw8fm")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gagx4"]
+shader = ExtResource("2_cupps")
+shader_parameter/transp = 1.0
+shader_parameter/speed = 0.0490000023275
+shader_parameter/pixel_count = 128.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_ergiu")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_nfidh")
+
+[sub_resource type="Gradient" id="Gradient_qqnws"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nbd8l"]
+gradient = SubResource("Gradient_qqnws")
+width = 128
+height = 128
+
+[sub_resource type="Gradient" id="Gradient_vw353"]
+offsets = PackedFloat32Array(0.45692885, 0.58426964)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lusm8"]
+frequency = 0.4271
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tmkry"]
+width = 32
+height = 32
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_lusm8")
+color_ramp = SubResource("Gradient_vw353")
+seamless = true
+seamless_blend_skirt = 0.775
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8i8xs"]
+shader = ExtResource("2_lkilr")
+shader_parameter/mask = SubResource("NoiseTexture2D_tmkry")
+shader_parameter/speed = 0.13999999687072
+shader_parameter/amp = 0.1999999955296
+shader_parameter/fps = 8.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0jxn2"]
 blend_mode = 1
@@ -469,6 +534,30 @@ color = Color(1, 1, 1, 0)
 energy = 0.0
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_eohcs")
+
+[node name="Fog" type="Sprite2D" parent="." unique_id=1327668704]
+light_mask = 3
+visibility_layer = 3
+z_index = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gagx4")
+position = Vector2(-567, -874)
+texture = SubResource("GradientTexture2D_nbd8l")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1200, 1350)
+
+[node name="Dust" type="Sprite2D" parent="." unique_id=285526096]
+self_modulate = Color(1.0413129, 1.0413129, 1.0413129, 1)
+z_index = 1
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_8i8xs")
+position = Vector2(-538, -887)
+texture = ExtResource("3_cupps")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 1350)
 
 [node name="TileMap" type="Node2D" parent="." unique_id=291966607]
 

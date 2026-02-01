@@ -6,8 +6,9 @@
 [ext_resource type="Shader" uid="uid://lvx4dxrc01md" path="res://assets/FXs/DustFX.gdshader" id="3_kgqgg"]
 [ext_resource type="Texture2D" uid="uid://dxja1jgs48a0b" path="res://assets/FXs/dust.png" id="4_rudd1"]
 [ext_resource type="Shader" uid="uid://c41xropkoeayx" path="res://assets/FXs/GunCone.gdshader" id="6_fj73f"]
-[ext_resource type="Texture2D" uid="uid://ds2obgymcdib" path="res://assets/FXs/ConeFX.png" id="6_hem6y"]
+[ext_resource type="Texture2D" uid="uid://ihvp00r2ye5a" path="res://assets/beam_1.png" id="7_fj73f"]
 [ext_resource type="Texture2D" uid="uid://brqk1it7yen2x" path="res://assets/FXs/Dude.png" id="8_tsiu5"]
+[ext_resource type="Shader" uid="uid://5foribjw5j6m" path="res://assets/FXs/Fog.gdshader" id="9_tsiu5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hem6y"]
 shader = ExtResource("1_rudd1")
@@ -185,13 +186,12 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_hem6y"]
 curve = SubResource("Curve_v155h")
 
-[sub_resource type="Curve" id="Curve_teqo1"]
-_limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, -6.0576453, 0, 0, Vector2(1, -1), 0.07408595, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Curve" id="Curve_hem6y"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18947369, 1), 0.0, 0.0, 0, 0, Vector2(0.8491228, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_tmkry"]
-curve = SubResource("Curve_teqo1")
+curve = SubResource("Curve_hem6y")
 
 [sub_resource type="Curve" id="Curve_k4ytn"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -227,7 +227,7 @@ offsets = PackedFloat32Array(0.45692885, 0.58426964)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hem6y"]
 frequency = 0.4271
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tmkry"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fj73f"]
 width = 32
 height = 32
 generate_mipmaps = false
@@ -238,7 +238,7 @@ seamless_blend_skirt = 0.775
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kgqgg"]
 shader = ExtResource("3_kgqgg")
-shader_parameter/mask = SubResource("NoiseTexture2D_tmkry")
+shader_parameter/mask = SubResource("NoiseTexture2D_fj73f")
 shader_parameter/speed = 0.13999999687072
 shader_parameter/amp = 0.1999999955296
 shader_parameter/fps = 8.0
@@ -253,28 +253,28 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_8cgvb"]
-offsets = PackedFloat32Array(0.7433962, 1)
+offsets = PackedFloat32Array(0.7509434, 0.9622642)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ergiu"]
 gradient = SubResource("Gradient_8cgvb")
-height = 32
 fill = 1
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.47922438, 0)
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(1, 0.4875346)
 
 [sub_resource type="Gradient" id="Gradient_fj73f"]
 offsets = PackedFloat32Array(0.61886793, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tsiu5"]
 noise_type = 0
-frequency = 0.0324
+seed = 18
+frequency = 0.0434
 fractal_type = 3
 fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8h1lf"]
 width = 64
-height = 64
+height = 128
 generate_mipmaps = false
 noise = SubResource("FastNoiseLite_tsiu5")
 color_ramp = SubResource("Gradient_fj73f")
@@ -286,13 +286,13 @@ offsets = PackedFloat32Array(0.50566036, 0.68679243)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8h1lf"]
 noise_type = 0
-frequency = 0.0289
+frequency = 0.016
 fractal_type = 3
 fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8cgvb"]
-width = 64
-height = 64
+width = 128
+height = 128
 generate_mipmaps = false
 noise = SubResource("FastNoiseLite_8h1lf")
 color_ramp = SubResource("Gradient_tsiu5")
@@ -303,8 +303,8 @@ seamless_blend_skirt = 0.562
 shader = ExtResource("6_fj73f")
 shader_parameter/fxTransparency = 1.0
 shader_parameter/coneColor = Color(1, 0.50533336, 0.47000003, 0.7137255)
-shader_parameter/speed1 = 2.40000003576288
-shader_parameter/speed2 = 1.20000001788144
+shader_parameter/speed1 = 1.30000001937156
+shader_parameter/speed2 = 0.90000001341108
 shader_parameter/noise1 = SubResource("NoiseTexture2D_8h1lf")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_8cgvb")
 shader_parameter/gradientMask = SubResource("GradientTexture2D_ergiu")
@@ -312,7 +312,7 @@ shader_parameter/gradientMask = SubResource("GradientTexture2D_ergiu")
 [sub_resource type="Gradient" id="Gradient_tmkry"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.50479233, 0.7635783)
-colors = PackedColorArray(1, 0.25490198, 0.25490198, 1, 1, 0.65, 0.65, 1, 1, 1, 1, 0)
+colors = PackedColorArray(1, 0.25490198, 0.25490198, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fj73f"]
 gradient = SubResource("Gradient_tmkry")
@@ -321,16 +321,8 @@ height = 4
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="Curve" id="Curve_hem6y"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18947369, 1), 0.0, 0.0, 0, 0, Vector2(0.8491228, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_tmkry"]
-curve = SubResource("Curve_hem6y")
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tsiu5"]
 particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
 initial_velocity_min = 31.01
 initial_velocity_max = 62.43
 angular_velocity_min = -1.6093254e-05
@@ -362,7 +354,6 @@ curve = SubResource("Curve_ergiu")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nfidh"]
 particle_flag_align_y = true
 particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
 spread = 28.019
 flatness = 1.0
 initial_velocity_min = 103.439995
@@ -499,6 +490,51 @@ _data = {
 &"StopShooting": SubResource("Animation_nfidh")
 }
 
+[sub_resource type="Gradient" id="Gradient_ergiu"]
+offsets = PackedFloat32Array(0, 0.00754717, 0.73962265)
+colors = PackedColorArray(0, 0, 0, 1, 0.06792453, 0.06792453, 0.06792453, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8cgvb"]
+frequency = 0.0035
+fractal_type = 3
+fractal_lacunarity = 2.56
+fractal_gain = 2.305
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tsiu5"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_8cgvb")
+color_ramp = SubResource("Gradient_ergiu")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_adhd1"]
+seed = 5
+frequency = 0.052
+fractal_octaves = 8
+fractal_lacunarity = 1.98
+fractal_gain = 0.48
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ergiu"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_adhd1")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugpmg"]
+shader = ExtResource("9_tsiu5")
+shader_parameter/transp = 0.0
+shader_parameter/speed = 0.02999999932944
+shader_parameter/pixel_count = 32.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_tsiu5")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_ergiu")
+
+[sub_resource type="Gradient" id="Gradient_adhd1"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_51ny8"]
+gradient = SubResource("Gradient_adhd1")
+width = 128
+height = 128
+
 [node name="Particles" type="Node2D" unique_id=2145721971]
 
 [node name="PropTest" type="Sprite2D" parent="." unique_id=1028374070]
@@ -533,8 +569,6 @@ metadata/_edit_lock_ = true
 
 [node name="Dust" type="Sprite2D" parent="Dust" unique_id=1588358629]
 self_modulate = Color(1.0413129, 1.0413129, 1.0413129, 1)
-light_mask = 2
-visibility_layer = 2
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_kgqgg")
@@ -545,6 +579,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
 
 [node name="PointLight2D" type="PointLight2D" parent="Dust" unique_id=611811467]
+visible = false
 position = Vector2(346, 193)
 blend_mode = 2
 range_item_cull_mask = 2
@@ -557,20 +592,18 @@ texture_scale = 4.11
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_c5t3e")
-rotation = 1.5707964
-scale = Vector2(1, 2.203)
-texture = ExtResource("6_hem6y")
-offset = Vector2(0, -32)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_fj73f")
 
 [node name="Spray" type="GPUParticles2D" parent="Gun/ConeFx" unique_id=225918317]
-scale = Vector2(0.9999999, 0.9999999)
+scale = Vector2(10, 10)
 amount = 24
 texture = SubResource("GradientTexture2D_fj73f")
 fixed_fps = 12
 process_material = SubResource("ParticleProcessMaterial_tsiu5")
 
 [node name="FastParticles" type="GPUParticles2D" parent="Gun/ConeFx" unique_id=2146928883]
-scale = Vector2(0.9999998, 0.9999999)
+scale = Vector2(10, 10)
 amount = 24
 texture = SubResource("GradientTexture2D_8cgvb")
 lifetime = 0.5
@@ -586,3 +619,13 @@ position = Vector2(-10, -1)
 rotation = 3.1415927
 scale = Vector2(1, -1)
 texture = ExtResource("8_tsiu5")
+
+[node name="Fog" type="Node2D" parent="." unique_id=892603641]
+
+[node name="Fog" type="Sprite2D" parent="Fog" unique_id=1426645992]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ugpmg")
+texture = SubResource("GradientTexture2D_51ny8")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 512)

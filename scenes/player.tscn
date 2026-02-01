@@ -25,7 +25,7 @@ size = Vector2(11, 13)
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
 offsets = PackedFloat32Array(0, 0.71516395)
-colors = PackedColorArray(0.39498678, 0.3949867, 0.3949867, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.39498678, 0.3949867, 0.3949867, 1, 0, 0, 0, 0)
 metadata/_snap_count = 2
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
@@ -126,6 +126,7 @@ shape = SubResource("RectangleShape2D_3vyb7")
 unique_name_in_owner = true
 
 [node name="PointLightAdditive" type="PointLight2D" parent="PointLight" unique_id=183468709]
+energy = 3.17
 shadow_enabled = true
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_qhqgy")
@@ -196,8 +197,8 @@ vertical_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=632447416]
 libraries/ = SubResource("AnimationLibrary_fjrip")
 
-[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1792816616]
 
-[node name="FlashlightPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="FlashlightPlayer" type="AudioStreamPlayer2D" parent="." unique_id=320240763]
 
-[node name="BatteryPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="BatteryPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1115558234]
