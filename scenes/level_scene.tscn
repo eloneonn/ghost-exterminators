@@ -2316,6 +2316,16 @@ text = "Closet
 	     of
 Shame"
 
+[node name="Ballroom" type="Label" parent="Labels" unique_id=894170121]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_cu2va")
+offset_left = 312.0
+offset_top = -746.0
+offset_right = 392.0
+offset_bottom = -671.0
+text = "Ballroom"
+
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=846098806]
 unique_name_in_owner = true
 visible = false
@@ -2381,19 +2391,19 @@ position = Vector2(376, 104)
 [node name="Shame Closet" type="Node2D" parent="." unique_id=80787127]
 
 [node name="Prop" parent="Shame Closet" unique_id=458247305 instance=ExtResource("7_1lj4f")]
-position = Vector2(449, -783)
+position = Vector2(442, -783)
 texture = SubResource("AtlasTexture_yk5a2")
 
 [node name="Prop2" parent="Shame Closet" unique_id=608258116 instance=ExtResource("7_1lj4f")]
-position = Vector2(470, -783)
+position = Vector2(466, -783)
 texture = SubResource("AtlasTexture_4fk7a")
 
 [node name="Prop3" parent="Shame Closet" unique_id=47112928 instance=ExtResource("7_1lj4f")]
-position = Vector2(492, -783)
+position = Vector2(490, -783)
 texture = SubResource("AtlasTexture_kfxsv")
 
 [node name="Prop4" parent="Shame Closet" unique_id=655453878 instance=ExtResource("7_1lj4f")]
-position = Vector2(513, -783)
+position = Vector2(515, -783)
 texture = SubResource("AtlasTexture_6ixb5")
 
 [node name="Prop5" parent="Shame Closet" unique_id=2024764514 instance=ExtResource("7_1lj4f")]
