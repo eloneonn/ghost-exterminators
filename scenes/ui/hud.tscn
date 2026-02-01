@@ -76,6 +76,12 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 2
 
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1261967686]
+layout_mode = 2
+theme = ExtResource("3_8qguk")
+theme_override_font_sizes/font_size = 10
+text = "Sanity"
+
 [node name="SanityBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1391722146]
 unique_name_in_owner = true
 layout_mode = 2
