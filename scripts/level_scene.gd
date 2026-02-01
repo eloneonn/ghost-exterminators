@@ -178,6 +178,11 @@ func _on_door_triggered() -> void:
 		var player: Player = get_tree().get_first_node_in_group("player")
 		player.show_thought("I need to capture at least " + str(GameManager.quota_this_level) + " ghosts to tonight...", 0.0)
 		return
+
+	if GameManager.get_money() < 0:
+		GameManager.end_timer()
+		GameManager.end_game(Enums.GameEnding.BANKRUPTCY);
+		return
 	
 	GameManager.pause_timer()
 	GameManager.goto_scene("res://scenes/safehouse_scene.tscn")

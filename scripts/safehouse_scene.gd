@@ -49,12 +49,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	items_list.text = GameManager.get_items_string()
 	money_label.text = "Money: " + str(GameManager.get_money())
-	_check_money()
-
-func _check_money() -> void:
-	if GameManager.get_money() < 0:
-		GameManager.end_timer()
-		GameManager.end_game(Enums.GameEnding.BANKRUPTCY);
 
 func _on_door_triggered() -> void:
 	GameManager.next_level()
