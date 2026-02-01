@@ -35,20 +35,20 @@ func _ready() -> void:
 	debug_light_sprite.visible = false;
 	light_area.body_entered.connect(_on_light_area_body_entered)
 	light_area.body_exited.connect(_on_light_area_body_exited)
-	var step_stream: AudioStream = load("res://sfx/step.wav") as AudioStream
+	var step_stream: AudioStream = preload("res://sfx/step.wav") as AudioStream
 	if step_stream:
 		footstep_player.stream = step_stream
 		footstep_player.pitch_scale = randf_range(0.8, 1.2)
 		footstep_player.volume_db = randf_range(-6.0, -2.0)
-		footstep_player.bus = "Sfx"
-	var flashlight_stream: AudioStream = load("res://sfx/flashlight.wav") as AudioStream
+		footstep_player.bus = "SFX"
+	var flashlight_stream: AudioStream = preload("res://sfx/flashlight.wav") as AudioStream
 	if flashlight_stream:
 		flashlight_player.stream = flashlight_stream
-		flashlight_player.bus = "Sfx"
-	var battery_stream: AudioStream = load("res://sfx/battery.wav") as AudioStream
+		flashlight_player.bus = "SFX"
+	var battery_stream: AudioStream = preload("res://sfx/battery.wav") as AudioStream
 	if battery_stream:
 		battery_player.stream = battery_stream
-		battery_player.bus = "Sfx"
+		battery_player.bus = "SFX"
 	_cache_base_stats()
 	_apply_upgrades()
 	# if ghost_ray is GhostRay:
