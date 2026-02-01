@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-render_mode blend_sub;
+render_mode light_only, blend_sub;
 
 uniform float transp :hint_range(0.0, 1.0, 0.1);
 
