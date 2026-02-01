@@ -1437,6 +1437,7 @@ tile_map_data = PackedByteArray("AAD8//z/AAAHAAMAAAD8////AAAHAAMAAAADAP//AAAHAAM
 tile_set = SubResource("TileSet_vw353")
 
 [node name="Player" parent="." unique_id=1413311515 instance=ExtResource("5_1lj4f")]
+visible = false
 position = Vector2(15, 16)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=408036016 groups=["camera"]]
@@ -2307,12 +2308,12 @@ text = "Ornament
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_cu2va")
-offset_left = 445.0
-offset_top = -754.0
-offset_right = 525.0
-offset_bottom = -679.0
+offset_left = 459.0
+offset_top = -767.0
+offset_right = 539.0
+offset_bottom = -692.0
 text = "Closet 
-	of
+	     of
 Shame"
 
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=846098806]
