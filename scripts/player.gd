@@ -62,8 +62,8 @@ func _process(_delta: float) -> void:
 		subtractivelight.texture_scale = 0.15
 		light_area_collision.scale = Vector2(1.5, 1.5)
 	else:
-		additivelight.texture = preload("res://assets/beam_1.png")
-		subtractivelight.texture = preload("res://assets/beam_1.png")
+		additivelight.texture = preload("res://assets/beam_2.png")
+		subtractivelight.texture = preload("res://assets/beam_2.png")
 		additivelight.texture_scale = 0.1
 		subtractivelight.texture_scale = 0.1
 		light_area_collision.scale = Vector2(1.0, 1.0)

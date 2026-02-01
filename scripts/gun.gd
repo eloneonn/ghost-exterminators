@@ -23,6 +23,8 @@ signal overheated_changed(is_overheated: bool)
 @export var cool_per_second: float = 25.0      # while not firing
 @export var overheated_cool_threshold: float = 35.0  # must cool below this to re-enable
 
+@onready var cone_animation_player: AnimationPlayer = %ConeAnim
+
 var heat: float = 0.0
 var is_overheated: bool = false
 var is_firing: bool = false
@@ -124,6 +126,11 @@ func _update_heat(delta: float, wants_fire: bool) -> void:
 func _set_active(active: bool) -> void:
 	# beam_sprite.visible = active
 	hit_area.monitoring = active
+	# Only play cone animations on state change (Shooting/StopShooting once per transition)
+	if active and not _was_firing:
+		cone_animation_player.play("Shooting")
+	elif not active and _was_firing:
+		cone_animation_player.play("StopShooting")
 	if not active:
 		beam_sprite.modulate.a = 0.4
 	else:
